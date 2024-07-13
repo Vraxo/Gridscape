@@ -11,7 +11,7 @@ partial class RightPanel : Panel
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X / 2;
-                slider.Size.Y = Size.Y - 50;
+                slider.Size = new(slider.Size.X, Size.Y - 50);
             }
         },
         "Slider");

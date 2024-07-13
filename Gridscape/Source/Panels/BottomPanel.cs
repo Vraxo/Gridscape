@@ -28,6 +28,6 @@ partial class BottomPanel : Panel
 
     private void UpdateSize()
     {
-        Size.X = Raylib.GetScreenWidth() - leftPanel.Size.X + 1;
+        Size = new(Raylib.GetScreenWidth() - leftPanel.Size.X + 1, Size.Y);
     }
 }

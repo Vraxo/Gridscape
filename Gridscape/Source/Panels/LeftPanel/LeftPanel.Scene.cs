@@ -18,7 +18,7 @@ partial class LeftPanel : Panel
             OnUpdate = (button) =>
             {
                 button.Position.X = Size.X * 0.05F;
-                button.Size.X = Size.X * 0.75F;
+                button.Size = new(Size.X * 0.75F, button.Size.Y);
             },
         });
 
@@ -29,7 +29,7 @@ partial class LeftPanel : Panel
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X * 0.9F;
-                slider.Size.Y = Raylib.GetScreenHeight() - 40;
+                slider.Size = new(slider.Size.X, Raylib.GetScreenHeight() - 40);
             }
         },
         "Slider");

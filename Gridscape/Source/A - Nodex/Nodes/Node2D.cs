@@ -3,10 +3,12 @@
 class Node2D : Node
 {
     public Vector2 Position = Vector2.Zero;
-    public Vector2 Size = Vector2.Zero;
     public OriginPreset OriginPreset = OriginPreset.Center;
     public bool InheritPosition = true;
     public bool InheritsOrigin = false;
+
+    private Vector2 _size;
+    public Vector2 Size { get; set; } = Vector2.Zero;
 
     private Vector2 _globalPosition = Vector2.Zero;
     public Vector2 GlobalPosition

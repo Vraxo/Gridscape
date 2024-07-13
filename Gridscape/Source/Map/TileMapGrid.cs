@@ -48,13 +48,13 @@ class TileMapGrid : Node2D
     private void OnXTextBoxTextChanged(object? sender, EventArgs e)
     {
         var textBox = (TextBox)(sender);
-        Size.X = Convert.ToInt32(textBox.Text);
+        Size = new(Convert.ToInt32(textBox.Text), Size.Y);
     }
 
     private void OnYTextBoxTextChanged(object? sender, EventArgs e)
     {
         var textBox = (TextBox)(sender);
-        Size.Y = Convert.ToInt32(textBox.Text);
+        Size = new(Size.X, Convert.ToInt32(textBox.Text));
     }
 
     private void Draw()
@@ -76,8 +76,10 @@ class TileMapGrid : Node2D
         //Size.X = Convert.ToInt32(xTextBox.Text);
         //Size.Y = Convert.ToInt32(yTextBox.Text);
 
-        Size.X = Size.X == 0 ? 1 : Size.X;
-        Size.Y = Size.Y == 0 ? 1 : Size.Y;
+        //Size.X = Size.X == 0 ? 1 : Size.X;
+        //Size.Y = Size.Y == 0 ? 1 : Size.Y;
+
+        Size = Size == new Vector2(0) ? new Vector2(1) : Size;
     }
 
     private void DrawVerticalLines()

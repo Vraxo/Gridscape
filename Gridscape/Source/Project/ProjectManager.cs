@@ -6,14 +6,13 @@ class ProjectManager
     public ProjectData ProjectData;
     public bool NewProject = false;
 
-    private static ProjectManager? instance;
-
+    private static ProjectManager? _instance;
     public static ProjectManager Instance
     {
         get
         {
-            instance ??= new();
-            return instance;
+            _instance ??= new();
+            return _instance;
         }
     }
 }

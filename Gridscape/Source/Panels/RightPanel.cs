@@ -31,7 +31,9 @@ partial class RightPanel : Panel
 
     private void UpdateSize()
     {
-        Size.X = Raylib.GetScreenWidth() - Position.X;
-        Size.Y = Raylib.GetScreenHeight() - topPanel.Size.Y - bottomPanel.Size.Y + 2;
+        float x = Raylib.GetScreenWidth() - Position.X;
+        float y = Raylib.GetScreenHeight() - topPanel.Size.Y - bottomPanel.Size.Y + 2;
+
+        Size = new(x, y);
     }
 }

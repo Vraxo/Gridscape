@@ -4,8 +4,6 @@
 
 * HorizontalSlider > AddMiddleButton > is parent really needed?
 
-* automatically create click manager if it does not exist
-
 * when left & right click are both enabled on a button,
   the button only changes color on pressed on right clicks.
 

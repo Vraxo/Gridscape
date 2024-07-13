@@ -78,8 +78,7 @@ partial class TileMap : Clickable
 
     private void UpdateSize()
     {
-        Size.X = Convert.ToInt32(xTextBox.Text);
-        Size.Y = Convert.ToInt32(yTextBox.Text);
+        Size = new(Convert.ToInt32(xTextBox.Text), Convert.ToInt32(yTextBox.Text));
     }
 
     private void CheckForClicks()
