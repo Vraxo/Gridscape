@@ -7,8 +7,17 @@ class Node2D : Node
     public bool InheritPosition = true;
     public bool InheritsOrigin = false;
 
-    private Vector2 _size;
-    public Vector2 Size { get; set; } = Vector2.Zero;
+    private Vector2 _size = Vector2.Zero;
+    public Vector2 Size
+    {
+        get => _size;
+
+        set
+        {
+            //UpdateOrigin();
+            _size = value;
+        }
+    }
 
     private Vector2 _globalPosition = Vector2.Zero;
     public Vector2 GlobalPosition

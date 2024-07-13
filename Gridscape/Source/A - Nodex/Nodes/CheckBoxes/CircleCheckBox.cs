@@ -2,9 +2,9 @@
 
 namespace Gridscape;
 
-class CircleCheckBox : Node2D
+class CircleCheckBox : ClickableCircle
 {
-    public float Radius = 10;
+    //public float Radius = 10;
     public CheckBoxStyle Style = new();
     public bool Checked = false;
     public Action<CircleCheckBox> OnUpdate = (checkBox) => { };
@@ -41,20 +41,13 @@ class CircleCheckBox : Node2D
 
     private void CheckForClicks()
     {
-        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (IsMouseOver())
         {
-            if (IsInRange(Raylib.GetMousePosition()))
+            if (Raylib.IsMouseButtonPressed(MouseButton.Left) && OnTopLeft)
             {
                 Checked = !Checked;
                 Toggled?.Invoke(this, EventArgs.Empty);
             }
         }
-    }
-
-    private bool IsInRange(Vector2 position)
-    {
-        float distance = MathUtilities.GetDistance(GlobalPosition, position);
-        bool isInRange = distance < Radius;
-        return isInRange;
     }
 }

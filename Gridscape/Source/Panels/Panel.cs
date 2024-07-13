@@ -10,7 +10,7 @@ class Panel : ClickableRectangle
     public override void Start()
     {
         OriginPreset = OriginPreset.TopLeft;
-        Layer = (int)ClickableLayer.Panels;
+        Layer = ClickableLayer.Panels;
 
         base.Start();
     }
