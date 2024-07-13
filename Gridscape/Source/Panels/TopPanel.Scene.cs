@@ -28,7 +28,7 @@ partial class TopPanel : Panel
 
     private void UpdateSize()
     {
-        Size = new(Raylib.GetScreenWidth() - Position.X, Size.Y);
+        Size = new(MathF.Ceiling(Raylib.GetScreenWidth() - Position.X), Size.Y);
     }
 
     private void OnSaveButtonLeftClicked(object? sender, EventArgs e)

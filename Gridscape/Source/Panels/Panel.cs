@@ -29,7 +29,7 @@ class Panel : ClickableRectangle
             (int)(GlobalPosition.Y - Origin.Y),
             (int)Size.X,
             (int)Size.Y,
-            new(128, 128, 128, 255));
-            //testColor);
+            //new(128, 128, 128, 255));
+            testColor);
     }
 }

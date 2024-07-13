@@ -81,7 +81,8 @@ class ProjectLoader : Node
         {
             ((Node2D)Parent).AddChild(new NotLoadedTilesDialog
             {
-                NotLoadedTiles = [
+                NotLoadedTiles = 
+                [
                     "1",
                     "2",
                     "3",

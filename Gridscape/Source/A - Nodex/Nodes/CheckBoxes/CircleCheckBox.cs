@@ -4,7 +4,6 @@ namespace Gridscape;
 
 class CircleCheckBox : ClickableCircle
 {
-    //public float Radius = 10;
     public CheckBoxStyle Style = new();
     public bool Checked = false;
     public Action<CircleCheckBox> OnUpdate = (checkBox) => { };

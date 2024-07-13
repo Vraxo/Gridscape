@@ -55,7 +55,7 @@ partial class ItemList : Node2D
 
     public void AddItem(Node2D item)
     {
-        //item.InheritsOrigin = true;
+        item.InheritsOrigin = true;
         Items.Add(item);
         AddChild(item);
         UpdateMaxItemsShownAtOnce();
