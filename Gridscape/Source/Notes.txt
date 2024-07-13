@@ -1,0 +1,18 @@
+* fix panel lines
+
+* click management should be added to textboxes and checkboxes
+
+* HorizontalSlider > AddMiddleButton > is parent really needed?
+
+* automatically create click manager if it does not exist
+
+* when left & right click are both enabled on a button,
+  the button only changes color on pressed on right clicks.
+
+* Make size a property.
+
+* Get children without name.
+
+* remove ready method
+
+* make textboxes clickables
