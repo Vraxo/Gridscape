@@ -13,7 +13,7 @@
 //    public Vector2 GridSize = new(32, 32);
 //    public Vector2 Size = new(320, 320);
 //
-//    private Color color = new(64, 64, 64, 255);
+//    private Color outlineColor = new(64, 64, 64, 255);
 //    private bool drawing = false;
 //    private bool erasing = false;
 //

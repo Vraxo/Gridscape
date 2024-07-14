@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class ItemList : Node2D
+partial class ItemList : ClickableRectangle
 {
     public List<Node2D> Items = [];
     public Vector2 ItemSize = new(100, 20);
@@ -107,6 +107,13 @@ partial class ItemList : Node2D
 
     private void HandleScrolling()
     {
+        bool isOnTop = Layer >= clickManager.MinLayer;
+
+        if (!IsMouseOver() || !isOnTop)
+        {
+            return;
+        }
+
         float mouseWheelMovement = Raylib.GetMouseWheelMove();
 
         if (mouseWheelMovement > 0)

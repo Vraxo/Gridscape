@@ -118,6 +118,12 @@ class Node
         return (T)currentNode;
     }
 
+    public T GetNode<T>() where T : Node
+    {
+        string typeName = typeof(T).Name;
+        return GetNode<T>(typeName);
+    }
+
     public Node GetNode(string path)
     {
         if (path == "")

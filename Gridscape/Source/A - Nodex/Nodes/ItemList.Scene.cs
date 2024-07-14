@@ -1,12 +1,11 @@
 ﻿namespace Gridscape;
 
-partial class ItemList : Node2D
+partial class ItemList : ClickableRectangle
 {
     public override void Build()
     {
         AddChild(new VerticalSlider
         {
-            Position = new(100, 0),
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X - Origin.X - slider.Size.X - slider.Origin.X;

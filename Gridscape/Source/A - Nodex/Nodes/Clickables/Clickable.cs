@@ -6,7 +6,7 @@ abstract class Clickable : Node2D
     public bool OnTopRight = false;
     public int Layer = 0;
 
-    private ClickManager? clickManager;
+    protected ClickManager? clickManager;
 
     public override void Start()
     {

@@ -12,7 +12,7 @@ class CircleCheckBox : ClickableCircle
     public override void Update()
     {
         Draw();
-        CheckForClicks();
+        HandleClicks();
         OnUpdate(this);
         base.Update();
     }
@@ -38,7 +38,7 @@ class CircleCheckBox : ClickableCircle
         Raylib.DrawCircleV(GlobalPosition, Radius / 2, Style.CircleColor);
     }
 
-    private void CheckForClicks()
+    private void HandleClicks()
     {
         if (IsMouseOver())
         {

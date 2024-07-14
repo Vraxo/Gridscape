@@ -37,7 +37,6 @@ class TileMapCamera : Node2D
         UpdateY();
         UpdateZoom();
         UpdateTextBox();
-        base.Update();
     }
 
     private void UpdateX()
@@ -65,7 +64,9 @@ class TileMapCamera : Node2D
 
     private void UpdateZoom()
     {
-        if (!tileMap.IsMouseOver())
+        bool isTileMapOnTop = tileMap.Layer >= GetNode<ClickManager>().MinLayer;
+
+        if (!tileMap.IsMouseOver() || !isTileMapOnTop)
         {
             return;
         }
