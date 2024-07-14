@@ -13,7 +13,6 @@ partial class HorizontalSlider : Node2D
             {
                 if (button.Pressed)
                 {
-                    //MiddleButton.Position.X = Raylib.GetMousePosition().X - 10 - MiddleButton.Radius;
                     button.Position.X = Raylib.GetMousePosition().X - Position.X - (Parent as Node2D).Position.X;
                 }
 
@@ -23,16 +22,15 @@ partial class HorizontalSlider : Node2D
 
         AddChild(middleButton, "MiddleButton");
 
-        Button leftButton = new()
+        AddChild(new Button
         {
             Position = new(-18, 0),
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
-        };
+        },
+        "LeftButton");
 
-        AddChild(leftButton);
-
-        Button button = new()
+        AddChild(new Button
         {
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
@@ -40,8 +38,7 @@ partial class HorizontalSlider : Node2D
             {
                 button.Position.X = Size.X + (MiddleButton.Radius * 2);
             },
-        };
-
-        AddChild(button);
+        },
+        "RightButton");
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class SliderButton : Node2D
+class SliderButton : ClickableCircle
 {
     public float Radius = 9F;
     public Vector2 TextOrigin = Vector2.Zero;
@@ -23,7 +23,7 @@ class SliderButton : Node2D
 
     public override void Start()
     {
-        UpdatePosition(initial: true);
+        UpdatePosition(true);
     }
 
     public override void Update()
