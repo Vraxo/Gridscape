@@ -8,6 +8,7 @@ partial class HorizontalSlider : Node2D
     {
         SliderButton middleButton = new()
         {
+            Orientation = SliderOrientation.Horizontal,
             OnUpdate = (button) =>
             {
                 if (button.Pressed)
@@ -26,7 +27,7 @@ partial class HorizontalSlider : Node2D
         {
             Position = new(-18, 0),
             Size = new(10, 10),
-            Layer = (int)ClickableLayer.PanelButtons,
+            Layer = ClickableLayer.PanelButtons,
         };
 
         AddChild(leftButton);
@@ -34,7 +35,7 @@ partial class HorizontalSlider : Node2D
         Button button = new()
         {
             Size = new(10, 10),
-            Layer = (int)ClickableLayer.PanelButtons,
+            Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
                 button.Position.X = Size.X + (MiddleButton.Radius * 2);

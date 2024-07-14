@@ -11,6 +11,7 @@ class SliderButton : Node2D
     public bool Visible = true;
     public bool Pressed = false;
     public Action<SliderButton> OnUpdate = (button) => { };
+    public SliderOrientation Orientation = SliderOrientation.Vertical;
 
     private bool alreadyClicked = false;
     private bool initialPositionSet = false;
@@ -99,20 +100,45 @@ class SliderButton : Node2D
 
         if (Pressed)
         {
-            GlobalPosition = new(parent.GlobalPosition.X, Raylib.GetMousePosition().Y);
+            if (Orientation == SliderOrientation.Vertical)
+            {
+                GlobalPosition = new(parent.GlobalPosition.X, Raylib.GetMousePosition().Y);
+            }
+            else // Horizontal
+            {
+                GlobalPosition = new(Raylib.GetMousePosition().X, parent.GlobalPosition.Y);
+            }
         }
 
-        float minY = parent.GlobalPosition.Y;
-        float maxY = minY + parent.Size.Y;
+        if (Orientation == SliderOrientation.Vertical)
+        {
+            float minY = parent.GlobalPosition.Y;
+            float maxY = minY + parent.Size.Y;
 
-        if (initial && !initialPositionSet)
-        {
-            GlobalPosition = new(parent.GlobalPosition.X, minY);
-            initialPositionSet = true;
+            if (initial && !initialPositionSet)
+            {
+                GlobalPosition = new(parent.GlobalPosition.X, minY);
+                initialPositionSet = true;
+            }
+            else
+            {
+                GlobalPosition = new(parent.GlobalPosition.X, Math.Clamp(GlobalPosition.Y, minY, maxY));
+            }
         }
-        else
+        else // Horizontal
         {
-            GlobalPosition = new(parent.GlobalPosition.X, Math.Clamp(GlobalPosition.Y, minY, maxY));
+            float minX = parent.GlobalPosition.X;
+            float maxX = minX + parent.Size.X;
+
+            if (initial && !initialPositionSet)
+            {
+                GlobalPosition = new(minX, parent.GlobalPosition.Y);
+                initialPositionSet = true;
+            }
+            else
+            {
+                GlobalPosition = new(Math.Clamp(GlobalPosition.X, minX, maxX), parent.GlobalPosition.Y);
+            }
         }
     }
 

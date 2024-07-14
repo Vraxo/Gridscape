@@ -9,12 +9,6 @@
 
 * remove ready method
 
-
-
-* limit item list scrolling to itself
-
-
-
 * changes tiles panel to item list
 
 * allow scrolling the map when zoomed in

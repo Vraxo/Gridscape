@@ -27,7 +27,6 @@ partial class HorizontalSlider : Node2D
         Draw();
         OnUpdate(this);
         base.Update();
-        Raylib.DrawPixelV(GlobalPosition, Color.Red);
     }
 
     private void OnLeftButtonLeftClicked(object? sender, EventArgs e)
