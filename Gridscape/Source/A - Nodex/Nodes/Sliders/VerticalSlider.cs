@@ -18,9 +18,6 @@ partial class VerticalSlider : Node2D
     public override void Ready()
     {
         Button = GetChild<SliderButton>("SliderButton");
-        GetChild<SliderButton>().Layer = ClickableLayer.DialogButtons;
-
-        base.Ready();
     }
 
     public override void Update()

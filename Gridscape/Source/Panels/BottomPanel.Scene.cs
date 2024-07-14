@@ -13,8 +13,7 @@ partial class BottomPanel : Panel
             {
                 slider.Position.Y = Size.Y / 2;
                 slider.Size = new(Raylib.GetScreenWidth() - Position.X - 60, slider.Size.Y);
-                //slider.MaxPossibleValue = GetNode<TileMap>().Size.X;
-                slider.MaxPossibleValue = GetNode<TileMapCamera>().ExtraMapSize.X;
+                slider.MaxPossibleValue = GetNode<TileMapCamera>("TileMapCamera").Position.X;
             }
         }, 
         "Slider");

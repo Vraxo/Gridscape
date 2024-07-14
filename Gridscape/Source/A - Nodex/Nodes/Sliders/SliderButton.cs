@@ -2,9 +2,9 @@
 
 namespace Gridscape;
 
-class SliderButton : ClickableCircle
+class SliderButton : Node2D
 {
-    //public float Radius = 9F;
+    public float Radius = 9F;
     public Vector2 TextOrigin = Vector2.Zero;
     public string Text = "";
     public ButtonStyle Style = new();
@@ -18,26 +18,24 @@ class SliderButton : ClickableCircle
 
     public SliderButton()
     {
-        Radius = 9F;
         InheritPosition = false;
     }
 
     public override void Start()
     {
-        UpdatePosition(true);
-        base.Start();
+        UpdatePosition(initial: true);
     }
 
     public override void Update()
     {
         UpdatePosition();
-        HandleClicks();
+        CheckForClicks();
         DrawShape();
         OnUpdate(this);
         base.Update();
     }
 
-    private void HandleClicks()
+    private void CheckForClicks()
     {
         if (Raylib.IsMouseButtonDown(MouseButton.Left))
         {
@@ -49,13 +47,10 @@ class SliderButton : ClickableCircle
 
         if (IsMouseOver())
         {
-            Console.WriteLine(Layer);
-
             Style.Current = Style.Hover;
 
-            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked && OnTopLeft)
+            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked)
             {
-                OnTopLeft = false;
                 Pressed = true;
                 alreadyClicked = true;
             }
@@ -157,10 +152,10 @@ class SliderButton : ClickableCircle
         }
     }
 
-    //private bool IsMouseOver()
-    //{
-    //    float distance = MathUtilities.GetDistance(GlobalPosition, Raylib.GetMousePosition());
-    //    bool isMouseOver = distance < Radius;
-    //    return isMouseOver;
-    //}
+    private bool IsMouseOver()
+    {
+        float distance = MathUtilities.GetDistance(GlobalPosition, Raylib.GetMousePosition());
+        bool isMouseOver = distance < Radius;
+        return isMouseOver;
+    }
 }

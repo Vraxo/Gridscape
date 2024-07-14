@@ -5,7 +5,6 @@ namespace Gridscape;
 class TileMapCamera : Node2D
 {
     public float Zoom = 1;
-    public Vector2 ExtraMapSize = Vector2.Zero;
 
     private TileMap tileMap;
     private TextBox zoomTextBox;
@@ -44,10 +43,10 @@ class TileMapCamera : Node2D
     {
         float panelsWidth = leftPanel.Size.X + rightPanel.Size.X;
         float availableMapWidth = Raylib.GetScreenWidth() - panelsWidth;
-        ExtraMapSize.X = (tileMap.Size.X * 1 /* Zoom */) - availableMapWidth;
+        float extraMapWidth = (tileMap.Size.X * 1 /* Zoom */) - availableMapWidth;
 
-        Position.X = ExtraMapSize.X > 0 ?
-                     ExtraMapSize.X * horizontalSlider.Value :
+        Position.X = extraMapWidth > 0 ?
+                     extraMapWidth * horizontalSlider.Value :
                      0;
 
     }

@@ -44,8 +44,6 @@ partial class ItemList : ClickableRectangle
         Slider = GetChild<VerticalSlider>("VerticalSlider");
         Slider.ValueChanged += OnSliderValueChanged;
 
-        Console.WriteLine("ItemList - Slider Layer: " + Slider.Layer);
-
         UpdateList(0);
     }
 
