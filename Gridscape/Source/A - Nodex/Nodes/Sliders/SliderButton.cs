@@ -10,8 +10,8 @@ class SliderButton : Node2D
     public ButtonStyle Style = new();
     public bool Visible = true;
     public bool Pressed = false;
-    public Action<SliderButton> OnUpdate = (button) => { };
     public SliderOrientation Orientation = SliderOrientation.Vertical;
+    public Action<SliderButton> OnUpdate = (button) => { };
 
     private bool alreadyClicked = false;
     private bool initialPositionSet = false;
@@ -104,7 +104,7 @@ class SliderButton : Node2D
             {
                 GlobalPosition = new(parent.GlobalPosition.X, Raylib.GetMousePosition().Y);
             }
-            else // Horizontal
+            else
             {
                 GlobalPosition = new(Raylib.GetMousePosition().X, parent.GlobalPosition.Y);
             }
@@ -112,33 +112,43 @@ class SliderButton : Node2D
 
         if (Orientation == SliderOrientation.Vertical)
         {
-            float minY = parent.GlobalPosition.Y;
-            float maxY = minY + parent.Size.Y;
-
-            if (initial && !initialPositionSet)
-            {
-                GlobalPosition = new(parent.GlobalPosition.X, minY);
-                initialPositionSet = true;
-            }
-            else
-            {
-                GlobalPosition = new(parent.GlobalPosition.X, Math.Clamp(GlobalPosition.Y, minY, maxY));
-            }
+            UpdatePositionVertical(parent, initial);
         }
-        else // Horizontal
+        else
         {
-            float minX = parent.GlobalPosition.X;
-            float maxX = minX + parent.Size.X;
+            UpdatePositionHorizontal(parent, initial);
+        }
+    }
 
-            if (initial && !initialPositionSet)
-            {
-                GlobalPosition = new(minX, parent.GlobalPosition.Y);
-                initialPositionSet = true;
-            }
-            else
-            {
-                GlobalPosition = new(Math.Clamp(GlobalPosition.X, minX, maxX), parent.GlobalPosition.Y);
-            }
+    private void UpdatePositionVertical(Node2D parent, bool initial)
+    {
+        float minY = parent.GlobalPosition.Y;
+        float maxY = minY + parent.Size.Y;
+
+        if (initial && !initialPositionSet)
+        {
+            GlobalPosition = new(parent.GlobalPosition.X, minY);
+            initialPositionSet = true;
+        }
+        else
+        {
+            GlobalPosition = new(parent.GlobalPosition.X, Math.Clamp(GlobalPosition.Y, minY, maxY));
+        }
+    }
+
+    private void UpdatePositionHorizontal(Node2D parent, bool initial)
+    {
+        float minX = parent.GlobalPosition.X;
+        float maxX = minX + parent.Size.X;
+
+        if (initial && !initialPositionSet)
+        {
+            GlobalPosition = new(minX, parent.GlobalPosition.Y);
+            initialPositionSet = true;
+        }
+        else
+        {
+            GlobalPosition = new(Math.Clamp(GlobalPosition.X, minX, maxX), parent.GlobalPosition.Y);
         }
     }
 
