@@ -4,18 +4,17 @@ abstract class Clickable : Node2D
 {
     public bool OnTopLeft = false;
     public bool OnTopRight = false;
-    public int Layer = 0;
 
     protected ClickManager? clickManager;
 
     public override void Start()
     {
-        clickManager = GetNode<ClickManager>("ClickManager");
+        clickManager = GetNode<ClickManager>();
 
         if (clickManager == null)
         {
             Program.RootNode.AddChild(new ClickManager());
-            clickManager = GetNode<ClickManager>("ClickManager");
+            clickManager = GetNode<ClickManager>();
         }
 
         clickManager.Add(this);

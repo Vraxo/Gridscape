@@ -6,6 +6,7 @@ class Node2D : Node
     public OriginPreset OriginPreset = OriginPreset.Center;
     public bool InheritPosition = true;
     public bool InheritsOrigin = false;
+    public int Layer = 0;
 
     private Vector2 _size = Vector2.Zero;
     public Vector2 Size
@@ -67,6 +68,11 @@ class Node2D : Node
         }
     }
 
+    public override void Ready()
+    {
+        SetLayerBasedOnHierarchyDepth();
+    }
+
     public override void Update()
     {
         UpdateOrigin();
@@ -86,5 +92,19 @@ class Node2D : Node
             OriginPreset.BottomRight => Size,
             OriginPreset.BottomCenter => new(Size.X / 2, Size.Y),
         };
+    }
+
+    private void SetLayerBasedOnHierarchyDepth()
+    {
+        int depth = 0;
+        Node current = this;
+
+        while (current.Parent != null)
+        {
+            depth++;
+            current = current.Parent;
+        }
+
+        Layer = depth;
     }
 }

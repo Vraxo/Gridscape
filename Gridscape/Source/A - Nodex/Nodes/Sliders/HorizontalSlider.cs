@@ -19,6 +19,9 @@ partial class HorizontalSlider : Node2D
     public override void Start()
     {
         MiddleButton = GetChild<SliderButton>("MiddleButton");
+
+        GetChild<Button>("LeftButton").LeftClicked += OnLeftButtonLeftClicked;
+        GetChild<Button>("RightButton").LeftClicked += OnRightButtonLeftClicked;
     }
 
     public override void Update()
@@ -31,12 +34,20 @@ partial class HorizontalSlider : Node2D
 
     private void OnLeftButtonLeftClicked(object? sender, EventArgs e)
     {
-        MiddleButton.Position.X -= Size.X / MaxPossibleValue;
+        MoveMiddleButton(-1);
     }
 
     private void OnRightButtonLeftClicked(object? sender, EventArgs e)
     {
-        MiddleButton.Position.X += Size.X / MaxPossibleValue;
+        MoveMiddleButton(1);
+    }
+
+    private void MoveMiddleButton(int direction)
+    {
+        float x = MiddleButton.GlobalPosition.X + direction * (Size.X / MaxPossibleValue);
+        float y = MiddleButton.GlobalPosition.Y;
+
+        MiddleButton.GlobalPosition = new(x, y);
     }
 
     private void Draw()
@@ -56,7 +67,7 @@ partial class HorizontalSlider : Node2D
 
     private void UpdateValue()
     {
-        float currentPosition = MiddleButton.Position.X;
+        float currentPosition = MiddleButton.GlobalPosition.X;
         float maxPos = Size.X;
 
         Value = currentPosition / maxPos;

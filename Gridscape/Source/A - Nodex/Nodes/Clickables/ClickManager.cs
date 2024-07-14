@@ -34,7 +34,7 @@ class ClickManager : Node
     {
         List<Clickable> viableClickables = GetViableClickables();
 
-        if (viableClickables.Count > 0)
+        if (viableClickables.Count != 0)
         {
             Clickable topClickable = GetTopClickable(viableClickables);
 
@@ -43,14 +43,19 @@ class ClickManager : Node
                 if (mouseButton == MouseButton.Left)
                 {
                     topClickable.OnTopLeft = true;
-                    //Console.WriteLine("on top left set to true");
+                    Console.WriteLine("on top left set to true: " + topClickable.Name);
+                    Console.WriteLine(topClickable.Layer);
                 }
                 else
                 {
                     topClickable.OnTopRight = true;
-                    //Console.WriteLine("on top right set to true");
+                    Console.WriteLine("on top right set to true");
                 }
             }
+        }
+        else
+        {
+            Console.WriteLine("No viable clickables.");
         }
     }
 
@@ -66,7 +71,7 @@ class ClickManager : Node
             }
         }
 
-        //Console.WriteLine("Clickables: " + viableClickables.Count);
+        Console.WriteLine("Clickables: " + viableClickables.Count);
 
         return viableClickables;
     }
@@ -83,6 +88,11 @@ class ClickManager : Node
                 highestLayer = clickable.Layer;
                 topClickable = clickable;
             }
+        }
+
+        if (topClickable is not null)
+        {
+            Console.WriteLine("Highest layer detected: " + highestLayer);
         }
 
         return topClickable;
