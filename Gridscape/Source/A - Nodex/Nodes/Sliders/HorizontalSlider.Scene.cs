@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class HorizontalSlider : Node2D
+public partial class HorizontalSlider : BaseSlider
 {
     public override void Build()
     {
@@ -16,7 +16,7 @@ partial class HorizontalSlider : Node2D
             Position = new(-18, 0),
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
-        }, "LeftButton");
+        }, "DecrementButton");
 
         AddChild(new Button
         {
@@ -26,6 +26,6 @@ partial class HorizontalSlider : Node2D
             {
                 button.Position.X = Size.X + (MiddleButton.Radius * 2);
             },
-        }, "RightButton");
+        }, "IncrementButton");
     }
 }

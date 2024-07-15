@@ -2,48 +2,15 @@
 
 namespace Gridscape;
 
-partial class HorizontalSlider : Node2D
+public partial class HorizontalSlider : BaseSlider
 {
-    public float Value = 0;
-    public float MaxPossibleValue = 0;
-    public SliderStyle Style = new();
-    public SliderButton MiddleButton;
-    public Action<HorizontalSlider> OnUpdate = (slider) => { };
-    public event EventHandler<float>? ValueChanged;
-
     public HorizontalSlider()
     {
         Size = new(100, 9);
         OriginPreset = OriginPreset.CenterLeft;
     }
 
-    public override void Start()
-    {
-        MiddleButton = GetChild<SliderButton>("MiddleButton");
-
-        GetChild<Button>("LeftButton").LeftClicked += OnLeftButtonLeftClicked;
-        GetChild<Button>("RightButton").LeftClicked += OnRightButtonLeftClicked;
-    }
-
-    public override void Update()
-    {
-        UpdateValue();
-        Draw();
-        OnUpdate(this);
-        base.Update();
-    }
-
-    private void OnLeftButtonLeftClicked(object? sender, EventArgs e)
-    {
-        MoveMiddleButton(-1);
-    }
-
-    private void OnRightButtonLeftClicked(object? sender, EventArgs e)
-    {
-        MoveMiddleButton(1);
-    }
-
-    private void MoveMiddleButton(int direction)
+    protected override void MoveMiddleButton(int direction)
     {
         if (MaxPossibleValue == 0)
         {
@@ -56,7 +23,7 @@ partial class HorizontalSlider : Node2D
         MiddleButton.GlobalPosition = new(x, y);
     }
 
-    private void Draw()
+    protected override void Draw()
     {
         Rectangle rectangle = new()
         {
@@ -71,7 +38,7 @@ partial class HorizontalSlider : Node2D
             Style.FillColor);
     }
 
-    private void UpdateValue()
+    protected override void UpdateValue()
     {
         float currentPosition = MiddleButton.GlobalPosition.X;
         float minPos = GlobalPosition.X;
@@ -83,7 +50,7 @@ partial class HorizontalSlider : Node2D
 
         if (Value != previousValue)
         {
-            ValueChanged?.Invoke(this, Value);
+            OnValueChanged();
         }
     }
 }

@@ -20,7 +20,7 @@ class ProjectSaver : Node
 
     private void SelectSavePath()
     {
-        SaveFileDialog saveFileDialog = new SaveFileDialog
+        SaveFileDialog saveFileDialog = new()
         {
             Title = "Save Project",
             Filter = "JSON Files (*.json)|*.json",

@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class VerticalSlider : Node2D
+public partial class VerticalSlider : BaseSlider
 {
     public override void Build()
     {
@@ -16,7 +16,7 @@ partial class VerticalSlider : Node2D
             Position = new(0, middleButton.Radius * -2),
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
-        }, "TopButton");
+        }, "DecrementButton");
 
         AddChild(new Button
         {
@@ -26,6 +26,6 @@ partial class VerticalSlider : Node2D
             {
                 button.Position.Y = Size.Y + (MiddleButton.Radius * 2);
             },
-        }, "BottomButton");
+        }, "IncrementButton");
     }
 }
