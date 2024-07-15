@@ -3,7 +3,7 @@ using Gridscape.Properties;
 
 namespace Gridscape;
 
-class Program
+public class Program
 {
     public Node RootNode;
 

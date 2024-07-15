@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-abstract class ClickableRectangle : Clickable
+public abstract class ClickableRectangle : Clickable
 {
     public override bool IsMouseOver()
     {

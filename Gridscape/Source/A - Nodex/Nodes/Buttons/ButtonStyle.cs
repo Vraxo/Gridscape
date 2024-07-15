@@ -1,18 +1,18 @@
 ﻿namespace Gridscape;
 
-class ButtonStyle
+public class ButtonStyle
 {
-    public ButtonSubStyle Current = new();
+    public ButtonStyleState Current = new();
 
-    public ButtonSubStyle Default = new();
+    public ButtonStyleState Default = new();
 
-    public ButtonSubStyle Hover = new()
+    public ButtonStyleState Hover = new()
     {
         FillColor = new(101, 101, 101, 255),
         OutlineColor = new(71, 71, 71, 255)
     };
 
-    public ButtonSubStyle Pressed = new()
+    public ButtonStyleState Pressed = new()
     {
         FillColor = new(71, 114, 179, 255),
         OutlineColor = new(61, 61, 61, 255),

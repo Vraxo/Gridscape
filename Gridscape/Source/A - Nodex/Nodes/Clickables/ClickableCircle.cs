@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-abstract class ClickableCircle : Clickable
+public abstract class ClickableCircle : Clickable
 {
     public float Radius = 10F;
 

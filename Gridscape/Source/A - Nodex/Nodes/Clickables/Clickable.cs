@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-abstract class Clickable : Node2D
+public abstract class Clickable : Node2D
 {
     public bool OnTopLeft = false;
     public bool OnTopRight = false;

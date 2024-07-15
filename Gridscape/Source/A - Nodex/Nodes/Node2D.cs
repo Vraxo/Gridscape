@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-class Node2D : Node
+public class Node2D : Node
 {
     public Vector2 Position = Vector2.Zero;
     public OriginPreset OriginPreset = OriginPreset.Center;

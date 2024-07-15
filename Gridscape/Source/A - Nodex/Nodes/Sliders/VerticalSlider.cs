@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class VerticalSlider : Node2D
+public partial class VerticalSlider : Node2D
 {
     public float Value = 0;
     public float MaxPossibleValue = 0;

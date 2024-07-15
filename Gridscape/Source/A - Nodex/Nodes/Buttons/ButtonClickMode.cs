@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-enum ButtonClickMode
+public enum ButtonClickMode
 {
     Limited,
     Limitless

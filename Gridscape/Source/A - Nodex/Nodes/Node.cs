@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-class Node
+public class Node
 {
     public string Name = "";
     public Node? Parent = null;

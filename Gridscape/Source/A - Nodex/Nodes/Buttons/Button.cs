@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class Button : ClickableRectangle
+public class Button : ClickableRectangle
 {
     public string Text = "";
     public Vector2 TextOrigin = Vector2.Zero;

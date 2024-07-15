@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class SliderButton : ClickableCircle
+public class SliderButton : ClickableCircle
 {
     public float Radius = 9F;
     public Vector2 TextOrigin = Vector2.Zero;

@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class ClickManager : Node
+public class ClickManager : Node
 {
     public List<Clickable> Clickables = [];
     public int MinLayer = -1;

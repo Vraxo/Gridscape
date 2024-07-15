@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-enum SliderOrientation
+public enum SliderOrientation
 {
     Vertical,
     Horizontal

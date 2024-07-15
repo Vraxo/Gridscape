@@ -13,7 +13,7 @@ partial class TileItem : Node2D
 
     private TilesPanel parent;
     private Button addNewTileButton;
-    private ButtonSubStyle defaultUnpressedButtonStyle;
+    private ButtonStyleState defaultUnpressedButtonStyle;
 
     public override void Start()
     {
