@@ -1,6 +1,16 @@
-* fix panel lines
+* changes tiles panel to item list
 
-* click management should be added to checkboxes
+* allow scrolling the map when zoomed in
+
+* add movement buttons to vertical sliders
+
+* make new vertical sliders work with the item list
+
+
+
+-  -= -Long Term - - -
+
+
 
 * HorizontalSlider > AddMiddleButton > is parent really needed?
 
@@ -8,7 +18,3 @@
   the button only changes color on pressed on right clicks.
 
 * remove ready method
-
-* changes tiles panel to item list
-
-* allow scrolling the map when zoomed in

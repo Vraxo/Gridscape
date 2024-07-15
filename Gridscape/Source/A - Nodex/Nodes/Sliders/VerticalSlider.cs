@@ -5,7 +5,7 @@ namespace Gridscape;
 partial class VerticalSlider : Node2D
 {
     public float Value = 0;
-    public SliderButton Button;
+    public SliderButton MiddleButton;
     public Action<VerticalSlider> OnUpdate = (slider) => { };
     public event EventHandler<float>? ValueChanged;
 
@@ -17,7 +17,7 @@ partial class VerticalSlider : Node2D
 
     public override void Ready()
     {
-        Button = GetChild<SliderButton>("SliderButton");
+        MiddleButton = GetChild<SliderButton>("MiddleButton");
     }
 
     public override void Update()
@@ -45,7 +45,7 @@ partial class VerticalSlider : Node2D
 
     private void UpdateValue()
     {
-        float currentPosition = Button.GlobalPosition.Y;
+        float currentPosition = MiddleButton.GlobalPosition.Y;
         float minPos = GlobalPosition.Y;
         float maxPos = minPos + Size.Y;
 

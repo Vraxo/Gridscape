@@ -68,8 +68,9 @@ partial class HorizontalSlider : Node2D
     private void UpdateValue()
     {
         float currentPosition = MiddleButton.GlobalPosition.X;
-        float maxPos = Size.X;
+        float minPosition = GlobalPosition.X;
+        float maxPosition = minPosition + Size.X;
 
-        Value = currentPosition / maxPos;
+        Value = currentPosition / maxPosition;
     }
 }

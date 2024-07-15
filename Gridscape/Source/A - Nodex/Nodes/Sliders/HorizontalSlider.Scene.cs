@@ -1,6 +1,4 @@
-﻿using Raylib_cs;
-
-namespace Gridscape;
+﻿namespace Gridscape;
 
 partial class HorizontalSlider : Node2D
 {
@@ -9,15 +7,6 @@ partial class HorizontalSlider : Node2D
         SliderButton middleButton = new()
         {
             Orientation = SliderOrientation.Horizontal,
-            OnUpdate = (button) =>
-            {
-                if (button.Pressed)
-                {
-                    button.Position.X = Raylib.GetMousePosition().X - Position.X - (Parent as Node2D).Position.X;
-                }
-
-                button.Position.X = Math.Clamp(button.Position.X, 0, Size.X);
-            }
         };
 
         AddChild(middleButton, "MiddleButton");

@@ -26,6 +26,7 @@ partial class LeftPanel : Panel
         {
             Position = new(Size.X * 0.925F, 20),
             Size = new(10, 500),
+            Layer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X * 0.9F;

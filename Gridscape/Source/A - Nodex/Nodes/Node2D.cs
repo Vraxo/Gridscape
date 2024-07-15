@@ -100,7 +100,7 @@ class Node2D : Node
             {
                 if (node2DChild.Layer == -1)
                 {
-                    node2DChild.Layer = Layer + 1;
+                    node2DChild.Layer = Layer + 0;
                 }
             }
         }
