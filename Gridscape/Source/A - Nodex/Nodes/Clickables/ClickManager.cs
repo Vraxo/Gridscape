@@ -43,7 +43,7 @@ class ClickManager : Node
                 if (mouseButton == MouseButton.Left)
                 {
                     topClickable.OnTopLeft = true;
-                    Console.WriteLine("on top left set to true " + topClickable.Name);
+                    //Console.WriteLine("on top left set to true");
                 }
                 else
                 {
@@ -66,7 +66,7 @@ class ClickManager : Node
             }
         }
 
-        Console.WriteLine("Clickables: " + viableClickables.Count);
+        //Console.WriteLine("Clickables: " + viableClickables.Count);
 
         return viableClickables;
     }
@@ -84,8 +84,6 @@ class ClickManager : Node
                 topClickable = clickable;
             }
         }
-
-        Console.WriteLine("Highest layer: " + highestLayer);
 
         return topClickable;
     }

@@ -6,7 +6,6 @@ class Node2D : Node
     public OriginPreset OriginPreset = OriginPreset.Center;
     public bool InheritPosition = true;
     public bool InheritsOrigin = false;
-    public int Layer = -1;
 
     private Vector2 _size = Vector2.Zero;
     public Vector2 Size
@@ -70,7 +69,6 @@ class Node2D : Node
 
     public override void Update()
     {
-        UpdateLayer();
         UpdateOrigin();
     }
 
@@ -88,21 +86,5 @@ class Node2D : Node
             OriginPreset.BottomRight => Size,
             OriginPreset.BottomCenter => new(Size.X / 2, Size.Y),
         };
-    }
-
-    private void UpdateLayer()
-    {
-        foreach (Node child in Children)
-        {
-            Node2D? node2DChild = child as Node2D;
-
-            if (node2DChild is not null)
-            {
-                if (node2DChild.Layer == -1)
-                {
-                    node2DChild.Layer = Layer + 0;
-                }
-            }
-        }
     }
 }

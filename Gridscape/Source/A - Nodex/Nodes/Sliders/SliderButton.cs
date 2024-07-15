@@ -4,7 +4,7 @@ namespace Gridscape;
 
 class SliderButton : ClickableCircle
 {
-    //public float Radius = 9F;
+    public float Radius = 9F;
     public Vector2 TextOrigin = Vector2.Zero;
     public string Text = "";
     public ButtonStyle Style = new();
@@ -19,13 +19,11 @@ class SliderButton : ClickableCircle
     public SliderButton()
     {
         InheritPosition = false;
-        Radius = 9F;
     }
 
     public override void Start()
     {
         UpdatePosition(true);
-        base.Start();
     }
 
     public override void Update()
@@ -51,7 +49,7 @@ class SliderButton : ClickableCircle
         {
             Style.Current = Style.Hover;
 
-            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked && OnTopLeft)
+            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked)
             {
                 Pressed = true;
                 alreadyClicked = true;
