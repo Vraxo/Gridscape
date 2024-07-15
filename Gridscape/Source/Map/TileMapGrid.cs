@@ -61,7 +61,7 @@ class TileMapGrid : Node2D
     {
         //Vector2 truePosition = Position;
 
-        //Position = originalPosition - GetNode<TileMapCamera>("TileMapCamera").Position;
+        //Position = OriginalPosition - GetNode<TileMapCamera>("TileMapCamera").Position;
         Position = (originalPosition - camera.Position) * camera.Zoom;
         DrawVerticalLines();
         DrawHorizontalLines();

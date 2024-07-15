@@ -5,10 +5,11 @@ namespace Gridscape;
 partial class HorizontalSlider : Node2D
 {
     public float Value = 0;
-    public SliderButton MiddleButton;
-    public Action<HorizontalSlider> OnUpdate = (slider) => { };
     public float MaxPossibleValue = 0;
     public SliderStyle Style = new();
+    public SliderButton MiddleButton;
+    public Action<HorizontalSlider> OnUpdate = (slider) => { };
+    public event EventHandler<float>? ValueChanged;
 
     public HorizontalSlider()
     {
@@ -44,6 +45,11 @@ partial class HorizontalSlider : Node2D
 
     private void MoveMiddleButton(int direction)
     {
+        if (MaxPossibleValue == 0)
+        {
+            return;
+        }
+
         float x = MiddleButton.GlobalPosition.X + direction * (Size.X / MaxPossibleValue);
         float y = MiddleButton.GlobalPosition.Y;
 
@@ -68,9 +74,16 @@ partial class HorizontalSlider : Node2D
     private void UpdateValue()
     {
         float currentPosition = MiddleButton.GlobalPosition.X;
-        float minPosition = GlobalPosition.X;
-        float maxPosition = minPosition + Size.X;
+        float minPos = GlobalPosition.X;
+        float maxPos = minPos + Size.X;
 
-        Value = currentPosition / maxPosition;
+        float previousValue = Value;
+
+        Value = (currentPosition - minPos) / (maxPos - minPos);
+
+        if (Value != previousValue)
+        {
+            ValueChanged?.Invoke(this, Value);
+        }
     }
 }

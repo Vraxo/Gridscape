@@ -7,14 +7,15 @@ partial class TileInstance : Node2D
     public string TileName;
     public string FilePath;
     public Texture2D Texture;
+    public Vector2 OriginalPosition;
 
-    private Vector2 originalPosition;
     private TileMapCamera camera;
 
     public override void Start()
     {
-        originalPosition = Position;
+        OriginalPosition = Position;
         camera = GetNode<TileMapCamera>("TileMapCamera");
+        GetChild<Button>("Button").RightClicked += OnButtonRightClicked;
     }
 
     public override void Update()
@@ -25,7 +26,8 @@ partial class TileInstance : Node2D
 
     private void UpdatePosition()
     {
-        Position = (originalPosition - camera.Position) * camera.Zoom;
+        Position = (OriginalPosition - camera.Position) * camera.Zoom;
+        Position.X = MathF.Floor(Position.X);
     }
 
     private void OnButtonRightClicked(object? sender, EventArgs e)

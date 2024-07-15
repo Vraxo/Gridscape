@@ -9,14 +9,14 @@ partial class BottomPanel : Panel
         AddChild(new HorizontalSlider
         {
             Position = new(30, Size.Y / 2),
-            Layer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
                 slider.Position.Y = Size.Y / 2;
                 slider.Size = new(Raylib.GetScreenWidth() - Position.X - 60, slider.Size.Y);
-                slider.MaxPossibleValue = GetNode<TileMapCamera>("TileMapCamera").Position.X;
+
+                float cameraExtraWidth = GetNode<TileMapCamera>().ExtraMapSize.X;
+                slider.MaxPossibleValue = MathF.Max(0, cameraExtraWidth);
             }
-        }, 
-        "Slider");
+        }, "Slider");
     }
 }

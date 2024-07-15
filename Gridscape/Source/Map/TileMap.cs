@@ -39,7 +39,7 @@ partial class TileMap : Clickable
     {
         UpdatePosition();
         UpdateSize();
-        CheckForClicks();
+        HandleClicks();
         base.Update();
     }
 
@@ -61,8 +61,8 @@ partial class TileMap : Clickable
         {
             tileData.Add(new()
             {
-                X = tileInstance.Position.X,
-                Y = tileInstance.Position.Y,
+                X = tileInstance.OriginalPosition.X,
+                Y = tileInstance.OriginalPosition.Y,
                 Name = tileInstance.TileName
             });
         }
@@ -81,7 +81,7 @@ partial class TileMap : Clickable
         Size = new(Convert.ToInt32(xTextBox.Text), Convert.ToInt32(yTextBox.Text));
     }
 
-    private void CheckForClicks()
+    private void HandleClicks()
     {
         if (Raylib.IsMouseButtonPressed(MouseButton.Left))
         {

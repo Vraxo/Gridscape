@@ -16,8 +16,7 @@ partial class HorizontalSlider : Node2D
             Position = new(-18, 0),
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
-        },
-        "LeftButton");
+        }, "LeftButton");
 
         AddChild(new Button
         {
@@ -27,7 +26,6 @@ partial class HorizontalSlider : Node2D
             {
                 button.Position.X = Size.X + (MiddleButton.Radius * 2);
             },
-        },
-        "RightButton");
+        }, "RightButton");
     }
 }

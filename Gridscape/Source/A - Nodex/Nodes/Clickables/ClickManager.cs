@@ -85,6 +85,8 @@ class ClickManager : Node
             }
         }
 
+        //Console.WriteLine("highest layer: " + highestLayer);
+
         return topClickable;
     }
 }

@@ -8,7 +8,7 @@ partial class TileInstance : Node2D
         {
             Size = Size,
             OriginPreset = OriginPreset.TopLeft,
-            Layer = (int)ClickableLayer.Tiles,
+            Layer = ClickableLayer.Tiles,
             OnUpdate = (button) =>
             {
                 button.Size = Size * camera.Zoom;
