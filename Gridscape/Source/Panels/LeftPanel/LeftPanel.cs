@@ -79,11 +79,9 @@ partial class LeftPanel : Panel
 
         TextureLoader.Instance.Textures.Add(name, texture);
 
-        float y = 50 + TileFilePathsContainer.Instance.TileFilePaths.Count * TileItem.Height;
-
-        TilesPanel.AddChild(new TileItem
+        GetChild<ItemList>().AddItem(new TileItem
         {
-            Position = new(25, y),
+            //Position = new(25, y),
             TileName = name,
             FilePath = filePath,
             Texture = TextureLoader.Instance.Textures[name],

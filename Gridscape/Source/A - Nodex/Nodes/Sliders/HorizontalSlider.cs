@@ -6,7 +6,7 @@ public partial class HorizontalSlider : BaseSlider
 {
     public HorizontalSlider()
     {
-        Size = new(100, 9);
+        Size = new(100, 10);
         OriginPreset = OriginPreset.CenterLeft;
     }
 

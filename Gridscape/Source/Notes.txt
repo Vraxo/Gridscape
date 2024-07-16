@@ -6,9 +6,17 @@
 
 * make new vertical sliders work with the item list
 
+* fix add tile button position
+
+* make slider at the top of items list
+
+* shorten long tile names
+
+* sync slider button with actual value
 
 
--  -= -Long Term - - -
+
+- - - - - - - - - - Long Term - - - - - - - - - -
 
 
 
@@ -25,4 +33,6 @@
 
 * solve slider button depth issue
 
-* refactor sliders into base class
+* horizontal slider button is one pixel high
+
+* make on update a universal thing

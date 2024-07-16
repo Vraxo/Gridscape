@@ -7,11 +7,11 @@ partial class TileItem : Node2D
         AddChild(new Button()
         {
             OriginPreset = OriginPreset.TopLeft,
-            Layer = (int)ClickableLayer.Panels,
+            Layer = ClickableLayer.Panels,
             OnUpdate = (button) =>
             {
                 button.Size = new(GetNode<Button>("LeftPanel/Button").Size.X, button.Size.Y);
-            },
+            }
         });
 
         AddChild(new TexturedRectangle
@@ -20,7 +20,7 @@ partial class TileItem : Node2D
             Size = new(25, 25),
             OriginPreset = OriginPreset.TopLeft
         });
-
+        
         AddChild(new Label
         {
             Text = TileName,

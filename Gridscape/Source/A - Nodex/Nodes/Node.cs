@@ -204,18 +204,29 @@ public class Node
 
     public void AddChild(Node node, bool start = true)
     {
+        Console.WriteLine("- - - - - -");
+
         node.Name = node.GetType().Name;
+        Console.WriteLine("set node name");
+
         node.Program = Program;
+        Console.WriteLine("set node program");
+
         node.Parent = this;
+        Console.WriteLine("set node parent");
 
         node.Build();
+        Console.WriteLine("built node");
 
         if (start)
         {
             node.Start();
+            Console.WriteLine("started node");
         }
 
         Children.Add(node);
+        Console.WriteLine("fully added child");
+
     }
 
     // Change scene

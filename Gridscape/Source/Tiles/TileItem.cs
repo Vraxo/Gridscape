@@ -17,7 +17,7 @@ partial class TileItem : Node2D
 
     public override void Start()
     {
-        parent = GetParent<TilesPanel>();
+        //parent = GetParent<TilesPanel>();
         addNewTileButton = GetNode<Button>("LeftPanel/Button");
 
         Button = GetChild<Button>("Button");
@@ -27,6 +27,7 @@ partial class TileItem : Node2D
 
     public override void Update()
     {
+        Raylib.DrawPixelV(GlobalPosition, Color.Magenta);
         UpdatePosition();
     }
 
@@ -37,7 +38,7 @@ partial class TileItem : Node2D
 
     private void UpdatePosition()
     {
-        Position.X = addNewTileButton.Position.X;
+        //Position.X = addNewTileButton.Position.X;
     }
 
     private void ChangeTileMapTile()
@@ -53,11 +54,11 @@ partial class TileItem : Node2D
 
     private void UpdateActiveTileItem()
     {
-        foreach (var tileItem in parent.Children.Cast<TileItem>())
-        {
-            tileItem.Button.Style.Default = defaultUnpressedButtonStyle;
-        }
-
-        Button.Style.Default = Button.Style.Pressed;
+        //foreach (var tileItem in parent.Children.Cast<TileItem>())
+        //{
+        //    tileItem.Button.Style.Default = defaultUnpressedButtonStyle;
+        //}
+        //
+        //Button.Style.Default = Button.Style.Pressed;
     }
 }

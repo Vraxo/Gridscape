@@ -122,7 +122,7 @@ public class SliderButton : ClickableCircle
 
     private void UpdatePositionVertical(Node2D parent, bool initial)
     {
-        float minY = parent.GlobalPosition.Y;
+        float minY = parent.GlobalPosition.Y - parent.Origin.Y;
         float maxY = minY + parent.Size.Y;
 
         if (initial && !initialPositionSet)

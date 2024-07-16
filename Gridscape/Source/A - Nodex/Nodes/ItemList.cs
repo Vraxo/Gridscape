@@ -8,6 +8,7 @@ partial class ItemList : ClickableRectangle
     public Vector2 ItemSize = new(100, 20);
     public event EventHandler<int>? StartingIndexChanged;
     public VerticalSlider Slider;
+    public Action<ItemList> OnUpdate = (list) => { };
 
     private int maxItemsShownAtOnce = 0;
 
@@ -41,7 +42,7 @@ partial class ItemList : ClickableRectangle
 
     public override void Ready()
     {
-        Slider = GetChild<VerticalSlider>("VerticalSlider");
+        Slider = GetChild<VerticalSlider>();
         Slider.ValueChanged += OnSliderValueChanged;
 
         UpdateList(0);
@@ -49,6 +50,7 @@ partial class ItemList : ClickableRectangle
 
     public override void Update()
     {
+        OnUpdate(this);
         HandleScrolling();
         Raylib.DrawRectangleV(GlobalPosition - Origin, Size, Color.Black);
     }
@@ -58,7 +60,7 @@ partial class ItemList : ClickableRectangle
         item.InheritsOrigin = true;
         Items.Add(item);
         AddChild(item);
-        UpdateMaxItemsShownAtOnce();
+        UpdateList(StartingIndex);
     }
 
     private void OnSliderValueChanged(object? sender, float e)

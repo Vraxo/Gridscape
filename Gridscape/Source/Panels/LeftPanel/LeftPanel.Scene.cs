@@ -6,12 +6,10 @@ partial class LeftPanel : Panel
 {
     public override void Build()
     {
-        AddChild(new TilesPanel());
-
         AddChild(new Button()
         {
             Text = "Add New Tile",
-            Position = Position + new Vector2(10, 10),
+            Position = new(10, 10),
             Size = new(25, 25),
             OriginPreset = OriginPreset.TopLeft,
             Layer = ClickableLayer.PanelButtons,
@@ -22,16 +20,15 @@ partial class LeftPanel : Panel
             },
         });
 
-        AddChild(new VerticalSlider
+        AddChild(new ItemList
         {
-            Position = new(Size.X * 0.925F, 20),
-            Size = new(10, 500),
-            OnUpdate = (slider) =>
+            Position = new(10, 50),
+            Size = new(150, 500),
+            ItemSize = new(100, TileItem.Height),
+            OnUpdate = (list) =>
             {
-                slider.Position.X = Size.X * 0.9F;
-                slider.Size = new(slider.Size.X, Raylib.GetScreenHeight() - 40);
+                list.Size = new(Size.X * 0.9F, Raylib.GetScreenHeight() - 100);
             }
-        },
-        "Slider");
+        });
     }
 }
