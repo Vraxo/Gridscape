@@ -11,14 +11,12 @@ partial class TileItem : Node2D
     public Texture2D Texture;
     public Button Button;
 
-    private TilesPanel parent;
-    private Button addNewTileButton;
+    private ItemList parent;
     private ButtonStyleState defaultUnpressedButtonStyle;
 
     public override void Start()
     {
-        //parent = GetParent<TilesPanel>();
-        addNewTileButton = GetNode<Button>("LeftPanel/Button");
+        parent = GetParent<ItemList>();
 
         Button = GetChild<Button>("Button");
         Button.LeftClicked += OnButtonLeftClicked;
@@ -27,8 +25,7 @@ partial class TileItem : Node2D
 
     public override void Update()
     {
-        Raylib.DrawPixelV(GlobalPosition, Color.Magenta);
-        UpdatePosition();
+        UpdateText();
     }
 
     private void OnButtonLeftClicked(object? sender, EventArgs e)
@@ -36,9 +33,9 @@ partial class TileItem : Node2D
         ChangeTileMapTile();
     }
 
-    private void UpdatePosition()
+    private void UpdateText()
     {
-        //Position.X = addNewTileButton.Position.X;
+
     }
 
     private void ChangeTileMapTile()
@@ -54,11 +51,11 @@ partial class TileItem : Node2D
 
     private void UpdateActiveTileItem()
     {
-        //foreach (var tileItem in parent.Children.Cast<TileItem>())
-        //{
-        //    tileItem.Button.Style.Default = defaultUnpressedButtonStyle;
-        //}
-        //
-        //Button.Style.Default = Button.Style.Pressed;
+        foreach (var tileItem in parent.Items.Cast<TileItem>())
+        {
+            tileItem.Button.Style.Default = defaultUnpressedButtonStyle;
+        }
+        
+        Button.Style.Default = Button.Style.Pressed;
     }
 }

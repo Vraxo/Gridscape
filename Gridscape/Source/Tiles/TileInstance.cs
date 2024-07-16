@@ -21,7 +21,13 @@ partial class TileInstance : Node2D
     public override void Update()
     {
         UpdatePosition();
+        SignalLeftClickToTileMap();
         base.Update();
+    }
+
+    private void OnButtonRightClicked(object? sender, EventArgs e)
+    {
+        Destroy();
     }
 
     private void UpdatePosition()
@@ -30,8 +36,11 @@ partial class TileInstance : Node2D
         Position.X = MathF.Floor(Position.X);
     }
 
-    private void OnButtonRightClicked(object? sender, EventArgs e)
+    private void SignalLeftClickToTileMap()
     {
-        Destroy();
+        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            GetNode<TileMap>().OnTopLeft = true;
+        }
     }
 }
