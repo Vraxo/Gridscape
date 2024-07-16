@@ -4,11 +4,8 @@ namespace Gridscape;
 
 partial class LeftPanel : Panel
 {
-    public TilesPanel TilesPanel;
-
     public override void Start()
     {
-        TilesPanel = GetChild<TilesPanel>("TilesPanel");
         GetChild<Button>("Button").LeftClicked += OnAddNewTileButtonLeftClicked;
         base.Start();
     }

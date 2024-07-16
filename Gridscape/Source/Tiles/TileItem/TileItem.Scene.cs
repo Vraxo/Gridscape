@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class TileItem : Node2D
+public partial class TileItem : Node2D
 {
     public override void Build()
     {
@@ -21,7 +21,7 @@ partial class TileItem : Node2D
             OriginPreset = OriginPreset.TopLeft
         });
         
-        AddChild(new Label
+        AddChild(new TileItemLabel
         {
             Text = TileName,
             Position = new(30, 12.5F),

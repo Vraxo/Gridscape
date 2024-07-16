@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class TileItem : Node2D
+public partial class TileItem : Node2D
 {
     public static readonly float Height = 30F;
 
@@ -18,14 +18,9 @@ partial class TileItem : Node2D
     {
         parent = GetParent<ItemList>();
 
-        Button = GetChild<Button>("Button");
+        Button = GetChild<Button>();
         Button.LeftClicked += OnButtonLeftClicked;
         defaultUnpressedButtonStyle = Button.Style.Default;
-    }
-
-    public override void Update()
-    {
-        UpdateText();
     }
 
     private void OnButtonLeftClicked(object? sender, EventArgs e)
@@ -33,9 +28,9 @@ partial class TileItem : Node2D
         ChangeTileMapTile();
     }
 
-    private void UpdateText()
+    private static string ReplaceLastThreeWithDots(string input)
     {
-
+        return input.Substring(0, input.Length - 3) + "...";
     }
 
     private void ChangeTileMapTile()

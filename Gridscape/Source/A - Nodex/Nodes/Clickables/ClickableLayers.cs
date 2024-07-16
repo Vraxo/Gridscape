@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-class ClickableLayer
+public class ClickableLayer
 {
     public static readonly int TileMap = 0;
     public static readonly int Tiles = 1;
