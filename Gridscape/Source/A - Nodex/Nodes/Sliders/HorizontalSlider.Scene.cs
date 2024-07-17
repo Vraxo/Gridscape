@@ -4,11 +4,7 @@ public partial class HorizontalSlider : BaseSlider
 {
     public override void Build()
     {
-        SliderButton middleButton = new()
-        {
-            Orientation = SliderOrientation.Horizontal,
-        };
-
+        HorizontalSliderButton middleButton = new();
         AddChild(middleButton, "MiddleButton");
 
         AddChild(new Button

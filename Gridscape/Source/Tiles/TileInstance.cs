@@ -38,7 +38,7 @@ partial class TileInstance : Node2D
 
     private void SignalLeftClickToTileMap()
     {
-        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (GetChild<Button>().OnTopLeft)
         {
             GetNode<TileMap>().OnTopLeft = true;
         }

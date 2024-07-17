@@ -22,6 +22,7 @@ public partial class VerticalSlider : BaseSlider
         float y = MiddleButton.GlobalPosition.Y + direction * (Size.Y / MathF.Abs(MaxExternalValue));
 
         MiddleButton.GlobalPosition = new(x, y);
+        UpdatePercentageBasedOnMiddleButton();
     }
 
     protected override void Draw()

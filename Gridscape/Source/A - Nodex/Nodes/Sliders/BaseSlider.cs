@@ -3,6 +3,12 @@
 public abstract class BaseSlider : Node2D
 {
     public float Percentage = 0;
+    public float MaxExternalValue = 0;
+    public float Value => Percentage * MaxExternalValue;
+    public SliderStyle Style = new();
+    public BaseSliderButton MiddleButton;
+    public Action<BaseSlider> OnUpdate = (slider) => { };
+    public event EventHandler<float>? PercentageChanged;
 
     private float _externalValue = 0;
     public float ExternalValue
@@ -18,28 +24,22 @@ public abstract class BaseSlider : Node2D
                 float minPos = GlobalPosition.Y - Origin.Y;
                 float maxPos = minPos + Size.Y;
 
-                MiddleButton.GlobalPosition = new(MiddleButton.GlobalPosition.X, (ExternalValue / MaxExternalValue) * maxPos);
-                Console.WriteLine(">>>" + (MaxExternalValue / ExternalValue));
+                float y = ExternalValue / MaxExternalValue * maxPos;
+
+                //MiddleButton.GlobalPosition = new(MiddleButton.GlobalPosition.X, y);
             }
         }
     }
-    public float MaxExternalValue = 0;
-    public float Value => Percentage * MaxExternalValue;
-    public SliderStyle Style = new();
-    public SliderButton MiddleButton;
-    public Action<BaseSlider> OnUpdate = (slider) => { };
-    public event EventHandler<float>? PercentageChanged;
 
     public override void Ready()
     {
-        MiddleButton = GetChild<SliderButton>("MiddleButton");
+        MiddleButton = GetChild<BaseSliderButton>("MiddleButton");
         GetChild<Button>("DecrementButton").LeftClicked += OnDecrementButtonLeftClicked;
         GetChild<Button>("IncrementButton").LeftClicked += OnIncrementButtonLeftClicked;
     }
 
     public override void Update()
     {
-        //UpdatePercentageBasedOnMiddleButton();
         Draw();
         OnUpdate(this);
         base.Update();

@@ -19,7 +19,7 @@ partial class TileMap : Clickable
     public override void Start()
     {
         Size = new(320, 320);
-        Layer = (int)ClickableLayer.TileMap;
+        Layer = ClickableLayer.TileMap;
         Texture = TextureLoader.Instance.Textures["DefaultTexture"];
         TileName = "DefaultTexture";
 

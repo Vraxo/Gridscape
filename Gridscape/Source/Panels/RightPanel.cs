@@ -14,6 +14,8 @@ partial class RightPanel : Panel
 
         topPanel = GetNode<TopPanel>("TopPanel");
         bottomPanel = GetNode<BottomPanel>("BottomPanel");
+
+        base.Start();
     }
 
     public override void Update()

@@ -12,7 +12,7 @@
 
 * clicking on panels creates tiles
 
-* divide slider button into two classes
+
 
 - - - - - - - - - - Long Term - - - - - - - - - -
 
