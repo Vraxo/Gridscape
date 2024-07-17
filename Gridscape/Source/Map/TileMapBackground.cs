@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TileMapBackground : Node2D
+public class TileMapBackground : Node2D
 {
     private readonly Color color = new(96, 96, 96, 255);
     private TileMap parent;

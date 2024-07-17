@@ -41,7 +41,7 @@ public partial class VerticalSlider : BaseSlider
     protected override void UpdateValue()
     {
         float currentPosition = MiddleButton.GlobalPosition.Y;
-        float minPos = GlobalPosition.Y;
+        float minPos = GlobalPosition.Y - Origin.Y;
         float maxPos = minPos + Size.Y;
 
         float previousValue = Value;

@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TileMapCamera : Node2D
+public class TileMapCamera : Node2D
 {
     public float Zoom = 1;
     public Vector2 ExtraMapSize = Vector2.Zero;
@@ -53,11 +53,9 @@ class TileMapCamera : Node2D
 
     private void UpdateY()
     {
-        float panelsHeight = bottomPanel.Size.Y - topPanel.Size.Y;
+        float panelsHeight = bottomPanel.Size.Y + topPanel.Size.Y;
         float availableMapHeight = Raylib.GetScreenHeight() - panelsHeight;
         ExtraMapSize.Y = tileMap.Size.Y - availableMapHeight;
-
-        //Console.WriteLine(ExtraMapSize.Y);
 
         Position.Y = ExtraMapSize.Y > 0 ?
                      ExtraMapSize.Y * verticalSlider.Value :

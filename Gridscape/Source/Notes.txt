@@ -4,7 +4,7 @@
 
 * sync slider button with actual value
 
-* tile is one pixel to the right when scrolling to right (solved, check for vertical)
+* grid lines partially cover tiles
 
 
 
@@ -25,3 +25,4 @@
 
 * make on update a universal thing
 
+* make horizontal slider work with origins
