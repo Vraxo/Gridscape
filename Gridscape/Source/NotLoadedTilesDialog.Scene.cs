@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class NotLoadedTilesDialog : Node2D
+public partial class NotLoadedTilesDialog : Node2D
 {
     public override void Build()
     {

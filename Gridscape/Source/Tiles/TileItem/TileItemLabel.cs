@@ -17,8 +17,6 @@ public class TileItemLabel : Label
         float characterWidth = GetTextWidth(" ");
         float numFittingCharacters = availableWidth / characterWidth;
 
-        Console.WriteLine(numFittingCharacters);
-
         string trimmedText = originalText.Substring(0, (int)numFittingCharacters);
 
         Text = ReplaceLastThreeWithDots(trimmedText);
@@ -39,6 +37,7 @@ public class TileItemLabel : Label
 
     private static string ReplaceLastThreeWithDots(string input)
     {
-        return input.Substring(0, input.Length - 3) + "...";
+        string trimmedText = input.Substring(0, input.Length - 3);
+        return trimmedText + "...";
     }
 }

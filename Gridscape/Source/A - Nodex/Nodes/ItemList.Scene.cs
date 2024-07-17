@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class ItemList : ClickableRectangle
+public partial class ItemList : ClickableRectangle
 {
     public override void Build()
     {

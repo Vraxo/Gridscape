@@ -12,7 +12,7 @@ public partial class TileItem : Node2D
     public Button Button;
 
     private ItemList parent;
-    private ButtonStyleState defaultUnpressedButtonStyle;
+    private ButtonStyleState originalDefaultButtonStyle;
 
     public override void Start()
     {
@@ -20,7 +20,8 @@ public partial class TileItem : Node2D
 
         Button = GetChild<Button>();
         Button.LeftClicked += OnButtonLeftClicked;
-        defaultUnpressedButtonStyle = Button.Style.Default;
+        Button.RightClicked += OnButtonRightClicked;
+        originalDefaultButtonStyle = Button.Style.Default;
     }
 
     private void OnButtonLeftClicked(object? sender, EventArgs e)
@@ -28,9 +29,9 @@ public partial class TileItem : Node2D
         ChangeTileMapTile();
     }
 
-    private static string ReplaceLastThreeWithDots(string input)
+    private void OnButtonRightClicked(object? sender, EventArgs e)
     {
-        return input.Substring(0, input.Length - 3) + "...";
+        DeleteTile();
     }
 
     private void ChangeTileMapTile()
@@ -44,11 +45,17 @@ public partial class TileItem : Node2D
         UpdateActiveTileItem();
     }
 
+    private void DeleteTile()
+    {
+        TileFilePathsContainer.Instance.TileFilePaths.Remove(FilePath);
+        parent.RemoveItem(this);
+    }
+
     private void UpdateActiveTileItem()
     {
         foreach (var tileItem in parent.Items.Cast<TileItem>())
         {
-            tileItem.Button.Style.Default = defaultUnpressedButtonStyle;
+            tileItem.Button.Style.Default = originalDefaultButtonStyle;
         }
         
         Button.Style.Default = Button.Style.Pressed;

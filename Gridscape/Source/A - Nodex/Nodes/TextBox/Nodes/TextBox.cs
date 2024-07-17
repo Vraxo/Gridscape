@@ -15,8 +15,8 @@ class TextBox : ClickableRectangle
     public bool RevertToDefaultText = true;
     public bool TemporaryDefaultText = true;
     public Action<TextBox> OnUpdate = (textBox) => { };
-    public event EventHandler? TextChanged;
-    public event EventHandler? Confirmed;
+    public event EventHandler<string>? TextChanged;
+    public event EventHandler<string>? Confirmed;
 
     private const int minAscii = 32;
     private const int maxAscii = 125;
@@ -141,7 +141,7 @@ class TextBox : ClickableRectangle
 
             Text = Text.Insert(caret.X, ((char)key).ToString());
             caret.X ++;
-            TextChanged?.Invoke(this, EventArgs.Empty);
+            TextChanged?.Invoke(this, Text);
         }
     }
 
@@ -157,7 +157,7 @@ class TextBox : ClickableRectangle
 
             RevertTextToDefaultIfEmpty();
 
-            TextChanged?.Invoke(this, EventArgs.Empty);
+            TextChanged?.Invoke(this, Text);
         }
     }
 
@@ -180,7 +180,7 @@ class TextBox : ClickableRectangle
         {
             Selected = false;
             Style.Current = Style.Deselected;
-            Confirmed?.Invoke(this, EventArgs.Empty);
+            Confirmed?.Invoke(this, Text);
         }
     }
 

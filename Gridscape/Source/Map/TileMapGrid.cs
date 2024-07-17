@@ -7,6 +7,7 @@ class TileMapGrid : Node2D
     public bool Visible = true;
     public bool Snap = true;
 
+    private TileMap parent;
     private Vector2 mapSize;
     private Vector2 originalPosition;
     private TileMapCamera camera;
@@ -16,6 +17,8 @@ class TileMapGrid : Node2D
         Size = new(32, 32);
 
         originalPosition = Position;
+
+        parent = GetParent<TileMap>();
 
         camera = GetNode<TileMapCamera>("TileMapCamera");
 
@@ -45,16 +48,16 @@ class TileMapGrid : Node2D
         Snap = !Snap;
     }
 
-    private void OnXTextBoxTextChanged(object? sender, EventArgs e)
+    private void OnXTextBoxTextChanged(object? sender, string e)
     {
-        var textBox = (TextBox)(sender);
-        Size = new(Convert.ToInt32(textBox.Text), Size.Y);
+        int x = Convert.ToInt32(e);
+        Size = new(x, Size.Y);
     }
 
-    private void OnYTextBoxTextChanged(object? sender, EventArgs e)
+    private void OnYTextBoxTextChanged(object? sender, string e)
     {
-        var textBox = (TextBox)(sender);
-        Size = new(Size.X, Convert.ToInt32(textBox.Text));
+        int y = Convert.ToInt32(e);
+        Size = new(Size.X, y);
     }
 
     private void Draw()
@@ -71,14 +74,7 @@ class TileMapGrid : Node2D
 
     private void UpdateSize()
     {
-        mapSize = GetNode<TileMap>("TileMap").Size;
-
-        //Size.X = Convert.ToInt32(xTextBox.Text);
-        //Size.Y = Convert.ToInt32(yTextBox.Text);
-
-        //Size.X = Size.X == 0 ? 1 : Size.X;
-        //Size.Y = Size.Y == 0 ? 1 : Size.Y;
-
+        mapSize = parent.Size;
         Size = Size == new Vector2(0) ? new Vector2(1) : Size;
     }
 

@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class ItemList : ClickableRectangle
+public partial class ItemList : ClickableRectangle
 {
     public List<Node2D> Items = [];
     public Vector2 ItemSize = new(100, 20);
@@ -60,6 +60,22 @@ partial class ItemList : ClickableRectangle
         item.InheritsOrigin = true;
         Items.Add(item);
         AddChild(item);
+        UpdateList(StartingIndex);
+    }
+
+    public void RemoveItem(Node2D item)
+    {
+        Items.Remove(item);
+        Children.Remove(item);
+        UpdateList(StartingIndex);
+    }
+
+    public void RemoveItem(int index)
+    {
+        Node2D item = Items[index];
+
+        Items.Remove(item);
+        Children.Remove(item);
         UpdateList(StartingIndex);
     }
 
