@@ -2,12 +2,33 @@
 
 public abstract class BaseSlider : Node2D
 {
-    public float Value = 0;
-    public float MaxPossibleValue = 0;
+    public float Percentage = 0;
+
+    private float _externalValue = 0;
+    public float ExternalValue
+    {
+        get => _externalValue;
+
+        set
+        {
+            if (_externalValue != value)
+            {
+                _externalValue = value;
+
+                float minPos = GlobalPosition.Y - Origin.Y;
+                float maxPos = minPos + Size.Y;
+
+                MiddleButton.GlobalPosition = new(MiddleButton.GlobalPosition.X, (ExternalValue / MaxExternalValue) * maxPos);
+                Console.WriteLine(">>>" + (MaxExternalValue / ExternalValue));
+            }
+        }
+    }
+    public float MaxExternalValue = 0;
+    public float Value => Percentage * MaxExternalValue;
     public SliderStyle Style = new();
     public SliderButton MiddleButton;
     public Action<BaseSlider> OnUpdate = (slider) => { };
-    public event EventHandler<float>? ValueChanged;
+    public event EventHandler<float>? PercentageChanged;
 
     public override void Ready()
     {
@@ -18,7 +39,7 @@ public abstract class BaseSlider : Node2D
 
     public override void Update()
     {
-        UpdateValue();
+        //UpdatePercentageBasedOnMiddleButton();
         Draw();
         OnUpdate(this);
         base.Update();
@@ -38,10 +59,10 @@ public abstract class BaseSlider : Node2D
 
     protected abstract void Draw();
 
-    protected abstract void UpdateValue();
+    public abstract void UpdatePercentageBasedOnMiddleButton();
 
-    protected void OnValueChanged()
+    protected void OnPercentageChanged()
     {
-        ValueChanged?.Invoke(this, Value);
+        PercentageChanged?.Invoke(this, Percentage);
     }
 }

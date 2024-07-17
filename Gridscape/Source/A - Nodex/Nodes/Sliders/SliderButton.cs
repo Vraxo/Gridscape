@@ -96,7 +96,7 @@ public class SliderButton : ClickableCircle
 
     private void UpdatePosition(bool initial = false)
     {
-        Node2D parent = (Node2D)Parent;
+        BaseSlider parent = Parent as BaseSlider;
 
         if (Pressed)
         {
@@ -108,6 +108,8 @@ public class SliderButton : ClickableCircle
             {
                 GlobalPosition = new(Raylib.GetMousePosition().X, parent.GlobalPosition.Y);
             }
+
+            parent.UpdatePercentageBasedOnMiddleButton();
         }
 
         if (Orientation == SliderOrientation.Vertical)

@@ -47,7 +47,7 @@ public class TileMapCamera : Node2D
         ExtraMapSize.X = (tileMap.Size.X * 1 /* Zoom */) - availableMapWidth;
 
         Position.X = ExtraMapSize.X > 0 ?
-                     ExtraMapSize.X * horizontalSlider.Value :
+                     ExtraMapSize.X * horizontalSlider.Percentage :
                      0;
     }
 
@@ -58,7 +58,7 @@ public class TileMapCamera : Node2D
         ExtraMapSize.Y = tileMap.Size.Y - availableMapHeight;
 
         Position.Y = ExtraMapSize.Y > 0 ?
-                     ExtraMapSize.Y * verticalSlider.Value :
+                     ExtraMapSize.Y * verticalSlider.Percentage :
                      0;
     }
 

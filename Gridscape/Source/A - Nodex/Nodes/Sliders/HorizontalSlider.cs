@@ -10,14 +10,30 @@ public partial class HorizontalSlider : BaseSlider
         OriginPreset = OriginPreset.CenterLeft;
     }
 
+    public override void UpdatePercentageBasedOnMiddleButton()
+    {
+        float currentPosition = MiddleButton.GlobalPosition.X;
+        float minPos = GlobalPosition.X;
+        float maxPos = minPos + Size.X;
+
+        float previousValue = Percentage;
+
+        Percentage = (currentPosition - minPos) / (maxPos - minPos);
+
+        if (Percentage != previousValue)
+        {
+            OnPercentageChanged();
+        }
+    }
+
     protected override void MoveMiddleButton(int direction)
     {
-        if (MaxPossibleValue == 0)
+        if (MaxExternalValue == 0)
         {
             return;
         }
 
-        float x = MiddleButton.GlobalPosition.X + direction * (Size.X / MaxPossibleValue);
+        float x = MiddleButton.GlobalPosition.X + direction * (Size.X / MaxExternalValue);
         float y = MiddleButton.GlobalPosition.Y;
 
         MiddleButton.GlobalPosition = new(x, y);
@@ -36,21 +52,5 @@ public partial class HorizontalSlider : BaseSlider
             Style.Roundness,
             (int)Size.Y,
             Style.FillColor);
-    }
-
-    protected override void UpdateValue()
-    {
-        float currentPosition = MiddleButton.GlobalPosition.X;
-        float minPos = GlobalPosition.X;
-        float maxPos = minPos + Size.X;
-
-        float previousValue = Value;
-
-        Value = (currentPosition - minPos) / (maxPos - minPos);
-
-        if (Value != previousValue)
-        {
-            OnValueChanged();
-        }
     }
 }

@@ -15,7 +15,7 @@ partial class BottomPanel : Panel
                 slider.Size = new(Raylib.GetScreenWidth() - Position.X - 60, slider.Size.Y);
 
                 float cameraExtraWidth = GetNode<TileMapCamera>().ExtraMapSize.X;
-                slider.MaxPossibleValue = MathF.Max(0, cameraExtraWidth);
+                slider.MaxExternalValue = MathF.Max(0, cameraExtraWidth);
             }
         }, "Slider");
     }

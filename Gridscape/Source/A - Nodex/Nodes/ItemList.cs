@@ -43,7 +43,7 @@ public partial class ItemList : ClickableRectangle
     public override void Ready()
     {
         Slider = GetChild<VerticalSlider>();
-        Slider.ValueChanged += OnSliderValueChanged;
+        Slider.PercentageChanged += OnSliderValueChanged;
 
         UpdateList(0);
     }

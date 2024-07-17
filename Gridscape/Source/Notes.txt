@@ -6,7 +6,13 @@
 
 * sync slider button with actual value
 
+* certain names have problems with ...
 
+* vertical slider of item list not moving with buttons
+
+* clicking on panels creates tiles
+
+* divide slider button into two classes
 
 - - - - - - - - - - Long Term - - - - - - - - - -
 

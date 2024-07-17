@@ -12,13 +12,14 @@ public partial class VerticalSlider : BaseSlider
 
     protected override void MoveMiddleButton(int direction)
     {
-        if (MaxPossibleValue == 0)
+        if (MaxExternalValue == 0)
         {
+            Console.WriteLine("max external value is 0");
             return;
         }
 
         float x = MiddleButton.GlobalPosition.X;
-        float y = MiddleButton.GlobalPosition.Y + direction * (Size.Y / MaxPossibleValue);
+        float y = MiddleButton.GlobalPosition.Y + direction * (Size.Y / MathF.Abs(MaxExternalValue));
 
         MiddleButton.GlobalPosition = new(x, y);
     }
@@ -38,19 +39,19 @@ public partial class VerticalSlider : BaseSlider
             Color.Gray);
     }
 
-    protected override void UpdateValue()
+    public override void UpdatePercentageBasedOnMiddleButton()
     {
         float currentPosition = MiddleButton.GlobalPosition.Y;
         float minPos = GlobalPosition.Y - Origin.Y;
         float maxPos = minPos + Size.Y;
 
-        float previousValue = Value;
+        float previousPercentage = Percentage;
 
-        Value = (currentPosition - minPos) / (maxPos - minPos);
+        Percentage = (currentPosition - minPos) / (maxPos - minPos);
 
-        if (Value != previousValue)
+        if (Percentage != previousPercentage)
         {
-            OnValueChanged();
+            OnPercentageChanged();
         }
     }
 }

@@ -13,6 +13,14 @@ public partial class ItemList : ClickableRectangle
                 //slider.Position.Y = slider.MiddleButton.Radius * 2.5F;
 
                 slider.Size = new(slider.Size.X, Size.Y - slider.MiddleButton.Radius * 5); // * 8
+
+                int numItemsBesidesThisPage = Items.Count - maxItemsShownAtOnce;
+
+                slider.MaxExternalValue = numItemsBesidesThisPage > 0 ?
+                                          numItemsBesidesThisPage :
+                                          0;
+
+                slider.ExternalValue = StartingIndex;
             }
         });
     }

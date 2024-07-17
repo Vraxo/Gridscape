@@ -15,10 +15,15 @@ public class TileItemLabel : Label
     {
         float availableWidth = (Parent as TileItem).Button.Size.X - 50;
         float characterWidth = GetTextWidth(" ");
-        float numFittingCharacters = availableWidth / characterWidth;
+        int numFittingCharacters = (int)(availableWidth / characterWidth);
 
-        string trimmedText = originalText.Substring(0, (int)numFittingCharacters);
+        // Ensure numFittingCharacters does not exceed the length of originalText
+        if (numFittingCharacters > originalText.Length)
+        {
+            numFittingCharacters = originalText.Length;
+        }
 
+        string trimmedText = originalText.Substring(0, numFittingCharacters);
         Text = ReplaceLastThreeWithDots(trimmedText);
 
         base.Update();
