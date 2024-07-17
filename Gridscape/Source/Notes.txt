@@ -6,8 +6,6 @@
 
 * sync slider button with actual value
 
-* fix the end of the grid
-
 
 
 - - - - - - - - - - Long Term - - - - - - - - - -

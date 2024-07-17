@@ -84,7 +84,7 @@ class TileMapGrid : Node2D
         float cellWidth = Size.X * zoom;
         int numCells = (int)(mapSize.X * zoom / cellWidth);
 
-        for (int i = 0; i < numCells; i++)
+        for (int i = 0; i <= numCells; i++)
         {
             float posX = GlobalPosition.X + cellWidth * i;
             float startY = GlobalPosition.Y;
