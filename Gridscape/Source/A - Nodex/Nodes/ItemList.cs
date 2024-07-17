@@ -52,7 +52,7 @@ partial class ItemList : ClickableRectangle
     {
         OnUpdate(this);
         HandleScrolling();
-        Raylib.DrawRectangleV(GlobalPosition - Origin, Size, Color.Black);
+        //Raylib.DrawRectangleV(GlobalPosition - Origin, Size, Color.Black);
     }
 
     public void AddItem(Node2D item)

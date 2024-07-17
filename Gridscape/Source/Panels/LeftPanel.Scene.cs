@@ -2,21 +2,22 @@
 
 namespace Gridscape;
 
-partial class LeftPanel : Panel
+public partial class LeftPanel : Panel
 {
     public override void Build()
     {
         AddChild(new Button()
         {
             Text = "Add New Tile",
-            Position = new(10, 10),
+            Position = new(0, 25),
             Size = new(25, 25),
-            OriginPreset = OriginPreset.TopLeft,
+            OriginPreset = OriginPreset.Center,
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.X = Size.X * 0.05F;
-                button.Size = new(Size.X * 0.75F, button.Size.Y);
+                button.Position.X = Size.X / 2;
+                //button.Position.X = Size.X * 0.05F;
+                button.Size = new(Size.X * 0.9F, button.Size.Y);
             },
         });
 

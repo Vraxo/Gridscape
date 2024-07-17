@@ -1,18 +1,10 @@
-* changes tiles panel to item list
+﻿* allow scrolling the map when zoomed in
 
-* allow scrolling the map when zoomed in
-
-* add movement buttons to vertical sliders
-
-* make new vertical sliders work with the item list
-
-* fix add tile button position
-
-* make slider at the top of items list
-
-* shorten long tile names
+* solve slider button depth issue
 
 * sync slider button with actual value
+
+* tile is one pixel to the right when scrolling to right (solved, check for vertical)
 
 
 
@@ -29,10 +21,7 @@
 
 * top panel is the other way around
 
-* tile is one pixel to the right when scrolling to right (solved, check for vertical)
-
-* solve slider button depth issue
-
 * horizontal slider button is one pixel high
 
 * make on update a universal thing
+

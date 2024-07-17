@@ -1,9 +1,12 @@
 ﻿using Raylib_cs;
+using System.Collections.Generic;
 
 namespace Gridscape;
 
-partial class LeftPanel : Panel
+public partial class LeftPanel : Panel
 {
+    private List<string> notLoadedTiles = new();
+
     public override void Start()
     {
         GetChild<Button>("Button").LeftClicked += OnAddNewTileButtonLeftClicked;
@@ -41,19 +44,23 @@ partial class LeftPanel : Panel
         if (openFileDialog.FileName != "")
         {
             LoadTiles(openFileDialog.FileNames);
+            ShowFailedTilesDialog();
         }
     }
 
     private void LoadTiles(string[] filePaths)
     {
+        notLoadedTiles.Clear();
+
         foreach (string filePath in filePaths)
         {
             try
             {
                 TryToLoadTile(filePath);
             }
-            catch 
-            { 
+            catch
+            {
+                notLoadedTiles.Add(Path.GetFileName(filePath));
             }
         }
     }
@@ -64,6 +71,7 @@ partial class LeftPanel : Panel
 
         if (texture.Id <= 0)
         {
+            notLoadedTiles.Add(Path.GetFileName(filePath));
             return;
         }
 
@@ -76,14 +84,25 @@ partial class LeftPanel : Panel
 
         TextureLoader.Instance.Textures.Add(name, texture);
 
-        GetChild<ItemList>().AddItem(new TileItem
+        TileItem tileItem = new()
         {
-            //Position = new(25, y),
             TileName = name,
             FilePath = filePath,
             Texture = TextureLoader.Instance.Textures[name],
-        });
+        };
 
+        GetChild<ItemList>().AddItem(tileItem);
         TileFilePathsContainer.Instance.TileFilePaths.Add(filePath);
+    }
+
+    private void ShowFailedTilesDialog()
+    {
+        if (notLoadedTiles.Count > 0)
+        {
+            AddChild(new NotLoadedTilesDialog
+            {
+                NotLoadedTiles = notLoadedTiles
+            });
+        }
     }
 }

@@ -13,9 +13,11 @@ public class TileItemLabel : Label
 
     public override void Update()
     {
-        float avaiableSpace = (Parent as TileItem).Button.Size.X - 50;
+        float availableWidth = (Parent as TileItem).Button.Size.X - 50;
         float characterWidth = GetTextWidth(" ");
-        float numFittingCharacters = avaiableSpace / characterWidth;
+        float numFittingCharacters = availableWidth / characterWidth;
+
+        Console.WriteLine(numFittingCharacters);
 
         string trimmedText = originalText.Substring(0, (int)numFittingCharacters);
 

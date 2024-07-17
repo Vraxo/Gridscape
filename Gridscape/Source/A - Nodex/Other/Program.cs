@@ -42,7 +42,7 @@ public class Program
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(new(57, 57, 57, 255));
-            RootNode.Tick();
+            RootNode.Process();
             Raylib.EndDrawing();
 
             if (Raylib.IsKeyPressed(KeyboardKey.Enter))

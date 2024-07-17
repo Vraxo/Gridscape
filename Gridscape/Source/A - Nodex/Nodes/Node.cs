@@ -32,7 +32,7 @@ public class Node
         Parent?.Children.Remove(this);
     }
 
-    public void Tick()
+    public void Process()
     {
         if (!Active)
         {
@@ -49,7 +49,7 @@ public class Node
 
         for (int i = 0; i < Children.Count; i++)
         {
-            Children[i].Tick();
+            Children[i].Process();
         }
     }
 

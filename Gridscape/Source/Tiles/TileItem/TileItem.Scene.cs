@@ -10,7 +10,7 @@ public partial class TileItem : Node2D
             Layer = ClickableLayer.Panels,
             OnUpdate = (button) =>
             {
-                button.Size = new(GetNode<Button>("LeftPanel/Button").Size.X, button.Size.Y);
+                button.Size = new(GetNode<LeftPanel>("LeftPanel").Size.X * 0.75F, button.Size.Y);
             }
         });
 

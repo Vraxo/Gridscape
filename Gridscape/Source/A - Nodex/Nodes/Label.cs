@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class Label : Node2D
+public class Label : Node2D
 {
     public string Text = "";
     public Color Color = Color.White;
