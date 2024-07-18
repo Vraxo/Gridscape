@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class RightPanel : Panel
+public partial class RightPanel : Panel
 {
     private TopPanel topPanel;
     private BottomPanel bottomPanel;

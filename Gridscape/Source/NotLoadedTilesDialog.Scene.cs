@@ -39,7 +39,7 @@ public partial class NotLoadedTilesDialog : Node2D
             Position = new(10, 50),
             Size = new(750, 400),
             InheritsOrigin = true,
-            Layer = ClickableLayer.DialogButtons
+            SliderButtonLayer = ClickableLayer.DialogButtons
         });
     }
 }

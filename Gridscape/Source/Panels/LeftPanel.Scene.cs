@@ -26,6 +26,7 @@ public partial class LeftPanel : Panel
             Position = new(10, 50),
             Size = new(150, 500),
             ItemSize = new(100, TileItem.Height),
+            SliderButtonLayer = ClickableLayer.PanelButtons,
             OnUpdate = (list) =>
             {
                 list.Size = new(Size.X * 0.9F, Raylib.GetScreenHeight() - 100);

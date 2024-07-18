@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class RightPanel : Panel
+public partial class RightPanel : Panel
 {
     public override void Build()
     {
@@ -9,6 +9,7 @@ partial class RightPanel : Panel
             Position = new(0, 25),
             Size = new(10, 0),
             OriginPreset = OriginPreset.Center,
+            SliderLayer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X / 2;

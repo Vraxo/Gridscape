@@ -23,6 +23,7 @@ public abstract class BaseSliderButton : ClickableCircle
     public override void Start()
     {
         UpdatePosition(true);
+        base.Start();
     }
 
     public override void Update()
@@ -50,8 +51,9 @@ public abstract class BaseSliderButton : ClickableCircle
         {
             Style.Current = Style.Hover;
 
-            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked)
+            if (Raylib.IsMouseButtonDown(MouseButton.Left) && !alreadyClicked && OnTopLeft)
             {
+                OnTopLeft = false;
                 Pressed = true;
                 alreadyClicked = true;
             }

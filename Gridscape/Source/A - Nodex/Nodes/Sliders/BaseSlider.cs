@@ -7,6 +7,7 @@ public abstract class BaseSlider : Node2D
     public float Value => Percentage * MaxExternalValue;
     public SliderStyle Style = new();
     public BaseSliderButton MiddleButton;
+    public int SliderLayer = 0;
     public Action<BaseSlider> OnUpdate = (slider) => { };
     public event EventHandler<float>? PercentageChanged;
 
@@ -34,8 +35,16 @@ public abstract class BaseSlider : Node2D
     public override void Ready()
     {
         MiddleButton = GetChild<BaseSliderButton>("MiddleButton");
-        GetChild<Button>("DecrementButton").LeftClicked += OnDecrementButtonLeftClicked;
-        GetChild<Button>("IncrementButton").LeftClicked += OnIncrementButtonLeftClicked;
+
+        var decrementButton = GetChild<Button>("DecrementButton");
+        var incrementButton = GetChild<Button>("IncrementButton");
+
+        decrementButton.LeftClicked += OnDecrementButtonLeftClicked;
+        incrementButton.LeftClicked += OnIncrementButtonLeftClicked;
+
+        MiddleButton.Layer = SliderLayer;
+        decrementButton.Layer = SliderLayer;
+        incrementButton.Layer = SliderLayer;
     }
 
     public override void Update()

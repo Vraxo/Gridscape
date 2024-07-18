@@ -1,5 +1,4 @@
 ﻿using Raylib_cs;
-using System.Collections.Generic;
 
 namespace Gridscape;
 
@@ -7,9 +6,9 @@ public partial class LeftPanel : Panel
 {
     private List<string> notLoadedTiles = new();
 
-    public override void Start()
+    public override void Ready()
     {
-        GetChild<Button>("Button").LeftClicked += OnAddNewTileButtonLeftClicked;
+        GetChild<Button>().LeftClicked += OnAddNewTileButtonLeftClicked;
         base.Start();
     }
 
