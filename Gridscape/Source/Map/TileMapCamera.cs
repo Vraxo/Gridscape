@@ -44,23 +44,21 @@ public class TileMapCamera : Node2D
     {
         float panelsWidth = leftPanel.Size.X + rightPanel.Size.X;
         float availableMapWidth = Raylib.GetScreenWidth() - panelsWidth;
-        ExtraMapSize.X = (tileMap.Size.X * 1 /* Zoom */) - availableMapWidth;
+        ExtraMapSize.X = (tileMap.Size.X * Zoom ) - availableMapWidth;
 
         Position.X = ExtraMapSize.X > 0 ?
-                     ExtraMapSize.X * horizontalSlider.Percentage :
+                     ExtraMapSize.X * horizontalSlider.Percentage / Zoom:
                      0;
-
-        //Console.WriteLine(horizontalSlider.Percentage);
     }
 
     private void UpdateY()
     {
         float panelsHeight = bottomPanel.Size.Y + topPanel.Size.Y;
         float availableMapHeight = Raylib.GetScreenHeight() - panelsHeight;
-        ExtraMapSize.Y = tileMap.Size.Y - availableMapHeight;
+        ExtraMapSize.Y = tileMap.Size.Y * Zoom - availableMapHeight;
 
         Position.Y = ExtraMapSize.Y > 0 ?
-                     ExtraMapSize.Y * verticalSlider.Percentage :
+                     ExtraMapSize.Y * verticalSlider.Percentage / Zoom:
                      0;
     }
 

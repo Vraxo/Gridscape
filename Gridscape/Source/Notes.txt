@@ -2,8 +2,6 @@
 
 * allow scrolling the map when zoomed in
 
-* solve slider button depth issue
-
 
 
 - - - - - - - - - - Long Term - - - - - - - - - -
