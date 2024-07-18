@@ -10,11 +10,27 @@ public partial class VerticalSlider : BaseSlider
         OriginPreset = OriginPreset.TopCenter;
     }
 
+    public override void UpdatePercentageBasedOnMiddleButton()
+    {
+        float currentPosition = MiddleButton.GlobalPosition.Y;
+        float minPos = GlobalPosition.Y - Origin.Y;
+        float maxPos = minPos + Size.Y;
+
+        float previousPercentage = Percentage;
+
+        Percentage = (currentPosition - minPos) / (maxPos - minPos);
+        Percentage = Math.Clamp(Percentage, 0, 1);
+
+        if (Percentage != previousPercentage)
+        {
+            OnPercentageChanged();
+        }
+    }
+
     protected override void MoveMiddleButton(int direction)
     {
         if (MaxExternalValue == 0)
         {
-            Console.WriteLine("max external value is 0");
             return;
         }
 
@@ -38,21 +54,5 @@ public partial class VerticalSlider : BaseSlider
             0,
             (int)Size.X,
             Color.Gray);
-    }
-
-    public override void UpdatePercentageBasedOnMiddleButton()
-    {
-        float currentPosition = MiddleButton.GlobalPosition.Y;
-        float minPos = GlobalPosition.Y - Origin.Y;
-        float maxPos = minPos + Size.Y;
-
-        float previousPercentage = Percentage;
-
-        Percentage = (currentPosition - minPos) / (maxPos - minPos);
-
-        if (Percentage != previousPercentage)
-        {
-            OnPercentageChanged();
-        }
     }
 }

@@ -49,6 +49,8 @@ public class TileMapCamera : Node2D
         Position.X = ExtraMapSize.X > 0 ?
                      ExtraMapSize.X * horizontalSlider.Percentage :
                      0;
+
+        //Console.WriteLine(horizontalSlider.Percentage);
     }
 
     private void UpdateY()

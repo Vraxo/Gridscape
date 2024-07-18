@@ -19,6 +19,7 @@ public partial class HorizontalSlider : BaseSlider
         float previousValue = Percentage;
 
         Percentage = (currentPosition - minPos) / (maxPos - minPos);
+        Percentage = Math.Clamp(Percentage, 0, 1);
 
         if (Percentage != previousValue)
         {
