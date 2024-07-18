@@ -14,26 +14,29 @@ public class TileItemLabel : Label
     public override void Update()
     {
         float availableWidth = (Parent as TileItem).Button.Size.X - 50;
-        float characterWidth = GetTextWidth(" ");
+        float characterWidth = GetCharacterWidth();
         int numFittingCharacters = (int)(availableWidth / characterWidth);
 
         // Ensure numFittingCharacters does not exceed the length of originalText
-        if (numFittingCharacters > originalText.Length)
+        if (numFittingCharacters < originalText.Length)
         {
-            numFittingCharacters = originalText.Length;
+            //numFittingCharacters = originalText.Length;
+            string trimmedText = originalText.Substring(0, numFittingCharacters);
+            Text = ReplaceLastThreeWithDots(trimmedText);
         }
-
-        string trimmedText = originalText.Substring(0, numFittingCharacters);
-        Text = ReplaceLastThreeWithDots(trimmedText);
+        else
+        {
+            Text = originalText;
+        }
 
         base.Update();
     }
 
-    private float GetTextWidth(string text)
+    private float GetCharacterWidth()
     {
         float width = Raylib.MeasureTextEx(
             Font,
-            text,
+            " ",
             FontSize,
             1).X;
 

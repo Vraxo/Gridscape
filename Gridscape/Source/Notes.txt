@@ -4,14 +4,6 @@
 
 * solve slider button depth issue
 
-* sync slider button with actual value
-
-* certain names have problems with ...
-
-* vertical slider of item list not moving with buttons
-
-* clicking on panels creates tiles
-
 
 
 - - - - - - - - - - Long Term - - - - - - - - - -
@@ -30,3 +22,5 @@
 * make on update a universal thing
 
 * make horizontal slider work with origins
+
+* sync slider button with actual value

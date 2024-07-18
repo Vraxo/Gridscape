@@ -21,10 +21,10 @@ public abstract class BaseSlider : Node2D
             {
                 _externalValue = value;
 
-                float minPos = GlobalPosition.Y - Origin.Y;
-                float maxPos = minPos + Size.Y;
+                //float minPos = GlobalPosition.Y - Origin.Y;
+                //float maxPos = minPos + Size.Y;
 
-                float y = ExternalValue / MaxExternalValue * maxPos;
+                //float y = ExternalValue / MaxExternalValue * maxPos;
 
                 //MiddleButton.GlobalPosition = new(MiddleButton.GlobalPosition.X, y);
             }

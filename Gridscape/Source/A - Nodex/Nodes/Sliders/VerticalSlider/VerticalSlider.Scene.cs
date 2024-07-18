@@ -24,7 +24,7 @@ public partial class VerticalSlider : BaseSlider
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.Y = Size.Y - Origin.Y + middleButton.Radius * 2;
+                button.Position.Y = Size.Y - Origin.Y + middleButton.Radius * 2 - 1;
             },
         }, "IncrementButton");
     }
