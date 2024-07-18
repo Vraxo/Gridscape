@@ -102,6 +102,15 @@ public partial class LeftPanel : Panel
             {
                 NotLoadedTiles = notLoadedTiles
             });
+
+            foreach (var str in notLoadedTiles)
+            {
+                Console.WriteLine(notLoadedTiles);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No failed tiles");
         }
     }
 }

@@ -10,11 +10,11 @@ public partial class ItemList : ClickableRectangle
     public VerticalSlider Slider;
     public Action<ItemList> OnUpdate = (list) => { };
     public int SliderButtonLayer = 0;
+    public Action<ItemList> OnItemCountChanged = (list) => { };
 
     private int maxItemsShownAtOnce = 0;
 
     private int _startingIndex = 0;
-
     public int StartingIndex
     {
         get => _startingIndex;
@@ -63,6 +63,7 @@ public partial class ItemList : ClickableRectangle
         item.InheritsOrigin = true;
         Items.Add(item);
         AddChild(item);
+        OnItemCountChanged(this);
         UpdateList(StartingIndex);
     }
 
@@ -70,17 +71,16 @@ public partial class ItemList : ClickableRectangle
     {
         Items.Remove(item);
         Children.Remove(item);
+        OnItemCountChanged(this);
         UpdateList(StartingIndex);
     }
 
     public void RemoveItem(int index)
     {
         Node2D item = Items[index];
-
-        Items.Remove(item);
-        Children.Remove(item);
-        UpdateList(StartingIndex);
+        RemoveItem(item);
     }
+
 
     private void OnSliderValueChanged(object? sender, float e)
     {

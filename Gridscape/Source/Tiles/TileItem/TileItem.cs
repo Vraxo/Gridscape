@@ -10,11 +10,12 @@ public partial class TileItem : Node2D
     public string FilePath;
     public Texture2D Texture;
     public Button Button;
+    public TileItemLabel Label;
 
     private ItemList parent;
     private ButtonStyleState originalDefaultButtonStyle;
 
-    public override void Start()
+    public override void Ready()
     {
         parent = GetParent<ItemList>();
 
@@ -22,6 +23,8 @@ public partial class TileItem : Node2D
         Button.LeftClicked += OnButtonLeftClicked;
         Button.RightClicked += OnButtonRightClicked;
         originalDefaultButtonStyle = Button.Style.Default;
+
+        Label = GetChild<TileItemLabel>();
     }
 
     private void OnButtonLeftClicked(object? sender, EventArgs e)

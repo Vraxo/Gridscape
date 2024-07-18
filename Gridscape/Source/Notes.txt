@@ -1,10 +1,6 @@
-﻿* grid lines overlapping with tiles
+﻿- - - - - - - - - - Long Term - - - - - - - - - -
 
-* allow scrolling the map when zoomed in
-
-
-
-- - - - - - - - - - Long Term - - - - - - - - - -
+* project loader : only json, try catch
 
 
 
