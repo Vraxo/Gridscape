@@ -4,7 +4,6 @@ namespace Gridscape;
 
 public abstract class BaseSliderButton : ClickableCircle
 {
-    public float Radius = 9F;
     public Vector2 TextOrigin = Vector2.Zero;
     public string Text = "";
     public ButtonStyle Style = new();
@@ -17,6 +16,7 @@ public abstract class BaseSliderButton : ClickableCircle
 
     public BaseSliderButton()
     {
+        Radius = 9F;
         InheritPosition = false;
     }
 
@@ -93,7 +93,7 @@ public abstract class BaseSliderButton : ClickableCircle
         }
     }
 
-    protected bool IsMouseOver()
+    public override bool IsMouseOver()
     {
         float distance = MathUtilities.GetDistance(GlobalPosition, Raylib.GetMousePosition());
         return distance < Radius;

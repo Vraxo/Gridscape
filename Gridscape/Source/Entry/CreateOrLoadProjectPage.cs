@@ -28,7 +28,11 @@ partial class CreateOrLoadProjectPage : Node2D
 
     private void LoadExistingProject()
     {
-        OpenFileDialog openFileDialog = new();
+        OpenFileDialog openFileDialog = new()
+        {
+            Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*",
+            DefaultExt = "json"
+        };
 
         if (openFileDialog.ShowDialog() != DialogResult.OK)
         {
@@ -36,10 +40,15 @@ partial class CreateOrLoadProjectPage : Node2D
         }
 
         string json = File.ReadAllText(openFileDialog.FileName);
-        var projectData = JsonSerializer.Deserialize<ProjectData>(json);
 
-        ProjectManager.Instance.ProjectData = projectData;
-
-        ChangeScene(new Workspace());
+        try
+        {
+            ProjectData projectData = JsonSerializer.Deserialize<ProjectData>(json);
+            ProjectManager.Instance.ProjectData = projectData;
+            ChangeScene(new Workspace());
+        }
+        catch (JsonException)
+        {
+        }
     }
 }

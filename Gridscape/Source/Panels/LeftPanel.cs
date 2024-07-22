@@ -4,12 +4,11 @@ namespace Gridscape;
 
 public partial class LeftPanel : Panel
 {
-    private List<string> notLoadedTiles = new();
+    private readonly List<string> notLoadedTiles = [];
 
     public override void Ready()
     {
         GetChild<Button>().LeftClicked += OnAddNewTileButtonLeftClicked;
-        base.Start();
     }
 
     public override void Update()
@@ -98,19 +97,12 @@ public partial class LeftPanel : Panel
     {
         if (notLoadedTiles.Count > 0)
         {
-            AddChild(new NotLoadedTilesDialog
+            TilesNotLoadedDialog notLoadedTilesDialog = new()
             {
-                NotLoadedTiles = notLoadedTiles
-            });
+                TilesNotLoaded = notLoadedTiles
+            };
 
-            foreach (var str in notLoadedTiles)
-            {
-                Console.WriteLine(notLoadedTiles);
-            }
-        }
-        else
-        {
-            Console.WriteLine("No failed tiles");
+            AddChild(notLoadedTilesDialog);
         }
     }
 }

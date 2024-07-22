@@ -1,11 +1,10 @@
 ﻿using Raylib_cs;
-using System.Text.RegularExpressions;
 
 namespace Gridscape;
 
-public partial class NotLoadedTilesDialog : Node2D
+public partial class TilesNotLoadedDialog : Node2D
 {
-    public List<string> NotLoadedTiles = [];
+    public List<string> TilesNotLoaded = [];
 
     public override void Ready()
     {
@@ -36,7 +35,7 @@ public partial class NotLoadedTilesDialog : Node2D
     {
         var itemList = GetChild<ItemList>("ItemList");
 
-        foreach (string tile in NotLoadedTiles)
+        foreach (string tile in TilesNotLoaded)
         {
             Label label = new() { Text = tile };
             itemList.AddItem(label);

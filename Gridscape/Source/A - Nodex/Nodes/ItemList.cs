@@ -52,9 +52,10 @@ public partial class ItemList : ClickableRectangle
 
     public override void Update()
     {
-        UpdateSliderButtonLayer();
+        //UpdateSliderButtonLayer();
         HandleScrolling();
         OnUpdate(this);
+        UpdateList(StartingIndex);
         //Raylib.DrawRectangleV(GlobalPosition - Origin, Size, Color.Black);
     }
 
@@ -64,7 +65,7 @@ public partial class ItemList : ClickableRectangle
         Items.Add(item);
         AddChild(item);
         OnItemCountChanged(this);
-        UpdateList(StartingIndex);
+        //UpdateList(StartingIndex);
     }
 
     public void RemoveItem(Node2D item)
@@ -72,7 +73,7 @@ public partial class ItemList : ClickableRectangle
         Items.Remove(item);
         Children.Remove(item);
         OnItemCountChanged(this);
-        UpdateList(StartingIndex);
+        //UpdateList(StartingIndex);
     }
 
     public void RemoveItem(int index)
@@ -81,19 +82,12 @@ public partial class ItemList : ClickableRectangle
         RemoveItem(item);
     }
 
-
     private void OnSliderValueChanged(object? sender, float e)
     {
         int newStartingIndex = GetStartingIndexBasedOnSliderValue(e);
-        UpdateList(newStartingIndex);
+        StartingIndex = newStartingIndex;
+        //UpdateList(newStartingIndex);
     }
-    
-    private void UpdateSliderButtonLayer()
-    {
-        //var slider = GetChild<VerticalSlider>();
-        //var button = slider.GetChild<VerticalSliderButton>("MiddleButton");
-        //button.Layer = SliderButtonLayer;
-    }   //
 
     private void MinimizeStartingIndex()
     {

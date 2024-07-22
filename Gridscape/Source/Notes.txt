@@ -1,6 +1,12 @@
-﻿- - - - - - - - - - Long Term - - - - - - - - - -
+﻿1. Add 'failed to load project' dialog
+2. Add alphenumerical sorting to lists
+3. Diasble Console
+4. Change default tile
+5. Make tiles container a node 
 
-* project loader : only json, try catch
+
+
+- - - - - - - - - - Long Term - - - - - - - - - -
 
 
 

@@ -54,6 +54,8 @@ public abstract class BaseSlider : Node2D
         base.Update();
     }
 
+    public abstract void UpdatePercentageBasedOnMiddleButton();
+
     private void OnDecrementButtonLeftClicked(object? sender, EventArgs e)
     {
         MoveMiddleButton(-1);
@@ -67,8 +69,6 @@ public abstract class BaseSlider : Node2D
     protected abstract void MoveMiddleButton(int direction);
 
     protected abstract void Draw();
-
-    public abstract void UpdatePercentageBasedOnMiddleButton();
 
     protected void OnPercentageChanged()
     {

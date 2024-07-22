@@ -7,10 +7,11 @@ public partial class TileItem : Node2D
         AddChild(new Button()
         {
             OriginPreset = OriginPreset.TopLeft,
-            Layer = ClickableLayer.Panels,
+            Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Size = new(GetNode<LeftPanel>("LeftPanel").Size.X * 0.75F, button.Size.Y);
+                LeftPanel leftPanel = GetNode<LeftPanel>("LeftPanel");
+                button.Size = new(leftPanel.Size.X * 0.75F, button.Size.Y);
             }
         });
 

@@ -5,7 +5,7 @@ public class Node
     public string Name = "";
     public Node? Parent = null;
     public List<Node> Children = [];
-    public Program Program = null;
+    public Program Program;
     public bool Active { get; private set; } = true;
 
     private bool started = false;
@@ -87,7 +87,7 @@ public class Node
 
     // Get special nodes
 
-    public T GetParent<T>() where T : Node
+    public T? GetParent<T>() where T : Node
     {
         if (Parent != null)
         {
@@ -99,7 +99,7 @@ public class Node
 
     // Get node from the root
 
-    public T GetNode<T>(string path) where T : Node
+    public T? GetNode<T>(string path) where T : Node
     {
         if (path == "")
         {
@@ -118,7 +118,7 @@ public class Node
         return (T)currentNode;
     }
 
-    public T GetNode<T>() where T : Node
+    public T? GetNode<T>() where T : Node
     {
         string typeName = typeof(T).Name;
         return GetNode<T>(typeName);

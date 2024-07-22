@@ -4,8 +4,8 @@ namespace Gridscape;
 
 class ProjectLoader : Node
 {
-    private ProjectData projectData;
-    private ProjectSettings settings;
+    private ProjectData? projectData;
+    private ProjectSettings? settings;
 
     public override void Start()
     {
@@ -18,8 +18,8 @@ class ProjectLoader : Node
         settings = projectData.ProjectSettings;
 
         LoadProjectSettings();
-        LoadTiles();
-        LoadTileInstances();
+        TryToLoadTileItems();
+        TryToLoadTileInstances();
     }
     
     private void LoadProjectSettings()
@@ -47,57 +47,81 @@ class ProjectLoader : Node
         GetNode<TextBox>("TopPanel/GridY/TextBox").Text = settings.GridY.ToString();
     }
 
-    private void LoadTiles()
+    private void TryToLoadTileItems()
     {
-        List<string> notLoadedTiles = [];
+        List<string> tilesNotLoaded = [];
 
         foreach (string tileFilePath in projectData.TileFilePaths)
         {
-            string name = Path.GetFileNameWithoutExtension(tileFilePath);
-
             Texture2D texture = Raylib.LoadTexture(tileFilePath);
 
             if (texture.Id != 0)
             {
-                TextureLoader.Instance.Textures.Add(name, texture);
-
-                GetNode<Node>("LeftPanel/TilesPanel").AddChild(new TileItem
-                {
-                    Position = new(15, 50 + TileFilePathsContainer.Instance.TileFilePaths.Count * TileItem.Height),
-                    TileName = name,
-                    FilePath = tileFilePath,
-                    Texture = TextureLoader.Instance.Textures[name],
-                });
-
-                TileFilePathsContainer.Instance.TileFilePaths.Add(tileFilePath);
+                LoadTileItem(tileFilePath, texture);
             }
             else
             {
-                notLoadedTiles.Add(tileFilePath);
+                tilesNotLoaded.Add(tileFilePath);
             }
         }
 
-        if (notLoadedTiles.Count > 0)
+        CreateNotLoadedTilesDialog(tilesNotLoaded);
+    }
+
+    private void LoadTileItem(string tileFilePath, Texture2D texture)
+    {
+        string name = Path.GetFileNameWithoutExtension(tileFilePath);
+
+        TextureLoader.Instance.Textures.Add(name, texture);
+
+        TileItem tileItem = new()
         {
-            ((Node2D)Parent).AddChild(new NotLoadedTilesDialog
+            TileName = name,
+            FilePath = tileFilePath,
+            Texture = TextureLoader.Instance.Textures[name],
+        };
+
+        GetNode<ItemList>("LeftPanel/ItemList").AddChild(tileItem);
+        TileFilePathsContainer.Instance.TileFilePaths.Add(tileFilePath);
+    }
+
+    private void TryToLoadTileInstances()
+    {
+        foreach (TileData tileInstanceData in projectData.TileData)
+        {
+            if (!TextureLoader.Instance.Textures.ContainsKey(tileInstanceData.Name))
             {
-                NotLoadedTiles = notLoadedTiles
-            });
+                return;
+            }
+
+            LoadTileInstance(tileInstanceData);
         }
     }
 
-    private void LoadTileInstances()
+    private void LoadTileInstance(TileData tileInstanceData)
     {
-        foreach (TileData tileInstance in projectData.TileData)
+        Texture2D texture = TextureLoader.Instance.Textures[tileInstanceData.Name];
+
+        TileInstance tileItem = new()
         {
-            Texture2D texture = TextureLoader.Instance.Textures[tileInstance.Name];
-            
-            GetNode<Node>("TileMap/TileInstances").AddChild(new TileInstance
+            Position = new(tileInstanceData.X, tileInstanceData.Y),
+            Size = new(texture.Width, texture.Height),
+            Texture = texture
+        };
+
+        GetNode<Node2D>("TileMap/TileInstances").AddChild(tileItem);
+    }
+
+    private void CreateNotLoadedTilesDialog(List<string> tilesNotLoaded)
+    {
+        if (tilesNotLoaded.Count > 0)
+        {
+            TilesNotLoadedDialog tilesNotLoadedDialog = new()
             {
-                Position = new(tileInstance.X, tileInstance.Y),
-                Size = new(texture.Width, texture.Height),
-                Texture = texture
-            });
+                TilesNotLoaded = tilesNotLoaded
+            };
+
+            Parent.AddChild(tilesNotLoadedDialog);
         }
     }
 }

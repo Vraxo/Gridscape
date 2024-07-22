@@ -15,7 +15,7 @@ class Workspace : Node2D
         AddChild(new TileMapCamera()); // 5
         AddChild(new TileMap());       // 6
         AddChild(new ProjectLoader()); // 7
-        //AddChild(new NotLoadedTilesDialog());
+        //AddChild(new TilesNotLoadedDialog());
 
         Children.Swap(leftPanelIndex, tileMapIndex);
     }

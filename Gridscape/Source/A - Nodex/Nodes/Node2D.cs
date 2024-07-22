@@ -85,6 +85,7 @@ public class Node2D : Node
             OriginPreset.BottomLeft => new(0, Size.Y),
             OriginPreset.BottomRight => Size,
             OriginPreset.BottomCenter => new(Size.X / 2, Size.Y),
+            _ => Size / 2,
         };
     }
 }
