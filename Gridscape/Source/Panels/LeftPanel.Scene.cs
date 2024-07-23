@@ -34,18 +34,15 @@ public partial class LeftPanel : Panel
             },
             OnItemCountChanged = (list) =>
             {
-                list.Items.Sort((item1, item2) =>
+                string PadNumbers(string input)
                 {
-                    if (item1 is TileItem tileItem1 && item2 is TileItem tileItem2)
-                    {
-                        string label1 = tileItem1.TileName;
-                        string label2 = tileItem2.TileName;
+                    return Regex.Replace(input, "[0-9]+", match => match.Value.PadLeft(10, '0'));
+                }
 
-                        return string.Compare(label1, label2, StringComparison.OrdinalIgnoreCase);
-                    }
-
-                    return 0;
-                });
+                list.Items = list.Items.Cast<TileItem>()
+                       .OrderBy(o => PadNumbers(o.TileName))
+                       .Cast<Node2D>()
+                       .ToList();
             }
         });
     }

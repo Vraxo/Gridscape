@@ -33,7 +33,7 @@ namespace Gridscape.Properties {
         }
         
         /// <summary>
-        ///   Returns the cached ResourceManager _instance used by this class.
+        ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -63,9 +63,9 @@ namespace Gridscape.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DefaultTexture {
+        internal static System.Drawing.Bitmap DefaultTile {
             get {
-                object obj = ResourceManager.GetObject("DefaultTexture", resourceCulture);
+                object obj = ResourceManager.GetObject("DefaultTile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

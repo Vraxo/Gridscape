@@ -82,7 +82,7 @@ class ProjectLoader : Node
         };
 
         GetNode<ItemList>("LeftPanel/ItemList").AddChild(tileItem);
-        TileFilePathsContainer.Instance.TileFilePaths.Add(tileFilePath);
+        GetNode<TileFilePathsContainer>().TileFilePaths.Add(tileFilePath);
     }
 
     private void TryToLoadTileInstances()

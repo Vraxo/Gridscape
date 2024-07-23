@@ -52,11 +52,9 @@ public partial class ItemList : ClickableRectangle
 
     public override void Update()
     {
-        //UpdateSliderButtonLayer();
         HandleScrolling();
         OnUpdate(this);
         UpdateList(StartingIndex);
-        //Raylib.DrawRectangleV(GlobalPosition - Origin, Size, Color.Black);
     }
 
     public void AddItem(Node2D item)
@@ -65,15 +63,14 @@ public partial class ItemList : ClickableRectangle
         Items.Add(item);
         AddChild(item);
         OnItemCountChanged(this);
-        //UpdateList(StartingIndex);
     }
 
     public void RemoveItem(Node2D item)
     {
         Items.Remove(item);
         Children.Remove(item);
+        item.Destroy();
         OnItemCountChanged(this);
-        //UpdateList(StartingIndex);
     }
 
     public void RemoveItem(int index)

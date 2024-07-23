@@ -1,8 +1,8 @@
-﻿1. Add 'failed to load project' dialog
-2. Add alphenumerical sorting to lists
-3. Diasble Console
-4. Change default tile
-5. Make tiles container a node 
+﻿1. Make tiles container a node 
+2. Diasble Console
+3. Remove start method
+4. Make TileMap position independant of LeftPanel
+5. Fix horizontal slider button being one pixel too low
 
 
 

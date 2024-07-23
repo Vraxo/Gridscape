@@ -38,7 +38,7 @@ class ProjectSaver : Node
     {
         ProjectData projectData = GetProjectData();
 
-        JsonSerializerOptions options = new JsonSerializerOptions
+        JsonSerializerOptions options = new()
         {
             WriteIndented = true,
         };
@@ -57,7 +57,7 @@ class ProjectSaver : Node
         {
             ProjectSettings = projectSettings,
             TileData = tileMap.GetTileData(),
-            TileFilePaths = TileFilePathsContainer.Instance.TileFilePaths
+            TileFilePaths = GetNode<TileFilePathsContainer>().TileFilePaths
         };
 
         Console.WriteLine(projectData.ProjectSettings.GridX);
@@ -65,7 +65,7 @@ class ProjectSaver : Node
         return projectData;
     }
 
-    private ProjectSettings GetProjectSettings(TileMap tileMap)
+    private static ProjectSettings GetProjectSettings(TileMap tileMap)
     {
         ProjectSettings projectSettings = new()
         {

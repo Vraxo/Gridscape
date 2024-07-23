@@ -25,16 +25,20 @@ class ProjectExporter : Node
     private void SaveTileData(string path)
     {
         var tileMap = GetNode<TileMap>("TileMap");
-        var tileData = tileMap.GetTileData();
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        string jsonString = JsonSerializer.Serialize(tileData, options);
+        List<TileData> tileData = tileMap.GetTileData();
 
+        JsonSerializerOptions options = new() 
+        { 
+            WriteIndented = true 
+        };
+
+        string jsonString = JsonSerializer.Serialize(tileData, options);
         File.WriteAllText(Path.Combine(path, "Tiles.json"), jsonString);
     }
 
     private void SaveTileFiles(string path)
     {
-        foreach (var tileFilePath in TileFilePathsContainer.Instance.TileFilePaths)
+        foreach (var tileFilePath in GetNode<TileFilePathsContainer>().TileFilePaths)
         {
             string fileName = Path.GetFileName(tileFilePath);
             string destinationPath = Path.Combine(path, fileName);

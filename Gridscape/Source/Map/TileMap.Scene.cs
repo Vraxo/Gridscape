@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class TileMap : Clickable
+public partial class TileMap : Clickable
 {
     public override void Build()
     {

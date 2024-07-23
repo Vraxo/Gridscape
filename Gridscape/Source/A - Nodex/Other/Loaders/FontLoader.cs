@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class FontLoader
+public class FontLoader
 {
     public Dictionary<string, Font> Fonts = [];
 

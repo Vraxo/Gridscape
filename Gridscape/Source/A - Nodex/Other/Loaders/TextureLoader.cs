@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TextureLoader
+public class TextureLoader
 {
     public Dictionary<string, Texture2D> Textures = [];
 
@@ -17,8 +17,13 @@ class TextureLoader
         }
     }
 
-    private TextureLoader()
+    public void Add(string name, Texture2D texture)
     {
-        Textures.Add("DefaultTexture", Raylib.LoadTexture("Resources/DefaultTexture.png"));
+        Textures.Add(name, texture);
+    }
+
+    public void Remove(string name)
+    {
+        Textures.Remove(name);
     }
 }

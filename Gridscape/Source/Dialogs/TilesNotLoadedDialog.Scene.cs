@@ -36,7 +36,6 @@ public partial class TilesNotLoadedDialog : Node2D
             Text = "The following tiles could not be loaded:"
         });
 
-        // Your existing code with modifications
         AddChild(new ItemList
         {
             Position = new(10, 50),
@@ -45,18 +44,15 @@ public partial class TilesNotLoadedDialog : Node2D
             SliderButtonLayer = ClickableLayer.DialogButtons,
             OnItemCountChanged = (list) =>
             {
-                list.Items.Sort((item1, item2) =>
+                static string PadNumbers(string input)
                 {
-                    if (item1 is TileItem tileItem1 && item2 is TileItem tileItem2)
-                    {
-                        string label1 = tileItem1.TileName;
-                        string label2 = tileItem2.TileName;
+                    return Regex.Replace(input, "[0-9]+", match => match.Value.PadLeft(10, '0'));
+                }
 
-                        return string.Compare(label1, label2, StringComparison.OrdinalIgnoreCase);
-                    }
-
-                    return 0;
-                });
+                list.Items = list.Items.Cast<Label>()
+                       .OrderBy(o => PadNumbers(o.Text))
+                       .Cast<Node2D>()
+                       .ToList();
             }
         });
     }

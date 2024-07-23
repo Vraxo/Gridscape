@@ -1,10 +1,11 @@
 ﻿using Raylib_cs;
+using System.Text.RegularExpressions;
 
 namespace Gridscape;
 
 public partial class LeftPanel : Panel
 {
-    private readonly List<string> notLoadedTiles = [];
+    private readonly List<string> tilesNotLoaded = [];
 
     public override void Ready()
     {
@@ -48,7 +49,7 @@ public partial class LeftPanel : Panel
 
     private void LoadTiles(string[] filePaths)
     {
-        notLoadedTiles.Clear();
+        tilesNotLoaded.Clear();
 
         foreach (string filePath in filePaths)
         {
@@ -58,7 +59,7 @@ public partial class LeftPanel : Panel
             }
             catch
             {
-                notLoadedTiles.Add(Path.GetFileName(filePath));
+                tilesNotLoaded.Add(Path.GetFileName(filePath));
             }
         }
     }
@@ -69,14 +70,14 @@ public partial class LeftPanel : Panel
 
         if (texture.Id <= 0)
         {
-            notLoadedTiles.Add(Path.GetFileName(filePath));
+            tilesNotLoaded.Add(Path.GetFileName(filePath));
             return;
         }
 
-        AddTexture(filePath, texture);
+        AddTile(filePath, texture);
     }
 
-    private void AddTexture(string filePath, Texture2D texture)
+    private void AddTile(string filePath, Texture2D texture)
     {
         string name = Path.GetFileNameWithoutExtension(filePath);
 
@@ -90,16 +91,17 @@ public partial class LeftPanel : Panel
         };
 
         GetChild<ItemList>().AddItem(tileItem);
-        TileFilePathsContainer.Instance.TileFilePaths.Add(filePath);
+        //TileFilePathsContainer.Instance.TileFilePaths.Add(filePath);
+        GetNode<TileFilePathsContainer>().TileFilePaths.Add(filePath);
     }
 
     private void ShowFailedTilesDialog()
     {
-        if (notLoadedTiles.Count > 0)
+        if (tilesNotLoaded.Count > 0)
         {
             TilesNotLoadedDialog notLoadedTilesDialog = new()
             {
-                TilesNotLoaded = notLoadedTiles
+                TilesNotLoaded = tilesNotLoaded
             };
 
             AddChild(notLoadedTilesDialog);

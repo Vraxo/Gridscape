@@ -53,24 +53,33 @@ public class Program
         }
     }
 
-    private void CreateResources()
+    private static void CreateResources()
     {
         if (!Directory.Exists("Resources"))
         {
             Directory.CreateDirectory("Resources");
+        }
 
+        if (!File.Exists("Resources/Icon.png"))
+        {
             Bitmap icon = Resources.Icon;
             icon.Save("Resources/Icon.png");
+        }
 
+        if (!File.Exists("Resources/RobotoMono.ttf"))
+        {
             byte[] defaultFont = Resources.RobotoMono;
             File.WriteAllBytes("Resources/RobotoMono.ttf", defaultFont);
+        }
 
-            Bitmap defaultTexture = Resources.DefaultTexture;
-            defaultTexture.Save("Resources/DefaultTexture.png");
+        if (!File.Exists("Resources/DefaultTile.png"))
+        {
+            Bitmap defaultTexture = Resources.DefaultTile;
+            defaultTexture.Save("Resources/DefaultTile.png");
         }
     }
 
-    private void SetIcon()
+    private static void SetIcon()
     {
         Texture2D iconTexture = Raylib.LoadTexture("Resources/Icon.png");
         Image icon = Raylib.LoadImageFromTexture(iconTexture);

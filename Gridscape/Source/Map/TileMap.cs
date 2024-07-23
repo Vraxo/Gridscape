@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class TileMap : Clickable
+public partial class TileMap : Clickable
 {
     public Texture2D Texture;
     public string TileName;
@@ -16,11 +16,18 @@ partial class TileMap : Clickable
     private LeftPanel leftPanel;
     private TopPanel topPanel;
 
-    public override void Start()
+    public TileMap()
+    {
+        OriginPreset = OriginPreset.TopLeft;
+    }
+
+    public override void Ready()
     {
         Size = new(320, 320);
         Layer = ClickableLayer.TileMap;
-        Texture = TextureLoader.Instance.Textures["DefaultTexture"];
+
+        TextureLoader.Instance.Add("DefaultTile", Raylib.LoadTexture("Resources/DefaultTile.png"));
+        Texture = TextureLoader.Instance.Textures["DefaultTile"];
         TileName = "DefaultTexture";
 
         camera = GetNode<TileMapCamera>("TileMapCamera");
@@ -46,7 +53,7 @@ partial class TileMap : Clickable
     public override bool IsMouseOver()
     {
         Vector2 mousePosition = Raylib.GetMousePosition();
-
+    
         return mousePosition.X > GlobalPosition.X &&
                mousePosition.X < GlobalPosition.X + Size.X * camera.Zoom &&
                mousePosition.Y > GlobalPosition.Y &&

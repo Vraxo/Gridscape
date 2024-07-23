@@ -47,8 +47,9 @@ partial class CreateOrLoadProjectPage : Node2D
             ProjectManager.Instance.ProjectData = projectData;
             ChangeScene(new Workspace());
         }
-        catch (JsonException)
+        catch
         {
+            Program.RootNode.AddChild(new ProjectNotLoadedDialog());
         }
     }
 }

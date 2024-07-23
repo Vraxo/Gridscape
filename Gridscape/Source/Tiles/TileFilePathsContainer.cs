@@ -1,17 +1,6 @@
 ﻿namespace Gridscape;
 
-class TileFilePathsContainer
+public class TileFilePathsContainer : Node
 {
     public List<string> TileFilePaths = [];
-
-    private static TileFilePathsContainer? instance;
-
-    public static TileFilePathsContainer Instance
-    {
-        get
-        {
-            instance ??= new();
-            return instance;
-        }
-    }
 }

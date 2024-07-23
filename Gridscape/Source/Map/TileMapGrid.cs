@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TileMapGrid : Node2D
+public class TileMapGrid : Node2D
 {
     public bool Visible = true;
     public bool Snap = true;

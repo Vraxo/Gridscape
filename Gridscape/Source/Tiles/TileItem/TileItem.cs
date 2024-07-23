@@ -50,7 +50,8 @@ public partial class TileItem : Node2D
 
     private void DeleteTile()
     {
-        TileFilePathsContainer.Instance.TileFilePaths.Remove(FilePath);
+        GetNode<TileFilePathsContainer>().TileFilePaths.Remove(FilePath);
+        TextureLoader.Instance.Remove(TileName);
         parent.RemoveItem(this);
     }
 
