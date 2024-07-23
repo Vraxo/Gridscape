@@ -7,7 +7,7 @@ class ProjectLoader : Node
     private ProjectData? projectData;
     private ProjectSettings? settings;
 
-    public override void Start()
+    public override void Ready()
     {
         if (ProjectManager.Instance.NewProject)
         {

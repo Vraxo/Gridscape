@@ -4,7 +4,7 @@ class LabeledTextBox : Label
 {
     public TextBox TextBox;
 
-    public override void Start()
+    public override void Ready()
     {
         OriginPreset = OriginPreset.CenterLeft;
 

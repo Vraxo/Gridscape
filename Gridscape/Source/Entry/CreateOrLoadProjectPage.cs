@@ -4,7 +4,7 @@ namespace Gridscape;
 
 partial class CreateOrLoadProjectPage : Node2D
 {
-    public override void Start()
+    public override void Ready()
     {
         GetChild<Button>("CreateNewProjectButton").LeftClicked += OnCreateNewProjectButtonLeftClicked;
         GetChild<Button>("LoadExistingProjectButton").LeftClicked += OnLoadExistingProjectButtonLeftClicked;

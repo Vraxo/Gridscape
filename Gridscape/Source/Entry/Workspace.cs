@@ -2,10 +2,10 @@
 
 class Workspace : Node2D
 {
-    private static readonly int leftPanelIndex = 2;
-    private static readonly int tileMapIndex = 7;
+    //private static readonly int leftPanelIndex = 2;
+    //private static readonly int tileMapIndex = 7;
 
-    //public override void Start()
+    //public override void Ready()
     //{
     //    AddChild(new TileFilePathsContainer());
     //    AddChild(new ClickManager());  // 1

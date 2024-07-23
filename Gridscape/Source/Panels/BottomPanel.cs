@@ -6,11 +6,11 @@ public partial class BottomPanel : Panel
 {
     private LeftPanel leftPanel;
 
-    public override void Start()
+    public override void Ready()
     {
         Size = new(0, 35);
         leftPanel = GetNode<LeftPanel>("LeftPanel");
-        base.Start();
+        base.Ready();
     }
 
     public override void Update()

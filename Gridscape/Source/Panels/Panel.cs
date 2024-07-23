@@ -7,12 +7,12 @@ public class Panel : ClickableRectangle
     private readonly Color color = new(24, 24, 24, 255);
     private readonly Color outlineColor = new(128, 128, 128, 255);
 
-    public override void Start()
+    public override void Ready()
     {
         OriginPreset = OriginPreset.TopLeft;
         Layer = ClickableLayer.Panels;
 
-        base.Start();
+        base.Ready();
     }
 
     public override void Update()

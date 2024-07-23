@@ -33,7 +33,7 @@ public class Program
         RootNode = rootNode;
         RootNode.Program = this;
         RootNode.Build();
-        RootNode.Start();
+        RootNode.Ready();
     }
 
     private void RunLoop()

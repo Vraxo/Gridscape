@@ -5,7 +5,7 @@ class LabeledCircleCheckBox2 : Node2D
     public Label Label;
     public CircleCheckBox CheckBox;
 
-    public override void Start()
+    public override void Ready()
     {
         AddLabel();
         AddCheckBox();
