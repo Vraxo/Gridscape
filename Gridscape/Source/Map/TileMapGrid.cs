@@ -12,7 +12,7 @@ public class TileMapGrid : Node2D
     private Vector2 originalPosition;
     private TileMapCamera camera;
 
-    public override void Start()
+    public override void Ready()
     {
         Size = new(32, 32);
 

@@ -10,7 +10,7 @@ public class TileMapBackground : Node2D
 
     private Vector2 originalPosition;
 
-    public override void Start()
+    public override void Ready()
     {
         parent = GetParent<TileMap>();
         camera = GetNode<TileMapCamera>("TileMapCamera");

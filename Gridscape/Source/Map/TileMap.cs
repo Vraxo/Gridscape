@@ -19,13 +19,12 @@ public partial class TileMap : Clickable
     public TileMap()
     {
         OriginPreset = OriginPreset.TopLeft;
+        Size = new(320, 320);
+        Layer = ClickableLayer.TileMap;
     }
 
     public override void Ready()
     {
-        Size = new(320, 320);
-        Layer = ClickableLayer.TileMap;
-
         TextureLoader.Instance.Add("DefaultTile", Raylib.LoadTexture("Resources/DefaultTile.png"));
         Texture = TextureLoader.Instance.Textures["DefaultTile"];
         TileName = "DefaultTexture";
@@ -38,8 +37,6 @@ public partial class TileMap : Clickable
 
         Grid = GetChild<TileMapGrid>("TileMapGrid");
         TileInstances = GetChild<Node2D>("TileInstances");
-
-        base.Start();
     }
 
     public override void Update()
