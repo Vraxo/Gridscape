@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TextBoxCaret : Node2D
+public class TextBoxCaret : Node2D
 {
     public float MaxTime = 0.5F;
 

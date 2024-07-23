@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-class TextBoxSubStyle
+public class TextBoxStyleState
 {
     public int OutlineThickness = 1;
     public float Roundedness = 0F;

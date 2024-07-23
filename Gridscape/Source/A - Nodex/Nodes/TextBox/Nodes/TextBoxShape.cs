@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TextBoxShape : Node2D
+public class TextBoxShape : Node2D
 {
     public TextBoxStyle Style;
 

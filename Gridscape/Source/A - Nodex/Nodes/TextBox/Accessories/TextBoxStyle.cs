@@ -1,14 +1,14 @@
 ﻿namespace Gridscape;
 
-class TextBoxStyle
+public class TextBoxStyle
 {
-    public TextBoxSubStyle Current = new();
+    public TextBoxStyleState Current = new();
     
-    public TextBoxSubStyle Selected = new()
+    public TextBoxStyleState Selected = new()
     {
         FillColor = new(34, 34, 34, 255),
         OutlineColor = new(71, 114, 179, 255),
     };
 
-    public TextBoxSubStyle Deselected = new();
+    public TextBoxStyleState Deselected = new();
 }

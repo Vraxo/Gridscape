@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-class TextBox : ClickableRectangle
+public class TextBox : ClickableRectangle
 {
     public string Text = "";
     public string DefaultText = "";

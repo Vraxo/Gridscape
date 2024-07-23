@@ -40,8 +40,8 @@
 //
 //    private void DrawBackground()
 //    {
-//        Size.X = Convert.ToInt32(GetNode<TextBox>("topPanel/MapXTextBox").Text);
-//        Size.Y = Convert.ToInt32(GetNode<TextBox>("topPanel/MapYTextBox").Text);
+//        Size.X = Convert.ToInt32(GetNode<TextBox>("topPanel/MapXTextBox").TextBoxStyleState);
+//        Size.Y = Convert.ToInt32(GetNode<TextBox>("topPanel/MapYTextBox").TextBoxStyleState);
 //
 //        Raylib.DrawRectangle((int)GlobalPosition.X,
 //                             (int)GlobalPosition.Y,
