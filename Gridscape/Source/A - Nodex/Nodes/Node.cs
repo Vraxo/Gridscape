@@ -14,7 +14,7 @@ public class Node
 
     public virtual void Build() { }
 
-    //public virtual void Ready() { }
+    public virtual void Start() { }
 
     public virtual void Ready() { }
 
@@ -196,7 +196,7 @@ public class Node
 
         if (start)
         {
-            //node.Ready();
+            node.Start();
         }
 
         Children.Add(node);
@@ -210,7 +210,7 @@ public class Node
         node.Build();
         if (start)
         {
-            //node.Ready();
+            node.Start();
         }
 
         Children.Add(node);
@@ -226,6 +226,6 @@ public class Node
 
         node.Name = node.GetType().Name;
         node.Program = Program;
-        node.Ready();
+        node.Start();
     }
 }

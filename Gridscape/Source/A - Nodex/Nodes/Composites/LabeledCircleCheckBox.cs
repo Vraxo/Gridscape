@@ -4,7 +4,7 @@ class LabeledCircleCheckBox : Label
 {
     public CircleCheckBox CheckBox;
 
-    public override void Ready()
+    public override void Start()
     {
         OriginPreset = OriginPreset.CenterLeft;
 

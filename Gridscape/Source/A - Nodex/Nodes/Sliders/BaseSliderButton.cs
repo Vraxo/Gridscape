@@ -20,10 +20,10 @@ public abstract class BaseSliderButton : ClickableCircle
         InheritPosition = false;
     }
 
-    public override void Ready()
+    public override void Start()
     {
         UpdatePosition(true);
-        base.Ready();
+        base.Start();
     }
 
     public override void Update()

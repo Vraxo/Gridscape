@@ -7,7 +7,7 @@ public partial class RightPanel : Panel
     private TopPanel topPanel;
     private BottomPanel bottomPanel;
 
-    public override void Ready()
+    public override void Start()
     {
         Position.Y = 250;
         Size = new(35, 0);
@@ -15,7 +15,7 @@ public partial class RightPanel : Panel
         topPanel = GetNode<TopPanel>("TopPanel");
         bottomPanel = GetNode<BottomPanel>("BottomPanel");
 
-        base.Ready();
+        base.Start();
     }
 
     public override void Update()

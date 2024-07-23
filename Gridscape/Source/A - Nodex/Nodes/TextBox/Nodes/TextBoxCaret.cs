@@ -39,7 +39,7 @@ class TextBoxCaret : Node2D
         }
     }
 
-    public override void Ready()
+    public override void Start()
     {
         parent = GetParent<TextBox>();
     }

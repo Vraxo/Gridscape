@@ -11,7 +11,7 @@ partial class TileInstance : Node2D
 
     private TileMapCamera camera;
 
-    public override void Ready()
+    public override void Start()
     {
         OriginalPosition = Position;
         camera = GetNode<TileMapCamera>("TileMapCamera");

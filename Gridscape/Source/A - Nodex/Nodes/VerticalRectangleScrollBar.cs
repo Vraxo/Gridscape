@@ -22,7 +22,7 @@ class VerticalRectangleScrollBar : Node2D
         }
     }
 
-    public override void Ready()
+    public override void Start()
     {
         AddTopButton();
         AddBottomButton();

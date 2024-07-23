@@ -12,18 +12,15 @@ public class TileMapGrid : Node2D
     private Vector2 originalPosition;
     private TileMapCamera camera;
 
-    public TileMapGrid()
-    {
-        Size = new(32, 32);
-    }
-
     public override void Ready()
     {
+        Size = new(32, 32);
+
         originalPosition = Position;
 
         parent = GetParent<TileMap>();
 
-        camera = GetNode<TileMapCamera>();
+        camera = GetNode<TileMapCamera>("TileMapCamera");
 
         GetNode<TextBox>("TopPanel/GridX/TextBox").TextChanged += OnXTextBoxTextChanged;
         GetNode<TextBox>("TopPanel/GridY/TextBox").TextChanged += OnYTextBoxTextChanged;
