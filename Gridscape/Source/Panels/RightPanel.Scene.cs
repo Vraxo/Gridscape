@@ -9,7 +9,7 @@ public partial class RightPanel : Panel
             Position = new(0, 25),
             Size = new(10, 0),
             OriginPreset = OriginPreset.Center,
-            SliderLayer = ClickableLayer.PanelButtons,
+            Layer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
                 slider.Position.X = Size.X / 2;

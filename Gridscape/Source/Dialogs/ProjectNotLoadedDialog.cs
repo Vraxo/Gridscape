@@ -4,7 +4,7 @@ namespace Gridscape;
 
 public partial class ProjectNotLoadedDialog : Node2D
 {
-    public override void Ready()
+    public override void Start()
     {
         GetNode<ClickManager>().MinLayer = ClickableLayer.DialogButtons;
         Origin = GetChild<Panel>().Size / 2;

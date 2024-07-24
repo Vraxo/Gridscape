@@ -23,8 +23,8 @@ public class TextBoxShape : Node2D
     {
         Rectangle rectangle = new()
         {
-            Position = GlobalPosition - Origin,
-            Size = Size
+            Position = parent.GlobalPosition - parent.Origin,
+            Size = parent.Size
         };
 
         DrawRectangle(rectangle);
@@ -35,9 +35,9 @@ public class TextBoxShape : Node2D
     {
         Raylib.DrawRectangleRounded(
             rectangle,
-            Style.Current.Roundedness,
+            parent.Style.Current.Roundedness,
             (int)Size.Y,
-            Style.Current.FillColor);
+            parent.Style.Current.FillColor);
     }
 
     private void DrawOutline(Rectangle rectangle)
@@ -46,10 +46,10 @@ public class TextBoxShape : Node2D
         {
             Raylib.DrawRectangleRoundedLines(
                 rectangle,
-                Style.Current.Roundedness,
+                parent.Style.Current.Roundedness,
                 (int)Size.Y,
-                Style.Current.OutlineThickness,
-                Style.Current.OutlineColor);
+                parent.Style.Current.OutlineThickness,
+                parent.Style.Current.OutlineColor);
         }
     }
 }

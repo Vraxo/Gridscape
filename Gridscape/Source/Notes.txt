@@ -1,15 +1,12 @@
-﻿1. Diasble Console
-2. Remove start method
-4. Fix horizontal slider button being one pixel too low
-5. Replace composites with normal nodes in top panel
+﻿1. Replace composites with normal nodes in top panel
+2. Fix horizontal slider button being one pixel too low
+3. Diasble Console
 
 
 
 - - - - - - - - - - Long Term - - - - - - - - - -
 
 
-
-* HorizontalSlider > AddMiddleButton > is parent really needed?
 
 * when left & right click are both enabled on a button,
   the button only changes color on pressed on right clicks.

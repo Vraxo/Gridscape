@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System.Numerics;
 
 namespace Gridscape;
 
@@ -41,13 +42,15 @@ public partial class ItemList : ClickableRectangle
         Size = new(250, 150);
     }
 
-    public override void Ready()
+    public override void Start()
     {
         Slider = GetChild<VerticalSlider>();
         Slider.PercentageChanged += OnSliderValueChanged;
-        Slider.SliderLayer = SliderButtonLayer;
+        Slider.Layer = SliderButtonLayer;
 
-        UpdateList(0);
+        UpdateList(StartingIndex);
+
+        base.Start();
     }
 
     public override void Update()
@@ -81,9 +84,9 @@ public partial class ItemList : ClickableRectangle
 
     private void OnSliderValueChanged(object? sender, float e)
     {
-        int newStartingIndex = GetStartingIndexBasedOnSliderValue(e);
+        //int newStartingIndex = GetStartingIndexBasedOnSliderValue(e);
+        int newStartingIndex = (int)(sender as VerticalSlider).Value;
         StartingIndex = newStartingIndex;
-        //UpdateList(newStartingIndex);
     }
 
     private void MinimizeStartingIndex()

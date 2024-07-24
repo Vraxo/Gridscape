@@ -15,7 +15,7 @@ public partial class TileItem : Node2D
     private ItemList parent;
     private ButtonStyleState originalDefaultButtonStyle;
 
-    public override void Ready()
+    public override void Start()
     {
         parent = GetParent<ItemList>();
 

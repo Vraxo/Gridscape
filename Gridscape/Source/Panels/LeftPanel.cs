@@ -7,7 +7,7 @@ public partial class LeftPanel : Panel
 {
     private readonly List<string> tilesNotLoaded = [];
 
-    public override void Ready()
+    public override void Start()
     {
         GetChild<Button>().LeftClicked += OnAddNewTileButtonLeftClicked;
     }

@@ -21,12 +21,12 @@ public class TextBoxText : Node2D
     private void Draw()
     {
         Raylib.DrawTextEx(
-            Style.Current.Font,
+            parent.Style.Current.Font,
             parent.Text,
             GetPosition(),
-            Style.Current.FontSize,
+            parent.Style.Current.FontSize,
             1,
-            Style.Current.TextColor);
+            parent.Style.Current.TextColor);
     }
 
     private Vector2 GetPosition()
@@ -37,7 +37,7 @@ public class TextBoxText : Node2D
 
     private int GetX()
     {
-        int x = (int)(GlobalPosition.X - parent.Origin.X + Style.Current.Padding);
+        int x = (int)(GlobalPosition.X - parent.Origin.X + parent.Style.Current.Padding);
         return x;
     }
 
@@ -50,9 +50,9 @@ public class TextBoxText : Node2D
 
     private int GetHalfFontHeight()
     {
-        Font font = Style.Current.Font;
+        Font font = parent.Style.Current.Font;
         string text = parent.Text;
-        uint fontSize = Style.Current.FontSize;
+        uint fontSize = parent.Style.Current.FontSize;
 
         int halfFontHeight = (int)(Raylib.MeasureTextEx(font, text, fontSize, 1).Y / 2);
         return halfFontHeight;

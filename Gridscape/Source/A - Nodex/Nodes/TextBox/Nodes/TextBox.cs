@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-public class TextBox : ClickableRectangle
+public partial class TextBox : ClickableRectangle
 {
     public string Text = "";
     public string DefaultText = "";
@@ -22,25 +22,10 @@ public class TextBox : ClickableRectangle
     private const int maxAscii = 125;
     private TextBoxCaret caret;
 
-    public override void Ready()
+    public override void Start()
     {
-        AddChild(new TextBoxShape
-        {
-            Size = Size,
-            Origin = Origin,
-            OriginPreset = OriginPreset,
-            Style = Style,
-        });
-
-        AddChild(new TextBoxText
-        {
-            Origin = Origin,
-            OriginPreset = OriginPreset,
-            Style = Style,
-        });
-
-        caret = new();
-        AddChild(caret);
+        caret = GetChild<TextBoxCaret>();
+        base.Start();
     }
 
     public override void Update()

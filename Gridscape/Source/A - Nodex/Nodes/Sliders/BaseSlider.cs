@@ -4,10 +4,17 @@ public abstract class BaseSlider : Node2D
 {
     public float Percentage = 0;
     public float MaxExternalValue = 0;
-    public float Value => Percentage * MaxExternalValue;
+    public float Value 
+    {
+        get
+        {
+            return MathF.Ceiling(Percentage * MaxExternalValue);
+        } 
+    }
+
     public SliderStyle Style = new();
     public BaseSliderButton MiddleButton;
-    public int SliderLayer = 0;
+    public int Layer = 0;
     public Action<BaseSlider> OnUpdate = (slider) => { };
     public event EventHandler<float>? PercentageChanged;
 
@@ -22,12 +29,13 @@ public abstract class BaseSlider : Node2D
             {
                 _externalValue = value;
 
-                //float minPos = GlobalPosition.Y - Origin.Y;
-                //float maxPos = minPos + Size.Y;
+                float minPos = GlobalPosition.Y - Origin.Y;
+                float maxPos = minPos + Size.Y;
 
-                //float y = ExternalValue / MaxExternalValue * maxPos;
+                float x = MiddleButton.GlobalPosition.X;
+                float y = ExternalValue / MaxExternalValue * maxPos;
 
-                //MiddleButton.GlobalPosition = new(MiddleButton.GlobalPosition.X, y);
+                MiddleButton.GlobalPosition = new(x, y);
             }
         }
     }
@@ -42,9 +50,9 @@ public abstract class BaseSlider : Node2D
         decrementButton.LeftClicked += OnDecrementButtonLeftClicked;
         incrementButton.LeftClicked += OnIncrementButtonLeftClicked;
 
-        MiddleButton.Layer = SliderLayer;
-        decrementButton.Layer = SliderLayer;
-        incrementButton.Layer = SliderLayer;
+        MiddleButton.Layer = Layer;
+        decrementButton.Layer = Layer;
+        incrementButton.Layer = Layer;
     }
 
     public override void Update()

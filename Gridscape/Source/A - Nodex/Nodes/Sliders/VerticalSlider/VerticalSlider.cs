@@ -24,6 +24,7 @@ public partial class VerticalSlider : BaseSlider
         if (Percentage != previousPercentage)
         {
             OnPercentageChanged();
+            Console.WriteLine("new percentage: " + Percentage);
         }
     }
 
@@ -35,7 +36,8 @@ public partial class VerticalSlider : BaseSlider
         }
 
         float x = MiddleButton.GlobalPosition.X;
-        float y = MiddleButton.GlobalPosition.Y + direction * (Size.Y / MathF.Abs(MaxExternalValue));
+        float movementUnit = Size.Y / MathF.Abs(MaxExternalValue - 1);
+        float y = MiddleButton.GlobalPosition.Y + direction * movementUnit;
 
         MiddleButton.GlobalPosition = new(x, y);
         UpdatePercentageBasedOnMiddleButton();
