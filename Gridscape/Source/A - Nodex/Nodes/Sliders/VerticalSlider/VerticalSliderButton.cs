@@ -13,11 +13,11 @@ public class VerticalSliderButton : BaseSliderButton
             GlobalPosition = new(parent.GlobalPosition.X, Raylib.GetMousePosition().Y);
             parent.UpdatePercentageBasedOnMiddleButton();
         }
-
-        UpdatePositionVertical(parent, initial);
+        
+        UpdatePosition(parent, initial);
     }
 
-    private void UpdatePositionVertical(BaseSlider parent, bool initial)
+    private void UpdatePosition(BaseSlider parent, bool initial)
     {
         float minY = parent.GlobalPosition.Y - parent.Origin.Y;
         float maxY = minY + parent.Size.Y;
