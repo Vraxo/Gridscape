@@ -35,7 +35,7 @@ public abstract class BaseSlider : Node2D
                 float x = MiddleButton.GlobalPosition.X;
                 float y = ExternalValue / MaxExternalValue * maxPos;
 
-                MiddleButton.GlobalPosition = new(x, y);
+                //MiddleButton.GlobalPosition = new(x, y);
             }
         }
     }
