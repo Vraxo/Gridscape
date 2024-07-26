@@ -1,6 +1,5 @@
-﻿1. Replace composites with normal nodes in top panel
-2. Fix horizontal slider button being one pixel too low
-3. Diasble Console
+﻿1. Fix check box circles
+2. Diasble Console
 
 
 

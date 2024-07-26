@@ -29,7 +29,10 @@ public class HorizontalSliderButton : BaseSliderButton
         }
         else
         {
-            GlobalPosition = new(Math.Clamp(GlobalPosition.X, minX, maxX), parent.GlobalPosition.Y);
+            float x = Math.Clamp(GlobalPosition.X, minX, maxX);
+            float y2 = MathF.Ceiling(parent.GlobalPosition.Y);
+
+            GlobalPosition = new(x, y2);
         }
     }
 }

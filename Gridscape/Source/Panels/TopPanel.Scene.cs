@@ -4,27 +4,6 @@ partial class TopPanel : Panel
 {
     public override void Build()
     {
-        Size = new(0, 35);
-
-        leftPanel = GetNode<LeftPanel>("LeftPanel");
-
-        AddZoomController();
-
-        AddLabeledTextBox("MapX", 10 + 100, "Map X: ", "320");
-        AddLabeledTextBox("MapY", 150 + 100, "Map Y: ", "320");
-
-        AddLabeledTextBox("GridX", 290 + 100, "Grid Y: ", "32");
-        AddLabeledTextBox("GridY", 440 + 100, "Grid Y: ", "32");
-
-        AddLabeledCircleCheckBox("ShowGrid", 625 + 100, "Show Grid");
-        AddLabeledCircleCheckBox("SnapToGrid", 750 + 100, "Snap To Grid");
-
-        AddProjectSaverNodes();
-        AddProjectExporterNodes();
-    }
-    
-    private void AddZoomController()
-    {
         AddChild(new Label
         {
             Position = new(10, Size.Y / 2),
@@ -37,69 +16,124 @@ partial class TopPanel : Panel
             Size = new(50, 26 * 0.75F),
             OriginPreset = OriginPreset.CenterLeft,
             Editable = false,
-        },
-        "ZoomTextBox");
-    }
+        }, "ZoomTextBox");
 
-    private void AddLabeledTextBox(string name, float x, string labelText, string textBoxText)
-    {
-        LabeledTextBox labeledTextBox = new()
+        AddChild(new Label
         {
-            Position = new(x, Size.Y / 2),
-            Text = labelText
-        };
-
-        AddChild(labeledTextBox, name);
-
-        labeledTextBox.TextBox.Size = new(75, 26 * 0.75F);
-        labeledTextBox.TextBox.Text = textBoxText;
-        labeledTextBox.TextBox.DefaultText = "0";
-        labeledTextBox.TextBox.MaxCharacters = 7;
-        labeledTextBox.TextBox.AllowedCharacters = CharacterSet.Numbers;
-    }
-
-    private void AddLabeledCircleCheckBox(string name, float x, string labelText)
-    {
-        LabeledCircleCheckBox2 labeledCircleCheckBox = new()
-        {
-            Position = new(x, Size.Y / 2),
-        };
-
-        AddChild(labeledCircleCheckBox, name);
-        
-        labeledCircleCheckBox.Label.Text = labelText;
-        labeledCircleCheckBox.CheckBox.Checked = true;
-    }
-
-    private void AddProjectSaverNodes()
-    {
-        projectSaver = new();
-        AddChild(projectSaver);
-
-        AddButton("Save", 875 + 85, OnSaveButtonLeftClicked);
-    }
-
-    private void AddProjectExporterNodes()
-    {
-        projectExporter = new();
-        AddChild(projectExporter);
-
-        AddButton("Export", 975 + 50, OnExportButtonLeftClicked);
-    }
-
-    private void AddButton(string text, float x, EventHandler eventHandler)
-    {
-        Button button = new()
-        {
-            Position = new(x, Size.Y / 2),
-            Size = new(50, 20),
+            Position = new(110, Size.Y / 2),
             OriginPreset = OriginPreset.CenterLeft,
-            Text = text,
-            Layer = (int)ClickableLayer.PanelButtons,
-        };
+            Text = "Map X:",
+        });
 
-        button.LeftClicked += eventHandler;
+        AddChild(new TextBox
+        {
+            Position = new(165, Size.Y / 2),
+            Size = new(75, 26 * 0.75F),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "320",
+            DefaultText = "0",
+            MaxCharacters = 7,
+            AllowedCharacters = CharacterSet.Numbers
+        }, "MapXTextBox");
 
-        AddChild(button);
+        AddChild(new Label
+        {
+            Position = new(250, Size.Y / 2),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "Map X:",
+        });
+
+        AddChild(new TextBox
+        {
+            Position = new(305, Size.Y / 2),
+            Size = new(75, 26 * 0.75F),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "320",
+            DefaultText = "0",
+            MaxCharacters = 7,
+            AllowedCharacters = CharacterSet.Numbers
+        }, "MapYTextBox");
+
+        AddChild(new Label
+        {
+            Position = new(390, Size.Y / 2),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "Grid X:",
+        });
+        
+        AddChild(new TextBox
+        {
+            Position = new(445 + 11, Size.Y / 2),
+            Size = new(75, 26 * 0.75F),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "320",
+            DefaultText = "0",
+            MaxCharacters = 7,
+            AllowedCharacters = CharacterSet.Numbers
+        }, "GridXTextBox");
+
+        AddChild(new Label
+        {
+            Position = new(540, Size.Y / 2),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "Grid Y:",
+        });
+
+        AddChild(new TextBox
+        {
+            Position = new(595 + 11, Size.Y / 2),
+            Size = new(75, 26 * 0.75F),
+            OriginPreset = OriginPreset.CenterLeft,
+            Text = "320",
+            DefaultText = "0",
+            MaxCharacters = 7,
+            AllowedCharacters = CharacterSet.Numbers
+        }, "GridYTextBox");
+
+        AddChild(new CircleCheckBox
+        {
+            Position = new(700, Size.Y / 2),
+            Checked = true
+        }, "ShowGridCheckBox");
+
+        AddChild(new Label
+        {
+            Position = new(715, Size.Y / 2),
+            Text = "Show Grid"
+        });
+
+        AddChild(new CircleCheckBox
+        {
+            Position = new(810, Size.Y / 2),
+            Checked = true
+        }, "SnapToGridCheckBox");
+
+        AddChild(new Label
+        {
+            Position = new(825, Size.Y / 2),
+            Text = "Snap To Grid"
+        });
+
+        AddChild(new ProjectSaver());
+
+        AddChild(new Button
+        {
+            Position = new(875 + 85, Size.Y / 2),
+            Size = new(50, 20),
+            OriginPreset = OriginPreset.Center,
+            Text = "Save",
+            Layer = ClickableLayer.PanelButtons
+        }, "SaveButton");
+
+        AddChild(new ProjectExporter());
+
+        AddChild(new Button
+        {
+            Position = new(975 + 50, Size.Y / 2),
+            Size = new(50, 20),
+            OriginPreset = OriginPreset.Center,
+            Text = "Export",
+            Layer = ClickableLayer.PanelButtons
+        }, "ExportButton");
     }
 }

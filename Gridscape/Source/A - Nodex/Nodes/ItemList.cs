@@ -141,10 +141,12 @@ public partial class ItemList : ClickableRectangle
         if (mouseWheelMovement > 0)
         {
             UpdateList(StartingIndex - 1);
+            Slider.MoveMiddleButton(-1);
         }
         else if (mouseWheelMovement < 0)
         {
             UpdateList(StartingIndex + 1);
+            Slider.MoveMiddleButton(+1);
         }
     }
 

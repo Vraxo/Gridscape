@@ -9,7 +9,7 @@ public partial class BottomPanel : Panel
     public override void Start()
     {
         Size = new(0, 35);
-        leftPanel = GetNode<LeftPanel>("LeftPanel");
+        leftPanel = GetNode<LeftPanel>();
         base.Start();
     }
 

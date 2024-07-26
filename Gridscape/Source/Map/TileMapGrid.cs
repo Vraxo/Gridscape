@@ -25,11 +25,11 @@ public class TileMapGrid : Node2D
 
         camera = GetNode<TileMapCamera>();
 
-        GetNode<TextBox>("TopPanel/GridX/TextBox").TextChanged += OnXTextBoxTextChanged;
-        GetNode<TextBox>("TopPanel/GridY/TextBox").TextChanged += OnYTextBoxTextChanged;
+        GetNode<TextBox>("TopPanel/GridXTextBox").TextChanged += OnXTextBoxTextChanged;
+        GetNode<TextBox>("TopPanel/GridYTextBox").TextChanged += OnYTextBoxTextChanged;
 
-        GetNode<CircleCheckBox>("TopPanel/ShowGrid/CheckBox").Toggled += OnVisibleCheckBoxToggled;
-        GetNode<CircleCheckBox>("TopPanel/SnapToGrid/CheckBox").Toggled += OnSnapCheckBoxToggled;
+        GetNode<CircleCheckBox>("TopPanel/ShowGridCheckBox").Toggled += OnVisibleCheckBoxToggled;
+        GetNode<CircleCheckBox>("TopPanel/SnapToGridCheckBox").Toggled += OnSnapCheckBoxToggled;
     }
 
     public override void Update()

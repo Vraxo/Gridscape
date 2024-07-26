@@ -30,8 +30,8 @@ public partial class TileMap : Clickable
         TileName = "DefaultTexture";
 
         camera = GetNode<TileMapCamera>("TileMapCamera");
-        xTextBox = GetNode<TextBox>("TopPanel/MapX/TextBox");
-        yTextBox = GetNode<TextBox>("TopPanel/MapY/TextBox");
+        xTextBox = GetNode<TextBox>("TopPanel/MapXTextBox");
+        yTextBox = GetNode<TextBox>("TopPanel/MapYTextBox");
         leftPanel = GetNode<LeftPanel>("LeftPanel");
         topPanel = GetNode<TopPanel>("TopPanel");
 

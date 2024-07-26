@@ -74,7 +74,7 @@ public abstract class BaseSlider : Node2D
         MoveMiddleButton(1);
     }
 
-    protected abstract void MoveMiddleButton(int direction);
+    public abstract void MoveMiddleButton(int direction);
 
     protected abstract void Draw();
 

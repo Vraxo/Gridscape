@@ -27,7 +27,7 @@ public partial class HorizontalSlider : BaseSlider
         }
     }
 
-    protected override void MoveMiddleButton(int direction)
+    public override void MoveMiddleButton(int direction)
     {
         if (MaxExternalValue == 0)
         {

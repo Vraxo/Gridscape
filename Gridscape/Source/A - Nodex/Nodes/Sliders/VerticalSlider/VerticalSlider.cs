@@ -24,11 +24,10 @@ public partial class VerticalSlider : BaseSlider
         if (Percentage != previousPercentage)
         {
             OnPercentageChanged();
-            Console.WriteLine("new percentage: " + Percentage);
         }
     }
 
-    protected override void MoveMiddleButton(int direction)
+    public override void MoveMiddleButton(int direction)
     {
         if (MaxExternalValue == 0)
         {
