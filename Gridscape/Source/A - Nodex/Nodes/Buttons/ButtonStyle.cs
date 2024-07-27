@@ -22,6 +22,7 @@ public class ButtonStyle
     {
         set
         {
+            Current.Roundness = value;
             Hover.Roundness = value;
             Pressed.Roundness = value;
             Default.Roundness = value;

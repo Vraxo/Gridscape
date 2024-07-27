@@ -19,6 +19,6 @@ public partial class RightPanel : Panel
                 float cameraExtraHeight = GetNode<TileMapCamera>().ExtraMapSize.Y;
                 slider.MaxExternalValue = MathF.Max(0, cameraExtraHeight);
             }
-        }, "Slider");
+        });
     }
 }

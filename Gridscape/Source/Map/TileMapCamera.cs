@@ -28,8 +28,8 @@ public class TileMapCamera : Node2D
         rightPanel = GetNode<RightPanel>("RightPanel");
         bottomPanel = GetNode<BottomPanel>("BottomPanel");
 
-        horizontalSlider = GetNode<HorizontalSlider>("BottomPanel/Slider");
-        verticalSlider = GetNode<VerticalSlider>("RightPanel/Slider");
+        horizontalSlider = GetNode<HorizontalSlider>("BottomPanel/HorizontalSlider");
+        verticalSlider = GetNode<VerticalSlider>("RightPanel/VerticalSlider");
     }
 
     public override void Update()

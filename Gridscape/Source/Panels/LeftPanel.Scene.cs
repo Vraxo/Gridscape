@@ -10,7 +10,7 @@ public partial class LeftPanel : Panel
         AddChild(new Button()
         {
             Text = "Add New Tile",
-            Position = new(0, 18),
+            Position = new(0, 25),
             Size = new(25, 25),
             OriginPreset = OriginPreset.Center,
             Layer = ClickableLayer.PanelButtons,
@@ -34,7 +34,7 @@ public partial class LeftPanel : Panel
             },
             OnItemCountChanged = (list) =>
             {
-                string PadNumbers(string input)
+                static string PadNumbers(string input)
                 {
                     return Regex.Replace(input, "[0-9]+", match => match.Value.PadLeft(10, '0'));
                 }

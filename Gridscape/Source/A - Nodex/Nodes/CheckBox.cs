@@ -1,13 +1,23 @@
 ﻿using Raylib_cs;
+using System.Drawing;
 
 namespace Gridscape;
 
-class CheckBox : ClickableRectangle
+public class CheckBox : ClickableRectangle
 {
+    public Vector2 CheckSize = new(10, 10);
     public ButtonStyle Style = new();
     public bool Checked = false;
     public Action<CheckBox> OnUpdate = (checkBox) => { };
     public event EventHandler? Toggled;
+
+    public CheckBox()
+    {
+        Size = new(20, 20);
+        OriginPreset = OriginPreset.Center;
+
+        Style.Roundness = 1;
+    }
 
     public override void Update()
     {
@@ -19,26 +29,30 @@ class CheckBox : ClickableRectangle
 
     private void Draw()
     {
-        DrawOutline();
-        DrawCircle();
+        //DrawOutline();
+        DrawInside();
     }
 
-    private void DrawInside(Rectangle rectangle)
+    private void DrawInside()
     {
+        Rectangle rectangle = new()
+        {
+            Position = GlobalPosition - Origin,
+            Size = Size
+        };
+
         Raylib.DrawRectangleRounded(
             rectangle,
             Style.Current.Roundness,
             (int)Size.Y,
             Style.Current.FillColor);
+
+        DrawOutline(rectangle);
+        DrawCheck();
     }
 
     private void DrawOutline(Rectangle rectangle)
     {
-        if (!Checked)
-        {
-            return;
-        }
-
         if (Style.Current.OutlineThickness > 0)
         {
             Raylib.DrawRectangleRoundedLines(
@@ -50,11 +64,31 @@ class CheckBox : ClickableRectangle
         }
     }
 
+    private void DrawCheck()
+    {
+        if (!Checked)
+        {
+            return;
+        }
+
+        Rectangle rectangle = new()
+        {
+            Position = GlobalPosition - Origin / 2,
+            Size = CheckSize
+        };
+
+        Raylib.DrawRectangleRounded(
+            rectangle,
+            Style.Current.Roundness,
+            (int)CheckSize.Y,
+            Style.Pressed.FillColor);
+    }
+
     private void HandleClicks()
     {
-        if (IsMouseOver())
+        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
-            if (Raylib.IsMouseButtonPressed(MouseButton.Left) && OnTopLeft)
+            if (IsMouseOver() && OnTopLeft)
             {
                 Checked = !Checked;
                 Toggled?.Invoke(this, EventArgs.Empty);
