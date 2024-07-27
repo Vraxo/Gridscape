@@ -10,7 +10,7 @@ public partial class LeftPanel : Panel
         AddChild(new Button()
         {
             Text = "Add New Tile",
-            Position = new(0, 25),
+            Position = new(0, 18),
             Size = new(25, 25),
             OriginPreset = OriginPreset.Center,
             Layer = ClickableLayer.PanelButtons,

@@ -2,11 +2,11 @@
 
 namespace Gridscape;
 
-class CircleCheckBox : ClickableCircle
+class CheckBox : ClickableRectangle
 {
-    public CheckBoxStyle Style = new();
+    public ButtonStyle Style = new();
     public bool Checked = false;
-    public Action<CircleCheckBox> OnUpdate = (checkBox) => { };
+    public Action<CheckBox> OnUpdate = (checkBox) => { };
     public event EventHandler? Toggled;
 
     public override void Update()
@@ -23,19 +23,31 @@ class CircleCheckBox : ClickableCircle
         DrawCircle();
     }
 
-    private void DrawOutline()
+    private void DrawInside(Rectangle rectangle)
     {
-        Raylib.DrawCircleLinesV(GlobalPosition, Radius, Style.OutlineColor);
+        Raylib.DrawRectangleRounded(
+            rectangle,
+            Style.Current.Roundness,
+            (int)Size.Y,
+            Style.Current.FillColor);
     }
 
-    private void DrawCircle()
+    private void DrawOutline(Rectangle rectangle)
     {
         if (!Checked)
         {
             return;
         }
 
-        Raylib.DrawCircleV(GlobalPosition, Radius / 2, Style.CircleColor);
+        if (Style.Current.OutlineThickness > 0)
+        {
+            Raylib.DrawRectangleRoundedLines(
+                rectangle,
+                Style.Current.Roundness,
+                (int)Size.Y,
+                Style.Current.OutlineThickness,
+                Style.Current.OutlineColor);
+        }
     }
 
     private void HandleClicks()

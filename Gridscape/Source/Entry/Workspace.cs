@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-class Workspace : Node2D
+public class Workspace : Node2D
 {
     //private static readonly int leftPanelIndex = 2;
     //private static readonly int tileMapIndex = 7;
@@ -31,6 +31,5 @@ class Workspace : Node2D
         AddChild(new RightPanel());
         AddChild(new TileMapCamera());
         AddChild(new ProjectLoader());
-        AddChild(new TilesNotLoadedDialog());
     }
 }

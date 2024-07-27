@@ -54,7 +54,7 @@
 //    {
 //        Vector2 relativeMousePosition = Raylib.GetMousePosition() - GlobalPosition;
 //
-//        SnapToGrid = GetNode<CircleCheckBox>("topPanel/SnapToGridCheckBox").Checked;
+//        SnapToGrid = GetNode<CheckBox>("topPanel/SnapToGridCheckBox").Checked;
 //
 //        if (SnapToGrid)
 //        {

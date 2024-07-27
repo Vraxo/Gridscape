@@ -28,8 +28,8 @@ public class TileMapGrid : Node2D
         GetNode<TextBox>("TopPanel/GridXTextBox").TextChanged += OnXTextBoxTextChanged;
         GetNode<TextBox>("TopPanel/GridYTextBox").TextChanged += OnYTextBoxTextChanged;
 
-        GetNode<CircleCheckBox>("TopPanel/ShowGridCheckBox").Toggled += OnVisibleCheckBoxToggled;
-        GetNode<CircleCheckBox>("TopPanel/SnapToGridCheckBox").Toggled += OnSnapCheckBoxToggled;
+        GetNode<CheckBox>("TopPanel/ShowGridCheckBox").Toggled += OnVisibleCheckBoxToggled;
+        GetNode<CheckBox>("TopPanel/SnapToGridCheckBox").Toggled += OnSnapCheckBoxToggled;
     }
 
     public override void Update()

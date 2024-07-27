@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class TopPanel : Panel
+public partial class TopPanel : Panel
 {
     private ProjectSaver projectSaver;
     private ProjectExporter projectExporter;

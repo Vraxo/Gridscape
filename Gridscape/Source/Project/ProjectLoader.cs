@@ -31,8 +31,8 @@ class ProjectLoader : Node
 
     private void LoadCheckBoxes()
     {
-        GetNode<CircleCheckBox>("TopPanel/ShowGrid/CheckBox").Checked = settings.ShowGrid;
-        GetNode<CircleCheckBox>("TopPanel/SnapToGrid/CheckBox").Checked = settings.SnapToGrid;
+        GetNode<CheckBox>("TopPanel/ShowGrid/CheckBox").Checked = settings.ShowGrid;
+        GetNode<CheckBox>("TopPanel/SnapToGrid/CheckBox").Checked = settings.SnapToGrid;
     }
 
     private void LoadMapSize()

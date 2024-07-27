@@ -7,18 +7,24 @@ public class Program
 {
     public Node RootNode;
 
-    public void Run(Node rootNode)
+    [STAThread]
+    public static void Main()
+    {
+        new Program().Run();
+    }
+
+    public void Run()
     {
         SetWindowFlags();
-        Initialize(rootNode);
+        Initialize(new CreateOrLoadProjectPage());
         RunLoop();
     }
 
     private static void SetWindowFlags()
     {
-        //Raylib.SetConfigFlags(ConfigFlags.VSyncHint);
-        //Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
-        //Raylib.SetConfigFlags(ConfigFlags.HighDpiWindow);
+        Raylib.SetConfigFlags(ConfigFlags.VSyncHint);
+        Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
+        Raylib.SetConfigFlags(ConfigFlags.HighDpiWindow);
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
     }
 
