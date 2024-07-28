@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class TileInstance : Node2D
+public partial class TileInstance : Node2D
 {
     public string TileName;
     public string FilePath;
@@ -40,7 +40,8 @@ partial class TileInstance : Node2D
     {
         if (GetChild<Button>().OnTopLeft)
         {
-            GetNode<TileMap>().OnTopLeft = true;
+            GetNode<TileMap>().PlaceTileOnTopOfTile();
+            GetChild<Button>().OnTopLeft = false;
         }
     }
 }

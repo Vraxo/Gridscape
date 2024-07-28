@@ -2,6 +2,13 @@
 
 public class ButtonStyle
 {
+    public ButtonStyle()
+    {
+        Roundness = 0.5F;
+        OutlineThickness = 1;
+        Current = Default;
+    }
+
     public ButtonStyleState Current = new();
 
     public ButtonStyleState Default = new();

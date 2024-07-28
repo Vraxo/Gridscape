@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-partial class TileInstance : Node2D
+public partial class TileInstance : Node2D
 {
     public override void Build()
     {

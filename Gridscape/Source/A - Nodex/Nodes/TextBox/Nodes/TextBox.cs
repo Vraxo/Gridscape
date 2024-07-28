@@ -84,7 +84,7 @@ public partial class TextBox : ClickableRectangle
             if (Raylib.IsMouseButtonDown(MouseButton.Left))
             {
                 Selected = false;
-                Style.Current = Style.Deselected;
+                Style.Current = Style.Default;
             }
         }
     }
@@ -164,7 +164,7 @@ public partial class TextBox : ClickableRectangle
         if (Raylib.IsKeyDown(KeyboardKey.Enter))
         {
             Selected = false;
-            Style.Current = Style.Deselected;
+            Style.Current = Style.Default;
             Confirmed?.Invoke(this, Text);
         }
     }

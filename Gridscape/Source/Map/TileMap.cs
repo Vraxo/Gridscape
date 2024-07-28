@@ -75,6 +75,17 @@ public partial class TileMap : Clickable
         return tileData;
     }
 
+    public void PlaceTileOnTopOfTile()
+    {
+        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            if (IsMouseOver())
+            {
+                PlaceTile();
+            }
+        }
+    }
+
     private void UpdatePosition()
     {
         Position.X = leftPanel.Size.X;
@@ -112,6 +123,8 @@ public partial class TileMap : Clickable
         }
 
         AddTileInstance(relativeMousePosition);
+
+        Console.WriteLine("[TileMap] Added tile instance");
     }
 
     private void AddTileInstance(Vector2 position)

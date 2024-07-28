@@ -36,7 +36,7 @@ public class TextBoxShape : Node2D
         Raylib.DrawRectangleRounded(
             rectangle,
             parent.Style.Current.Roundedness,
-            (int)Size.Y,
+            (int)parent.Size.Y,
             parent.Style.Current.FillColor);
     }
 

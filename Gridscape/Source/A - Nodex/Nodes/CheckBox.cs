@@ -1,5 +1,4 @@
 ﻿using Raylib_cs;
-using System.Drawing;
 
 namespace Gridscape;
 
@@ -7,6 +6,7 @@ public class CheckBox : ClickableRectangle
 {
     public Vector2 CheckSize = new(10, 10);
     public ButtonStyle Style = new();
+    public ButtonStyle CheckStyle = new();
     public bool Checked = false;
     public Action<CheckBox> OnUpdate = (checkBox) => { };
     public event EventHandler? Toggled;
@@ -17,6 +17,9 @@ public class CheckBox : ClickableRectangle
         OriginPreset = OriginPreset.Center;
 
         Style.Roundness = 1;
+
+        CheckStyle.Default.FillColor = new(71, 114, 179, 255);
+        CheckStyle.Current = CheckStyle.Default;
     }
 
     public override void Update()
@@ -81,7 +84,7 @@ public class CheckBox : ClickableRectangle
             rectangle,
             Style.Current.Roundness,
             (int)CheckSize.Y,
-            Style.Pressed.FillColor);
+            CheckStyle.Current.FillColor);
     }
 
     private void HandleClicks()
