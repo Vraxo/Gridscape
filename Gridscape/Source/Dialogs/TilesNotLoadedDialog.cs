@@ -6,7 +6,7 @@ public partial class TilesNotLoadedDialog : Node2D
 {
     public List<string> TilesNotLoaded = [];
 
-    public override void Ready()
+    public override void Start()
     {
         GetNode<ClickManager>().MinLayer = ClickableLayer.Dialogs;
         Origin = GetChild<Panel>().Size / 2;

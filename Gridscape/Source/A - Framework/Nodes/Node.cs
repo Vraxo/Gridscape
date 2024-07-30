@@ -207,9 +207,7 @@ public class Node
         node.Name = node.GetType().Name;
         node.Program = Program;
         node.Parent = this;
-
         node.Build();
-
         if (start)
         {
             node.Start();
