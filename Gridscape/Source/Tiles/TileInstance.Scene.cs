@@ -8,6 +8,7 @@ public partial class TileInstance : Node2D
         {
             Size = Size,
             OriginPreset = OriginPreset.TopLeft,
+            Visible = false,
             Layer = ClickableLayer.Tiles,
             OnUpdate = (button) =>
             {

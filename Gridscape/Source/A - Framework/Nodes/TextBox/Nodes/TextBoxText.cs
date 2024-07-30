@@ -25,7 +25,7 @@ public class TextBoxText : Node2D
             parent.Text,
             GetPosition(),
             parent.Style.Current.FontSize,
-            1,
+            parent.Style.Current.Spacing,
             parent.Style.Current.TextColor);
     }
 

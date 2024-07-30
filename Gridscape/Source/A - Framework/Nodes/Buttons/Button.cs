@@ -7,7 +7,6 @@ public class Button : ClickableRectangle
     public string Text = "";
     public Vector2 TextOrigin = Vector2.Zero;
     public ButtonStyle Style = new();
-    public bool Visible = true;
     public bool PressedLeft = false;
     public bool PressedRight = false;
     public ButtonClickMode leftClickMode = ButtonClickMode.Limitless;

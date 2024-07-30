@@ -6,6 +6,7 @@ public class Node2D : Node
     public OriginPreset OriginPreset = OriginPreset.Center;
     public bool InheritPosition = true;
     public bool InheritsOrigin = false;
+    public bool Visible = true;
 
     private Vector2 _size = Vector2.Zero;
     public Vector2 Size

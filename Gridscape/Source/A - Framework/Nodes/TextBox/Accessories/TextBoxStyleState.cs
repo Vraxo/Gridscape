@@ -5,6 +5,7 @@ public class TextBoxStyleState
     public int OutlineThickness = 1;
     public float Roundedness = 0F;
     public float Padding = 8;
+    public float Spacing = 1;
     public Font Font = FontLoader.Instance.Fonts["RobotoMono 32"];
     public uint FontSize = 16;
     public Color TextColor = new(255, 255, 255, 255);
