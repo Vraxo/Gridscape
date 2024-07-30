@@ -16,7 +16,7 @@ public class TileMapCamera : Node2D
     private VerticalSlider verticalSlider;
     private HorizontalSlider horizontalSlider;
 
-    public override void Start()
+    public override void Ready()
     {
         Position = Vector2.Zero;
 

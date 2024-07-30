@@ -6,7 +6,7 @@ public class TileItemLabel : Label
 {
     private string originalText;
 
-    public override void Start()
+    public override void Ready()
     {
         originalText = Text;
     }
