@@ -24,7 +24,7 @@ public partial class TileMap : Clickable
         Layer = ClickableLayer.TileMap;
     }
 
-    public override void Ready()
+    public override void Start()
     {
         TextureLoader.Instance.Add("DefaultTile", Raylib.LoadTexture("Resources/DefaultTile.png"));
         Texture = TextureLoader.Instance.Textures["DefaultTile"];
@@ -38,6 +38,8 @@ public partial class TileMap : Clickable
 
         Grid = GetChild<TileMapGrid>("TileMapGrid");
         TileInstances = GetChild<Node2D>("TileInstances");
+
+        base.Start();
     }
 
     public override void Update()
@@ -77,9 +79,9 @@ public partial class TileMap : Clickable
 
     public void PlaceTileOnTopOfTile()
     {
-        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (IsMouseOver())
         {
-            if (IsMouseOver())
+            if (Raylib.IsMouseButtonDown(MouseButton.Left))
             {
                 PlaceTile();
             }
@@ -99,12 +101,15 @@ public partial class TileMap : Clickable
 
     private void HandleClicks()
     {
-        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (IsMouseOver())
         {
-            if (IsMouseOver() && OnTopLeft)
+            if (Raylib.IsMouseButtonDown(MouseButton.Left))
             {
-                PlaceTile();
-                OnTopLeft = false;
+                if (OnTopLeft)
+                {
+                    PlaceTile();
+                    OnTopLeft = false;
+                }
             }
         }
     }
@@ -123,8 +128,6 @@ public partial class TileMap : Clickable
         }
 
         AddTileInstance(relativeMousePosition);
-
-        Console.WriteLine("[TileMap] Added tile instance");
     }
 
     private void AddTileInstance(Vector2 position)

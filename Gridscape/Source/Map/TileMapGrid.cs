@@ -17,7 +17,7 @@ public class TileMapGrid : Node2D
         Size = new(32, 32);
     }
 
-    public override void Ready()
+    public override void Start()
     {
         originalPosition = Position;
 

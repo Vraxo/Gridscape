@@ -6,8 +6,8 @@ public partial class ProjectNotLoadedDialog : Node2D
 {
     public override void Start()
     {
-        GetNode<ClickManager>().MinLayer = ClickableLayer.DialogButtons;
         Origin = GetChild<Panel>().Size / 2;
+        GetNode<ClickManager>().MinLayer = ClickableLayer.DialogButtons;
         GetChild<Button>().LeftClicked += OnButtonLeftClicked;
     }
 

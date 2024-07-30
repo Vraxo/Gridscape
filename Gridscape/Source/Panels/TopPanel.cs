@@ -8,14 +8,10 @@ public partial class TopPanel : Panel
     private ProjectExporter projectExporter;
     private LeftPanel leftPanel;
 
-    public TopPanel()
-    {
-        Size = new(0, 35);
-    }
-
     public override void Start()
     {
         Size = new(0, 35);
+
         leftPanel = GetNode<LeftPanel>("LeftPanel");
         projectSaver = GetChild<ProjectSaver>();
         projectExporter = GetChild<ProjectExporter>();

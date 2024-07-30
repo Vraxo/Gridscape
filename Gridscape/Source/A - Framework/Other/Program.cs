@@ -39,7 +39,6 @@ public class Program
         RootNode = rootNode;
         RootNode.Program = this;
         RootNode.Build();
-        RootNode.Start();
     }
 
     private void RunLoop()

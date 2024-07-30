@@ -40,7 +40,7 @@ public abstract class BaseSlider : Node2D
         }
     }
 
-    public override void Ready()
+    public override void Start()
     {
         MiddleButton = GetChild<BaseSliderButton>("MiddleButton");
 

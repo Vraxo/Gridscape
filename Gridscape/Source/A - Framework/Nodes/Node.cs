@@ -16,8 +16,6 @@ public class Node
 
     public virtual void Start() { }
 
-    public virtual void Ready() { }
-
     public virtual void Update() { }
 
     public virtual void Destroy()
@@ -41,7 +39,7 @@ public class Node
 
         if (!started)
         {
-            Ready();
+            Start();
             started = true;
         }
 
@@ -186,7 +184,7 @@ public class Node
 
     // Add child
 
-    public void AddChild(Node node, string name, bool start = true)
+    public void AddChild(Node node, string name)
     {
         node.Name = name;
         node.Program = Program;
@@ -194,24 +192,15 @@ public class Node
 
         node.Build();
 
-        if (start)
-        {
-            node.Start();
-        }
-
         Children.Add(node);
     }
 
-    public void AddChild(Node node, bool start = true)
+    public void AddChild(Node node)
     {
         node.Name = node.GetType().Name;
         node.Program = Program;
         node.Parent = this;
         node.Build();
-        if (start)
-        {
-            node.Start();
-        }
 
         Children.Add(node);
     }
@@ -226,6 +215,5 @@ public class Node
 
         node.Name = node.GetType().Name;
         node.Program = Program;
-        node.Start();
     }
 }

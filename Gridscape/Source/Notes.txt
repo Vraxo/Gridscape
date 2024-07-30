@@ -1,4 +1,4 @@
-﻿1. Fix check box circles
+﻿1. Made slider buttons rectangles
 2. Diasble Console
 
 

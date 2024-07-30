@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-partial class CreateOrLoadProjectPage : Node2D
+public partial class CreateOrLoadProjectPage : Node2D
 {
     public override void Build()
     {

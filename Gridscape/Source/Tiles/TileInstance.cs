@@ -13,6 +13,7 @@ public partial class TileInstance : Node2D
 
     public override void Start()
     {
+        Console.WriteLine("[Tile was created.]");
         OriginalPosition = Position;
         camera = GetNode<TileMapCamera>("TileMapCamera");
         GetChild<Button>("Button").RightClicked += OnButtonRightClicked;

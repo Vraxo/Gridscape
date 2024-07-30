@@ -7,7 +7,6 @@ public abstract class BaseSliderButton : ClickableCircle
     public Vector2 TextOrigin = Vector2.Zero;
     public string Text = "";
     public ButtonStyle Style = new();
-    public bool Visible = true;
     public bool Pressed = false;
     public Action<BaseSliderButton> OnUpdate = (button) => { };
 
