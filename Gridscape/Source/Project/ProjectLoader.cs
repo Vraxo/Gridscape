@@ -31,20 +31,20 @@ class ProjectLoader : Node
 
     private void LoadCheckBoxes()
     {
-        GetNode<CheckBox>("TopPanel/ShowGrid/CheckBox").Checked = settings.ShowGrid;
-        GetNode<CheckBox>("TopPanel/SnapToGrid/CheckBox").Checked = settings.SnapToGrid;
+        GetNode<CheckBox>("TopPanel/ShowGridCheckBox").Checked = settings.ShowGrid;
+        GetNode<CheckBox>("TopPanel/SnapToGridCheckBox").Checked = settings.SnapToGrid;
     }
 
     private void LoadMapSize()
     {
-        GetNode<TextBox>("TopPanel/MapX/TextBox").Text = settings.MapX.ToString();
-        GetNode<TextBox>("TopPanel/MapY/TextBox").Text = settings.MapY.ToString();
+        GetNode<TextBox>("TopPanel/MapXTextBox").Text = settings.MapX.ToString();
+        GetNode<TextBox>("TopPanel/MapYTextBox").Text = settings.MapY.ToString();
     }
 
     private void LoadGridSize()
     {
-        GetNode<TextBox>("TopPanel/GridX/TextBox").Text = settings.GridX.ToString();
-        GetNode<TextBox>("TopPanel/GridY/TextBox").Text = settings.GridY.ToString();
+        GetNode<TextBox>("TopPanel/GridXTextBox").Text = settings.GridX.ToString();
+        GetNode<TextBox>("TopPanel/GridYTextBox").Text = settings.GridY.ToString();
     }
 
     private void TryToLoadTileItems()

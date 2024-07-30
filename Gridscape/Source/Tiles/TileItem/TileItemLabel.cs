@@ -6,7 +6,7 @@ public class TileItemLabel : Label
 {
     private string originalText;
 
-    public override void Start()
+    public override void Ready()
     {
         originalText = Text;
     }
@@ -17,11 +17,9 @@ public class TileItemLabel : Label
         float characterWidth = GetCharacterWidth();
         int numFittingCharacters = (int)(availableWidth / characterWidth);
 
-        // Ensure numFittingCharacters does not exceed the length of originalText
         if (numFittingCharacters < originalText.Length)
         {
-            //numFittingCharacters = originalText.Length;
-            string trimmedText = originalText.Substring(0, numFittingCharacters);
+            string trimmedText = originalText[..numFittingCharacters];
             Text = ReplaceLastThreeWithDots(trimmedText);
         }
         else
@@ -45,7 +43,7 @@ public class TileItemLabel : Label
 
     private static string ReplaceLastThreeWithDots(string input)
     {
-        string trimmedText = input.Substring(0, input.Length - 3);
+        string trimmedText = input[..^3];
         return trimmedText + "...";
     }
 }
