@@ -9,12 +9,12 @@ public partial class VerticalSlider : BaseSlider
 
         AddChild(new Button
         {
-            Position = new(0, middleButton.Radius * -2),
+            Position = new(0, middleButton.Size.Y * -2),
             Size = new(10, 10),
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.Y = -Origin.Y - middleButton.Radius * 2;
+                button.Position.Y = -Origin.Y - middleButton.Size.Y * 2;
             }
         }, "DecrementButton");
 
@@ -24,7 +24,7 @@ public partial class VerticalSlider : BaseSlider
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.Y = Size.Y - Origin.Y + middleButton.Radius * 2 - 1;
+                button.Position.Y = Size.Y - Origin.Y + middleButton.Size.Y * 2 - 1;
             },
         }, "IncrementButton");
     }

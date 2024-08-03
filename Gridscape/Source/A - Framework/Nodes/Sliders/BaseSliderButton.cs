@@ -2,7 +2,7 @@
 
 namespace Gridscape;
 
-public abstract class BaseSliderButton : ClickableCircle
+public abstract class BaseSliderButton : ClickableRectangle
 {
     public Vector2 TextOrigin = Vector2.Zero;
     public string Text = "";
@@ -15,7 +15,7 @@ public abstract class BaseSliderButton : ClickableCircle
 
     public BaseSliderButton()
     {
-        Radius = 9F;
+        Size = new(14, 14);
         InheritPosition = false;
     }
 
@@ -29,7 +29,7 @@ public abstract class BaseSliderButton : ClickableCircle
     {
         UpdatePosition();
         CheckForClicks();
-        DrawShape();
+        Draw();
         OnUpdate(this);
         base.Update();
     }
@@ -80,21 +80,33 @@ public abstract class BaseSliderButton : ClickableCircle
         }
     }
 
-    private void DrawShape()
+    private void Draw()
     {
-        if (Visible)
+        Rectangle rectangle = new()
         {
-            float x = MathF.Round(GlobalPosition.X);
-            float y = MathF.Round(GlobalPosition.Y);
-            Vector2 roundedGlobalPosition = new(x, y);
+            Position = GlobalPosition - Origin,
+            Size = Size
+        };
 
-            Raylib.DrawCircleV(roundedGlobalPosition, Radius, Style.Current.FillColor);
-        }
+        Raylib.DrawRectangleRounded(
+            rectangle,
+            Style.Current.Roundness,
+            (int)Size.Y,
+            Style.Current.FillColor);
+
+        DrawOutline(rectangle);
     }
 
-    public override bool IsMouseOver()
+    private void DrawOutline(Rectangle rectangle)
     {
-        float distance = MathUtilities.GetDistance(GlobalPosition, Raylib.GetMousePosition());
-        return distance < Radius;
+        if (Style.Current.OutlineThickness > 0)
+        {
+            Raylib.DrawRectangleRoundedLines(
+                rectangle,
+                Style.Current.Roundness,
+                (int)Size.Y,
+                Style.Current.OutlineThickness,
+                Style.Current.OutlineColor);
+        }
     }
 }

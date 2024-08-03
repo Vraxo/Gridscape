@@ -41,7 +41,7 @@ public partial class TopPanel : Panel
         {
             Position = new(250, 18),
             OriginPreset = OriginPreset.CenterLeft,
-            Text = "Map X:",
+            Text = "Map Y:",
         });
 
         AddChild(new TextBox

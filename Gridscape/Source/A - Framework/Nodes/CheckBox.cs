@@ -5,7 +5,7 @@ namespace Gridscape;
 public class CheckBox : ClickableRectangle
 {
     public Vector2 CheckSize = new(10, 10);
-    public ButtonStyle Style = new();
+    public ButtonStyle BackgroundStyle = new();
     public ButtonStyle CheckStyle = new();
     public bool Checked = false;
     public Action<CheckBox> OnUpdate = (checkBox) => { };
@@ -16,7 +16,7 @@ public class CheckBox : ClickableRectangle
         Size = new(20, 20);
         OriginPreset = OriginPreset.Center;
 
-        Style.Roundness = 1;
+        BackgroundStyle.Roundness = 1;
 
         CheckStyle.Default.FillColor = new(71, 114, 179, 255);
         CheckStyle.Current = CheckStyle.Default;
@@ -32,38 +32,36 @@ public class CheckBox : ClickableRectangle
 
     private void Draw()
     {
-        //DrawOutline();
-        DrawInside();
-    }
-
-    private void DrawInside()
-    {
         Rectangle rectangle = new()
         {
             Position = GlobalPosition - Origin,
             Size = Size
         };
 
-        Raylib.DrawRectangleRounded(
-            rectangle,
-            Style.Current.Roundness,
-            (int)Size.Y,
-            Style.Current.FillColor);
-
+        DrawInside(rectangle);
         DrawOutline(rectangle);
         DrawCheck();
     }
 
+    private void DrawInside(Rectangle rectangle)
+    {
+        Raylib.DrawRectangleRounded(
+            rectangle,
+            BackgroundStyle.Current.Roundness,
+            (int)Size.Y,
+            BackgroundStyle.Current.FillColor);
+    }
+
     private void DrawOutline(Rectangle rectangle)
     {
-        if (Style.Current.OutlineThickness > 0)
+        if (BackgroundStyle.Current.OutlineThickness > 0)
         {
             Raylib.DrawRectangleRoundedLines(
                 rectangle,
-                Style.Current.Roundness,
+                BackgroundStyle.Current.Roundness,
                 (int)Size.Y,
-                Style.Current.OutlineThickness,
-                Style.Current.OutlineColor);
+                BackgroundStyle.Current.OutlineThickness,
+                BackgroundStyle.Current.OutlineColor);
         }
     }
 
@@ -82,7 +80,7 @@ public class CheckBox : ClickableRectangle
 
         Raylib.DrawRectangleRounded(
             rectangle,
-            Style.Current.Roundness,
+            BackgroundStyle.Current.Roundness,
             (int)CheckSize.Y,
             CheckStyle.Current.FillColor);
     }

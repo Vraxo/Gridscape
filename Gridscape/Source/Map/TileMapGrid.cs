@@ -4,7 +4,6 @@ namespace Gridscape;
 
 public class TileMapGrid : Node2D
 {
-    public bool Visible = true;
     public bool Snap = true;
 
     private TileMap parent;

@@ -38,6 +38,7 @@ public partial class HorizontalSlider : BaseSlider
         float y = MiddleButton.GlobalPosition.Y;
 
         MiddleButton.GlobalPosition = new(x, y);
+        UpdatePercentageBasedOnMiddleButton();
     }
 
     protected override void Draw()
