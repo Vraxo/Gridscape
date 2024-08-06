@@ -4,13 +4,13 @@ namespace Gridscape;
 
 public class Button : ClickableRectangle
 {
-    public string Text = "";
-    public Vector2 TextOrigin = Vector2.Zero;
-    public ButtonStyle Style = new();
-    public bool PressedLeft = false;
-    public bool PressedRight = false;
-    public ButtonClickMode leftClickMode = ButtonClickMode.Limitless;
-    public ButtonClickMode rightClickMode = ButtonClickMode.Limitless;
+    public string Text { get; set; } = "";
+    public Vector2 TextOrigin { get; set; } = Vector2.Zero;
+    public ButtonStyle Style { get; set; } = new();
+    public bool PressedLeft { get; set; } = false;
+    public bool PressedRight { get; set; } = false;
+    public ButtonClickMode LeftClickMode { get; set; } = ButtonClickMode.Limitless;
+    public ButtonClickMode RightClickMode { get; set; } = ButtonClickMode.Limitless;
     public Action<Button> OnUpdate = (button) => { };
     public event EventHandler? LeftClicked;
     public event EventHandler? RightClicked;
@@ -45,7 +45,7 @@ public class Button : ClickableRectangle
             return;
         }
 
-        if (leftClickMode == ButtonClickMode.Limitless)
+        if (LeftClickMode == ButtonClickMode.Limitless)
         {
             HandleLeftClickLimitless();
         }
@@ -146,7 +146,7 @@ public class Button : ClickableRectangle
             return;
         }
 
-        if (rightClickMode == ButtonClickMode.Limitless)
+        if (RightClickMode == ButtonClickMode.Limitless)
         {
             HandleRightClickLimitless();
         }

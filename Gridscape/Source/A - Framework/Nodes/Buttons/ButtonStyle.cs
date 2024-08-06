@@ -9,17 +9,17 @@ public class ButtonStyle
         Current = Default;
     }
 
-    public ButtonStyleState Current = new();
+    public ButtonStyleState Current { get; set; } = new();
 
-    public ButtonStyleState Default = new();
+    public ButtonStyleState Default { get; set; } = new();
 
-    public ButtonStyleState Hover = new()
+    public ButtonStyleState Hover { get; set; } = new()
     {
         FillColor = new(101, 101, 101, 255),
         OutlineColor = new(71, 71, 71, 255)
     };
 
-    public ButtonStyleState Pressed = new()
+    public ButtonStyleState Pressed { get; set; } = new()
     {
         FillColor = new(71, 114, 179, 255),
         OutlineColor = new(61, 61, 61, 255),
