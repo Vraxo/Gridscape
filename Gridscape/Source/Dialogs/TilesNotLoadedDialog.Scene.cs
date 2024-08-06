@@ -24,8 +24,10 @@ public partial class TilesNotLoadedDialog : Node2D
             },
             OnUpdate = (button) =>
             {
-                button.Position.X = 800 - 35;
-                button.Position.Y = 10;
+                float x = 800 - 35;
+                float y = 10;
+
+                button.Position = new(x, y);
             }
         });
 

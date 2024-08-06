@@ -16,7 +16,8 @@ public partial class LeftPanel : Panel
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.X = Size.X / 2;
+                button.Position = new(Size.X / 2, button.Position.Y);
+
                 //button.Position.X = Size.X * 0.05F;
                 button.Size = new(Size.X * 0.9F, button.Size.Y);
             },

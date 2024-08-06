@@ -117,7 +117,8 @@ public partial class ItemList : ClickableRectangle
             if (i >= StartingIndex && i < StartingIndex + maxItemsShownAtOnce)
             {
                 Items[i].Activate();
-                Items[i].Position.Y = ItemSize.Y * j;
+                //Items[i].Position.Y = ItemSize.Y * j;
+                Items[i].Position = new(Items[i].Position.X, ItemSize.Y * j);
                 j++;
             }
             else

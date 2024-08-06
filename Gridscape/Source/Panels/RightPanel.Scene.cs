@@ -12,8 +12,8 @@ public partial class RightPanel : Panel
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
-                slider.Position.X = Size.X / 2;
-                slider.Position.Y = Size.Y / 2;
+                slider.Position = Size / 2;
+
                 slider.Size = new(slider.Size.X, Size.Y - 100);
 
                 float cameraExtraHeight = GetNode<TileMapCamera>().ExtraMapSize.Y;

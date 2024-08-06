@@ -13,8 +13,10 @@ public partial class CreateOrLoadProjectPage : Node2D
             OriginPreset = OriginPreset.Center,
             OnUpdate = (button) =>
             {
-                button.Position.X = Raylib.GetScreenWidth() * 0.35f;
-                button.Position.Y = Raylib.GetScreenHeight() * 0.1f;
+                float x = Raylib.GetScreenWidth() * 0.35f;
+                float y = Raylib.GetScreenHeight() * 0.1f;
+
+                button.Position = new(x, y);
             }
         };
 
@@ -27,8 +29,10 @@ public partial class CreateOrLoadProjectPage : Node2D
             OriginPreset = OriginPreset.Center,
             OnUpdate = (button) =>
             {
-                button.Position.X = Raylib.GetScreenWidth() * 0.65f;
-                button.Position.Y = Raylib.GetScreenHeight() * 0.1f;
+                float x = Raylib.GetScreenWidth() * 0.65f;
+                float y = Raylib.GetScreenHeight() * 0.1f;
+
+                button.Position = new(x, y);
             }
         };
 

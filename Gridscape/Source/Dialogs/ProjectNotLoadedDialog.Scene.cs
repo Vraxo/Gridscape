@@ -24,8 +24,10 @@ public partial class ProjectNotLoadedDialog : Node2D
             },
             OnUpdate = (button) =>
             {
-                button.Position.X = 400 - 35;
-                button.Position.Y = 10;
+                float x = 400 - 35;
+                float y = 10;
+
+                button.Position = new(x, y);
             }
         });
 

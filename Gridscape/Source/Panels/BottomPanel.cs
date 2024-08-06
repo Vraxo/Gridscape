@@ -22,8 +22,10 @@ public partial class BottomPanel : Panel
 
     private void UpdatePosition()
     {
-        Position.X = leftPanel.Size.X - 1;
-        Position.Y = Raylib.GetScreenHeight() - Size.Y;
+        float x = leftPanel.Size.X - 1;
+        float y = Raylib.GetScreenHeight() - Size.Y;
+
+        Position = new(x, y);
     }
 
     private void UpdateSize()

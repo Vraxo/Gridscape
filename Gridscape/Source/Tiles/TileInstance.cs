@@ -33,7 +33,11 @@ public partial class TileInstance : Node2D
     private void UpdatePosition()
     {
         Position = (OriginalPosition - camera.Position) * camera.Zoom;
-        Position.X = MathF.Floor(Position.X);
+
+        float x = MathF.Floor(Position.X);
+        float y = Position.Y;
+
+        Position = new(x, y);
     }
 
     private void SignalLeftClickToTileMap()

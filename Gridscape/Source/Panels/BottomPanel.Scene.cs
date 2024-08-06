@@ -12,7 +12,8 @@ public partial class BottomPanel : Panel
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (slider) =>
             {
-                slider.Position.Y = Size.Y / 2;
+                slider.Position = new(slider.Position.X, Size.Y / 2);
+
                 slider.Size = new(Raylib.GetScreenWidth() - Position.X - 60, slider.Size.Y);
 
                 float cameraExtraWidth = GetNode<TileMapCamera>().ExtraMapSize.X;

@@ -14,7 +14,10 @@ public partial class VerticalSlider : BaseSlider
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.Y = -Origin.Y - middleButton.Size.Y * 2;
+                float x = button.Position.X;
+                float y = -Origin.Y - middleButton.Size.Y * 2;
+
+                button.Position = new(x, y);
             }
         }, "DecrementButton");
 
@@ -24,7 +27,11 @@ public partial class VerticalSlider : BaseSlider
             Layer = ClickableLayer.PanelButtons,
             OnUpdate = (button) =>
             {
-                button.Position.Y = Size.Y - Origin.Y + middleButton.Size.Y * 2 - 1;
+                float x = button.Position.X;
+                float y = Size.Y - Origin.Y + middleButton.Size.Y * 2 - 1;
+
+                button.Position = new(x, y);
+                
             },
         }, "IncrementButton");
     }

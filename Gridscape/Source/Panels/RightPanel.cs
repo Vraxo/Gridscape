@@ -7,11 +7,14 @@ public partial class RightPanel : Panel
     private TopPanel topPanel;
     private BottomPanel bottomPanel;
 
+    public RightPanel()
+    {
+        Position = new(Position.X, 250);
+        Size = new(35, 0);
+    }
+
     public override void Start()
     {
-        Position.Y = 250;
-        Size = new(35, 0);
-
         topPanel = GetNode<TopPanel>("TopPanel");
         bottomPanel = GetNode<BottomPanel>("BottomPanel");
 
@@ -27,8 +30,10 @@ public partial class RightPanel : Panel
 
     private void UpdatePosition()
     {
-        Position.X = Raylib.GetScreenWidth() - Size.X;
-        Position.Y = topPanel.Size.Y - 1;
+        float x = Raylib.GetScreenWidth() - Size.X;
+        float y = topPanel.Size.Y - 1;
+
+        Position = new(x, y);
     }
 
     private void UpdateSize()

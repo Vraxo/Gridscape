@@ -89,8 +89,10 @@ public partial class TileMap : Clickable
 
     private void UpdatePosition()
     {
-        Position.X = leftPanel.Size.X;
-        Position.Y = topPanel.Size.Y;
+        float x = leftPanel.Size.X;
+        float y = topPanel.Size.Y;
+
+        Position = new(x, y);
     }
 
     private void UpdateSize()

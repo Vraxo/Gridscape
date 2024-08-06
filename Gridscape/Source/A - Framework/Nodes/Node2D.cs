@@ -2,11 +2,11 @@
 
 public class Node2D : Node
 {
-    public Vector2 Position = Vector2.Zero;
-    public OriginPreset OriginPreset = OriginPreset.Center;
-    public bool InheritPosition = true;
-    public bool InheritsOrigin = false;
-    public bool Visible = true;
+    public Vector2 Position { get; set; }  = Vector2.Zero;
+    public OriginPreset OriginPreset { get; set; } = OriginPreset.Center;
+    public bool InheritPosition { get; set; } = true;
+    public bool InheritsOrigin { get; set; } = false;
+    public bool Visible { get; set; } = true;
 
     private Vector2 _size = Vector2.Zero;
     public Vector2 Size
@@ -25,11 +25,11 @@ public class Node2D : Node
     {
         get
         {
-            if (Parent is not null)
+            if (Parent is Node2D parentNode)
             {
                 if (InheritPosition)
                 {
-                    return (Parent as Node2D).GlobalPosition + Position;
+                    return parentNode.GlobalPosition + Position;
                 }
 
                 return _globalPosition;
@@ -53,12 +53,12 @@ public class Node2D : Node
         {
             if (InheritsOrigin)
             {
-                if (Parent is not null)
+                if (Parent is Node2D parentNode)
                 {
-                    return (Parent as Node2D).Origin;
+                    return parentNode.Origin;
                 }
             }
-            
+
             return _origin;
         }
 

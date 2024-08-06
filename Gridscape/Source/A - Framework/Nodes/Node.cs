@@ -2,10 +2,10 @@
 
 public class Node
 {
-    public string Name = "";
-    public Node? Parent = null;
-    public List<Node> Children = [];
-    public Program Program;
+    public string Name { get; set; } = "";
+    public Node? Parent { get; set; } = null;
+    public List<Node> Children { get; set; } = [];
+    public Program? Program { get; set; } = null;
     public bool Active { get; private set; } = true;
 
     private bool started = false;

@@ -27,8 +27,10 @@ public partial class TilesNotLoadedDialog : Node2D
 
     private void UpdatePosition()
     {
-        Position.X = Raylib.GetScreenWidth() / 2;
-        Position.Y = Raylib.GetScreenHeight() / 2;
+        float x = Raylib.GetScreenWidth() / 2;
+        float y = Raylib.GetScreenHeight() / 2;
+
+        Position = new(x, y);
     }
 
     private void LoadItems()
