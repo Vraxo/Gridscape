@@ -6,7 +6,15 @@ public class EntryPoint
     public static void Main()
     {
         AppInitializer rootNode = new();
-        Program program = new(rootNode);
+
+        WindowData windowData = new()
+        {
+            Title = "Gridscape",
+            Resolution = new(1280, 720),
+            ClearColor = new(57, 57, 57, 255)
+        };
+
+        Program program = new(windowData, rootNode);
         program.Run();
     }
 }

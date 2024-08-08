@@ -2,15 +2,34 @@
 
 namespace Gridscape;
 
-public class Program(Node rootNode)
+public class Program(WindowData windowData, Node rootNode)
 {
     public Node RootNode = rootNode;
 
+    private readonly WindowData windowData = windowData;
+
     public void Run()
     {
-        SetWindowFlags();
         Initialize();
         RunLoop();
+    }
+
+    private void Initialize()
+    {
+        if (!Directory.Exists("Resources"))
+        {
+            Directory.CreateDirectory("Resources");
+        }
+
+        int width = (int)windowData.Resolution.X;
+        int height = (int)windowData.Resolution.Y;
+
+        SetWindowFlags();
+        Raylib.InitWindow(width, height, windowData.Title);
+        Raylib.SetWindowMinSize(width, height);
+
+        RootNode.Program = this;
+        RootNode.Build();
     }
 
     private static void SetWindowFlags()
@@ -21,27 +40,13 @@ public class Program(Node rootNode)
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
     }
 
-    private void Initialize()
-    {
-        if (!Directory.Exists("Resources"))
-        {
-            Directory.CreateDirectory("Resources");
-        }
-
-        Raylib.InitWindow(1280, 720, "Gridscape");
-        Raylib.SetWindowMinSize(1280, 720);
-
-        RootNode.Program = this;
-        RootNode.Build();
-    }
-
     private void RunLoop()
     {
         while (!Raylib.WindowShouldClose())
         {
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(new(57, 57, 57, 255));
-            RootNode.Process();
+                Raylib.ClearBackground(windowData.ClearColor);
+                RootNode.Process();
             Raylib.EndDrawing();
 
             if (Raylib.IsKeyPressed(KeyboardKey.Enter))

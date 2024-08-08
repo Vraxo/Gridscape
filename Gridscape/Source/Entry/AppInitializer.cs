@@ -13,6 +13,7 @@ public class AppInitializer : Node
 
     private static void Initialize()
     {
+        Raylib.MaximizeWindow();
         CreateResources();
         SetIcon();
     }
