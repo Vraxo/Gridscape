@@ -1,22 +1,15 @@
 ﻿using Raylib_cs;
-using Gridscape.Properties;
 
 namespace Gridscape;
 
-public class Program
+public class Program(Node rootNode)
 {
-    public Node RootNode;
-
-    [STAThread]
-    public static void Main()
-    {
-        new Program().Run();
-    }
+    public Node RootNode = rootNode;
 
     public void Run()
     {
         SetWindowFlags();
-        Initialize(new CreateOrLoadProjectPage());
+        Initialize();
         RunLoop();
     }
 
@@ -28,15 +21,16 @@ public class Program
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
     }
 
-    private void Initialize(Node rootNode)
+    private void Initialize()
     {
+        if (!Directory.Exists("Resources"))
+        {
+            Directory.CreateDirectory("Resources");
+        }
+
         Raylib.InitWindow(1280, 720, "Gridscape");
         Raylib.SetWindowMinSize(1280, 720);
 
-        CreateResources();
-        SetIcon();
-        
-        RootNode = rootNode;
         RootNode.Program = this;
         RootNode.Build();
     }
@@ -56,38 +50,5 @@ public class Program
                 RootNode.PrintChildren();
             }
         }
-    }
-
-    private static void CreateResources()
-    {
-        if (!Directory.Exists("Resources"))
-        {
-            Directory.CreateDirectory("Resources");
-        }
-
-        if (!File.Exists("Resources/Icon.png"))
-        {
-            Bitmap icon = Resources.Icon;
-            icon.Save("Resources/Icon.png");
-        }
-
-        if (!File.Exists("Resources/RobotoMono.ttf"))
-        {
-            byte[] defaultFont = Resources.RobotoMono;
-            File.WriteAllBytes("Resources/RobotoMono.ttf", defaultFont);
-        }
-
-        if (!File.Exists("Resources/DefaultTile.png"))
-        {
-            Bitmap defaultTexture = Resources.DefaultTile;
-            defaultTexture.Save("Resources/DefaultTile.png");
-        }
-    }
-
-    private static void SetIcon()
-    {
-        Texture2D iconTexture = Raylib.LoadTexture("Resources/Icon.png");
-        Image icon = Raylib.LoadImageFromTexture(iconTexture);
-        Raylib.SetWindowIcon(icon);
     }
 }

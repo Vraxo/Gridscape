@@ -6,7 +6,7 @@ public partial class CreateOrLoadProjectPage : Node2D
 {
     public override void Build()
     {
-        Button createButton = new()
+        AddChild(new Button
         {
             Text = "Create New Project",
             Size = new(300, 50),
@@ -18,11 +18,9 @@ public partial class CreateOrLoadProjectPage : Node2D
 
                 button.Position = new(x, y);
             }
-        };
+        }, "CreateNewProjectButton");
 
-        AddChild(createButton, "CreateNewProjectButton");
-
-        Button loadButton = new()
+        AddChild(new Button
         {
             Text = "Load Existing Project",
             Size = new(300, 50),
@@ -34,8 +32,6 @@ public partial class CreateOrLoadProjectPage : Node2D
 
                 button.Position = new(x, y);
             }
-        };
-
-        AddChild(loadButton, "LoadExistingProjectButton");
+        }, "LoadExistingProjectButton");
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Gridscape;
 
-public class ButtonStyleState
+public class ButtonStateStyle
 {
     public float Roundness { get; set; } = 0F;
     public float OutlineThickness { get; set; } = 0;

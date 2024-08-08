@@ -13,7 +13,7 @@ public partial class TileItem : Node2D
     public TileItemLabel Label;
 
     private ItemList parent;
-    private ButtonStyleState originalDefaultButtonStyle;
+    private ButtonStateStyle originalDefaultButtonStyle;
 
     public override void Start()
     {
