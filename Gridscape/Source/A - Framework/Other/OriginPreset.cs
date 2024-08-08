@@ -2,6 +2,7 @@
 
 public enum OriginPreset
 {
+    None,
     Center,
     CenterLeft,
     CenterRight,

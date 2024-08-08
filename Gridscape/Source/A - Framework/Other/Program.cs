@@ -34,10 +34,11 @@ public class Program(WindowData windowData, Node rootNode)
 
     private static void SetWindowFlags()
     {
-        Raylib.SetConfigFlags(ConfigFlags.VSyncHint);
-        Raylib.SetConfigFlags(ConfigFlags.Msaa4xHint);
-        Raylib.SetConfigFlags(ConfigFlags.HighDpiWindow);
-        Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
+        Raylib.SetConfigFlags(
+            ConfigFlags.VSyncHint | 
+            ConfigFlags.Msaa4xHint |
+            ConfigFlags.HighDpiWindow |
+            ConfigFlags.ResizableWindow);
     }
 
     private void RunLoop()
